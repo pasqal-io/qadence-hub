@@ -181,9 +181,7 @@ def majority_vote(noise_matrices: npt.NDArray, p_raw: npt.NDArray) -> npt.NDArra
     for i in range(n_qubits):
         p_raw_resize = p_raw.reshape([2] * n_qubits)
         transposed_axes = [i] + list(range(0, i)) + list(range(i + 1, n_qubits))
-        p_raw_resize = np.transpose(p_raw_resize, axes=transposed_axes).reshape(
-            2, 2**n_qubits // 2
-        )
+        p_raw_resize = np.transpose(p_raw_resize, axes=transposed_axes).reshape(2, 2**n_qubits // 2)
         probs = np.sum(p_raw_resize, axis=1)
 
         # Given the output to be 0, the probability of observed outcomes

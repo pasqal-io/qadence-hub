@@ -70,9 +70,7 @@ def apply_operator_dm(
     support_perm = tuple(sorted(qubit_support)) + tuple(set(full_support) - set(qubit_support))
     state = permute_basis(state, support_perm)
     state = state.reshape([batchsize, 2**n_support, (2 ** (2 * n_qubits - n_support))])
-    state = einsum("ij,bjk->bik", operator, state).reshape(
-        [batchsize, 2**n_qubits, 2**n_qubits]
-    )
+    state = einsum("ij,bjk->bik", operator, state).reshape([batchsize, 2**n_qubits, 2**n_qubits])
     return permute_basis(state, support_perm, inv=True)
 
 

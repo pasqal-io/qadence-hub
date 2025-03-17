@@ -1,6 +1,10 @@
 site_name: Qadence Extras
 repo_url: "https://github.com/pasqal-io/prototype_qextras.git"
+site_url: "https://pasqal-io.github.io/prototype_qextras/"
 repo_name: "qextras"
+
+# site_url: "https://pasqal-io.github.io/qadence/"
+# qdocs-site: https://pasqal-io.github.io/qadence/latest/
 
 nav:
 

@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pqextras"
+name = "test_qextras"
 description = 'prototype monorepo for qadence-extensions'
 readme = "README.md"
 requires-python = ">=3.9,<3.12"

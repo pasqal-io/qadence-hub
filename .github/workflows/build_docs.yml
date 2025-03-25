@@ -17,6 +17,9 @@ jobs:
   test_qadence_ubuntu:
     name: docs (ubuntu)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: test-qadence-protocols
     steps:
 
     - name: Checkout Qadence

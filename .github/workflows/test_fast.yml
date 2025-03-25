@@ -23,6 +23,9 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
+    defaults:
+      run:
+        working-directory: test-qadence-protocols
     steps:
     - name: Checkout Qadence Extras
       uses: actions/checkout@v4
@@ -43,47 +46,50 @@ jobs:
         path: .coverage.*
         if-no-files-found: ignore
 
-  publish:
-    name: Publish to PyPI
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: test_extras_ubuntu
-    runs-on: ubuntu-latest
-    permissions:
-      # IMPORTANT: this permission is mandatory for trusted publishing
-      id-token: write
-    steps:
-      - name: Check out Qadence Extras
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install hatch
-      - name: Build package
-        run: |
-          hatch build
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-      - name: Confirm deployment
-        timeout-minutes: 5
-        run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          until pip download test_qextras==$VERSION
-          do
-            echo "Failed to download from PyPI, will wait for upload and retry."
-            sleep 1
-          done
+  # publish:
+  #   name: Publish to PyPI
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   needs: test_extras_ubuntu
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     # IMPORTANT: this permission is mandatory for trusted publishing
+  #     id-token: write
+  #   steps:
+  #     - name: Check out Qadence Extras
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: ${{ github.ref }}
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.10"
+  #     - name: Install Python dependencies
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         pip install hatch
+  #     - name: Build package
+  #       run: |
+  #         hatch build
+  #     - name: Publish to PyPI
+  #       uses: pypa/gh-action-pypi-publish@release/v1
+  #     - name: Confirm deployment
+  #       timeout-minutes: 5
+  #       run: |
+  #         VERSION=${GITHUB_REF#refs/tags/v}
+  #         until pip download test_qextras==$VERSION
+  #         do
+  #           echo "Failed to download from PyPI, will wait for upload and retry."
+  #           sleep 1
+  #         done
 
   deploy_docs:
     name: Deploy Qadence Extras docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs: test_extras_ubuntu
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: test-qadence-protocols
     steps:
     - name: Checkout Qadence Extras
       uses: actions/checkout@v4

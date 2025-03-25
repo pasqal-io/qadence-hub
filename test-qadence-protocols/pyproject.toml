@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "test-qadence-protocols"
-readme = "README.md"
+# readme = "README.md"
 requires-python = ">=3.9,<3.13"
 license = {text = "Apache 2.0"}
 version = "0.0.1"
@@ -54,6 +54,7 @@ test-docs = "mkdocs build --clean --strict"
 test-all = "pytest -n auto {args}  && mkdocs build --clean --strict"
 
 [tool.pytest.ini_options]
+pythonpath = ["test_qadence_protocols"]
 testpaths = ["tests"]
 addopts = """-vvv"""
 xfail_strict = true

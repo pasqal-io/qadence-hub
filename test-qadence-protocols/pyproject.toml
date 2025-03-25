@@ -83,7 +83,7 @@ dependencies = [
 ]
 
 [tool.hatch.envs.docs.scripts]
-mike = "mkdocs --config-file mkdocs.yml"
+mike = "mike --config-file mkdocs.yml"
 build = "mkdocs build --clean --strict"
 serve = "mkdocs serve --dev-addr localhost:8000"
 

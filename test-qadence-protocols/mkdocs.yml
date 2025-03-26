@@ -88,7 +88,6 @@ plugins:
 extra:
  version:
    provider: mike
-  #  version_path: test-qadence-protocols
 
 # To get nice tabs
 extra_css:

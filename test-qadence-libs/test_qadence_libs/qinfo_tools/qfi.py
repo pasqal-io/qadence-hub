@@ -22,7 +22,9 @@ def _positive_semidefinite_sqrt(A: Tensor) -> Tensor:
     return (Q * L.sqrt().unsqueeze(-2)) @ Q.mH
 
 
-def _set_circuit_vparams(circuit: QuantumCircuit, vparams_dict: dict[str, Tensor]) -> None:
+def _set_circuit_vparams(
+    circuit: QuantumCircuit, vparams_dict: dict[str, Tensor]
+) -> None:
     """Sets the variational parameter values of the circuit."""
     blocks = primitive_blocks(circuit.block)
     for block in blocks:
@@ -143,8 +145,12 @@ def get_quantum_fisher_spsa(
         qfi_mat_estimator = a_k * (iteration * previous_qfi_estimator + qfi_mat)  # type: ignore
 
     # Get the positive-semidefinite version of the matrix for the update rule in QNG
-    qfi_mat_positive_sd = _positive_semidefinite_sqrt(qfi_mat_estimator @ qfi_mat_estimator)
-    qfi_mat_positive_sd = qfi_mat_positive_sd + beta * torch.eye(ovrlp_model.num_vparams)
+    qfi_mat_positive_sd = _positive_semidefinite_sqrt(
+        qfi_mat_estimator @ qfi_mat_estimator
+    )
+    qfi_mat_positive_sd = qfi_mat_positive_sd + beta * torch.eye(
+        ovrlp_model.num_vparams
+    )
     qfi_mat_positive_sd = qfi_mat_positive_sd / (1 + beta)  # regularization
 
     return qfi_mat_estimator, qfi_mat_positive_sd

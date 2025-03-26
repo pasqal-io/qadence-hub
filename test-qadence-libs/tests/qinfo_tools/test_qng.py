@@ -69,7 +69,9 @@ def test_parameter_ordering(basic_optim_model: QuantumCircuit) -> None:
 @pytest.mark.parametrize("dataset", DATASETS)
 @pytest.mark.parametrize("optim_config", OPTIMIZERS_CONFIG)
 def test_optims(
-    dataset: tuple[Tensor, Tensor], optim_config: dict, basic_optim_model: QuantumCircuit
+    dataset: tuple[Tensor, Tensor],
+    optim_config: dict,
+    basic_optim_model: QuantumCircuit,
 ) -> None:
     model = basic_optim_model
     model.reset_vparams(torch.ones((len(model.vparams))))

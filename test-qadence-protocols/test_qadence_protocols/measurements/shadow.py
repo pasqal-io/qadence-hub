@@ -41,7 +41,9 @@ class ShadowManager(MeasurementManager):
         else:
             model_obs = model._observable or list()
             self.observables = (
-                observables if (len(observables) > 0) else [obs.abstract for obs in model_obs]
+                observables
+                if (len(observables) > 0)
+                else [obs.abstract for obs in model_obs]
             )
         self.param_values = param_values
         self.state = state
@@ -161,7 +163,9 @@ class ShadowManager(MeasurementManager):
             self.measure()
 
         caller, local_shadows = (
-            (local_shadow, True) if self.options["n_shots"] == 1 else (global_shadow_hamming, False)
+            (local_shadow, True)
+            if self.options["n_shots"] == 1
+            else (global_shadow_hamming, False)
         )
 
         return compute_snapshots(
@@ -240,5 +244,9 @@ class ShadowManager(MeasurementManager):
             self.measure()
 
         return expectation_estimations(
-            observables, self.data.unitaries, self.data.samples, K, n_shots=self.options["n_shots"]
+            observables,
+            self.data.unitaries,
+            self.data.samples,
+            K,
+            n_shots=self.options["n_shots"],
         )

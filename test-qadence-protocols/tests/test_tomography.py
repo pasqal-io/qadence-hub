@@ -225,7 +225,9 @@ def test_tomography(
 ) -> None:
     inputs = rand_featureparameters(circuit, 1)
     observable = (
-        obs_composition(obs_base_op(0), obs_base_op(1)) if circuit.n_qubits > 1 else obs_base_op(0)
+        obs_composition(obs_base_op(0), obs_base_op(1))
+        if circuit.n_qubits > 1
+        else obs_base_op(0)
     )
     backend = BackendName.PYQTORCH
 
@@ -242,10 +244,14 @@ def test_tomography(
         protocol=MeasurementProtocol.TOMOGRAPHY,
         options={"n_shots": 1000000},
     )
-    expectation_sampled_more_shots = tomo_measurement_more_shots(model, param_values=inputs)
+    expectation_sampled_more_shots = tomo_measurement_more_shots(
+        model, param_values=inputs
+    )
 
     assert allclose(expectation_sampled, expectation_analytical, atol=1.0e-01)
-    assert allclose(expectation_sampled_more_shots, expectation_analytical, atol=1.0e-02)
+    assert allclose(
+        expectation_sampled_more_shots, expectation_analytical, atol=1.0e-02
+    )
 
 
 theta1 = Parameter("theta1", trainable=False)

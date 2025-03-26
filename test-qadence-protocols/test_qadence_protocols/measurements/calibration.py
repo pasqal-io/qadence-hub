@@ -13,7 +13,9 @@ from qadence.operations import I
 from qadence.types import Endianness
 from torch import Tensor
 
-from test_qadence_protocols.measurements.utils_shadow.data_acquisition import extract_operators
+from test_qadence_protocols.measurements.utils_shadow.data_acquisition import (
+    extract_operators,
+)
 from test_qadence_protocols.utils_trace import partial_trace
 
 
@@ -118,7 +120,9 @@ def zero_state_calibration(
             for proto, options in zip(digital_part.protocol, digital_part.options):
                 target = options.get("target", None)
                 if target is not None:
-                    noisy_identities.append(I(target=target, noise=NoiseHandler(proto, options)))
+                    noisy_identities.append(
+                        I(target=target, noise=NoiseHandler(proto, options))
+                    )
                 else:
                     for target in range(n_qubits):
                         noisy_identities.append(
@@ -127,7 +131,11 @@ def zero_state_calibration(
             noisy_zero_circ = QuantumCircuit(n_qubits, *noisy_identities)
 
     all_circuits = [
-        QuantumCircuit(n_qubits, noisy_zero_circ.block, rots) if rots else noisy_zero_circ
+        (
+            QuantumCircuit(n_qubits, noisy_zero_circ.block, rots)
+            if rots
+            else noisy_zero_circ
+        )
         for rots in all_rotations
     ]
 
@@ -143,12 +151,17 @@ def zero_state_calibration(
             noise=noise.filter(NoiseProtocol.READOUT) if noise is not None else None,
             endianness=endianness,
         )
-        estimated_probas.append(_samples_frequencies(n_qubits, samples[0], endianness) / n_shots)
+        estimated_probas.append(
+            _samples_frequencies(n_qubits, samples[0], endianness) / n_shots
+        )
     estimated_probas = torch.stack(estimated_probas)
 
     calibrations = torch.sum(
         (
-            3.0 * torch.einsum("nij,nij->ni", estimated_probas - noiseless_probas, noiseless_probas)
+            3.0
+            * torch.einsum(
+                "nij,nij->ni", estimated_probas - noiseless_probas, noiseless_probas
+            )
             + 1.0
         )
         / n_unitaries,

@@ -21,7 +21,9 @@ def test_zero_state_calibration() -> None:
     )
 
     for i, proba in enumerate(p[1:]):
-        noise.digital_depolarizing(options={"error_probability": proba, "target": i + 1})
+        noise.digital_depolarizing(
+            options={"error_probability": proba, "target": i + 1}
+        )
 
     coeffs = zero_state_calibration(2000, N, 1000, noise=noise)
     assert torch.allclose((6 * coeffs - 1), expected_coeffs, atol=0.1)

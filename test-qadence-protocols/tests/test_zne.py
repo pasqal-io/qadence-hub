@@ -46,7 +46,10 @@ def test_analog_zne_with_noise_levels(
 ) -> None:
     circuit = QuantumCircuit(2, analog_block)
     model = QuantumModel(
-        circuit=circuit, observable=observable, backend=BackendName.PULSER, diff_mode=DiffMode.GPSR
+        circuit=circuit,
+        observable=observable,
+        backend=BackendName.PULSER,
+        diff_mode=DiffMode.GPSR,
     )
     noise_probs = np.linspace(0.1, 0.5, 8)
     options = {"noise_probs": noise_probs}
@@ -90,13 +93,18 @@ def test_analog_zne_with_pulse_stretching(
 ) -> None:
     circuit = QuantumCircuit(2, analog_block)
     model = QuantumModel(
-        circuit=circuit, observable=observable, backend=BackendName.PULSER, diff_mode=DiffMode.GPSR
+        circuit=circuit,
+        observable=observable,
+        backend=BackendName.PULSER,
+        diff_mode=DiffMode.GPSR,
     )
     options = {"noise_probs": noise_probs}
     noise = NoiseHandler(protocol=noise_type, options=options)
     options = {"stretches": torch.tensor([1.0, 1.5, 2.0, 2.5, 3.0])}
     mitigate = Mitigations(protocol=Mitigations.ANALOG_ZNE, options=options)
-    mitigated_expectation = mitigate(model=model, noise=noise, param_values=param_values)
+    mitigated_expectation = mitigate(
+        model=model, noise=noise, param_values=param_values
+    )
     exact_expectation = model.expectation(values=param_values)
     assert torch.allclose(mitigated_expectation, exact_expectation, atol=2.0e-1)
 
@@ -127,7 +135,10 @@ def test_analog_zne_with_noise_levels_exp(
 ) -> None:
     circuit = QuantumCircuit(2, analog_block)
     model = QuantumModel(
-        circuit=circuit, observable=observable, backend=BackendName.PULSER, diff_mode=DiffMode.GPSR
+        circuit=circuit,
+        observable=observable,
+        backend=BackendName.PULSER,
+        diff_mode=DiffMode.GPSR,
     )
     noise_probs = np.linspace(0.1, 0.5, 8)
     options = {"noise_probs": noise_probs, "zne_type": "exp"}
@@ -159,12 +170,17 @@ def test_analog_zne_with_pulse_stretching_exp(
 ) -> None:
     circuit = QuantumCircuit(2, analog_block)
     model = QuantumModel(
-        circuit=circuit, observable=observable, backend=BackendName.PULSER, diff_mode=DiffMode.GPSR
+        circuit=circuit,
+        observable=observable,
+        backend=BackendName.PULSER,
+        diff_mode=DiffMode.GPSR,
     )
     options = {"noise_probs": noise_probs}
     noise = NoiseHandler(protocol=noise_type, options=options)
     options = {"stretches": torch.tensor([1.0, 1.5, 2.0, 2.5, 3.0]), "zne_type": "exp"}
     mitigate = Mitigations(protocol=Mitigations.ANALOG_ZNE, options=options)
-    mitigated_expectation = mitigate(model=model, noise=noise, param_values=param_values)
+    mitigated_expectation = mitigate(
+        model=model, noise=noise, param_values=param_values
+    )
     exact_expectation = model.expectation(values=param_values)
     assert torch.allclose(mitigated_expectation, exact_expectation, atol=2.0e-1)

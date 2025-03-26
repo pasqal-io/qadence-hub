@@ -22,7 +22,9 @@ from test_qadence_protocols.measurements.utils_shadow.unitaries import (
     idmat,
     pauli_gates,
 )
-from test_qadence_protocols.measurements.utils_tomography import get_qubit_indices_for_op
+from test_qadence_protocols.measurements.utils_tomography import (
+    get_qubit_indices_for_op,
+)
 from test_qadence_protocols.utils_trace import expectation_trace
 
 from .unitaries import P0_MATRIX, P1_MATRIX
@@ -36,7 +38,9 @@ def get_local_shadow_components(
 ) -> tuple[Tensor, Tensor, Tensor]:
     """Obtain unitaries, projector matrices and adjoint unitaries for shadow computations."""
     nested_unitaries = rotations_unitary_map(unitary_ids)
-    nested_unitaries_adjoint = rotations_unitary_map(unitary_ids, UNITARY_TENSOR_ADJOINT)
+    nested_unitaries_adjoint = rotations_unitary_map(
+        unitary_ids, UNITARY_TENSOR_ADJOINT
+    )
     proj_mat = torch.empty(nested_unitaries.shape, dtype=nested_unitaries.dtype)
     proj_mat[..., :, :] = torch.where(
         bitstrings.bool().unsqueeze(-1).unsqueeze(-1), P1_MATRIX, P0_MATRIX
@@ -57,16 +61,22 @@ def local_shadow(bitstrings: Tensor, unitary_ids: Tensor) -> Tensor:
     nested_unitaries, proj_mat, nested_unitaries_adjoint = get_local_shadow_components(
         bitstrings, unitary_ids
     )
-    local_densities = 3.0 * (nested_unitaries_adjoint @ proj_mat @ nested_unitaries) - idmat
+    local_densities = (
+        3.0 * (nested_unitaries_adjoint @ proj_mat @ nested_unitaries) - idmat
+    )
     return local_densities
 
 
-def robust_local_shadow(bitstrings: Tensor, unitary_ids: Tensor, calibration: Tensor) -> Tensor:
+def robust_local_shadow(
+    bitstrings: Tensor, unitary_ids: Tensor, calibration: Tensor
+) -> Tensor:
     """Compute robust local shadow by inverting the quantum channel for each projector state."""
     nested_unitaries, proj_mat, nested_unitaries_adjoint = get_local_shadow_components(
         bitstrings, unitary_ids
     )
-    idmatcal = torch.stack([idmat * 0.5 * (1.0 / corr_coeff - 1.0) for corr_coeff in calibration])
+    idmatcal = torch.stack(
+        [idmat * 0.5 * (1.0 / corr_coeff - 1.0) for corr_coeff in calibration]
+    )
     local_densities = (1.0 / calibration.unsqueeze(-1).unsqueeze(-1)) * (
         nested_unitaries_adjoint @ proj_mat @ nested_unitaries
     ) - idmatcal
@@ -75,7 +85,9 @@ def robust_local_shadow(bitstrings: Tensor, unitary_ids: Tensor, calibration: Te
 
 def get_global_unitaries(unitary_ids: Tensor) -> tuple[Tensor, Tensor]:
     nested_unitaries = rotations_unitary_map(unitary_ids)
-    nested_unitaries_adjoint = rotations_unitary_map(unitary_ids, UNITARY_TENSOR_ADJOINT)
+    nested_unitaries_adjoint = rotations_unitary_map(
+        unitary_ids, UNITARY_TENSOR_ADJOINT
+    )
 
     if unitary_ids.shape[1] > 1:
         nested_unitaries = batch_kron(nested_unitaries)
@@ -91,7 +103,9 @@ def get_ein_command_shadows(N: int) -> str:
     return ein_command
 
 
-def hamming_to_shadows(hamming_mat: list[Tensor], probas: Tensor, unitary_ids: Tensor) -> Tensor:
+def hamming_to_shadows(
+    hamming_mat: list[Tensor], probas: Tensor, unitary_ids: Tensor
+) -> Tensor:
     """Obtain shadows using Hamming matrices.
 
     Args:
@@ -136,7 +150,9 @@ def global_robust_shadow_hamming(
     # shape (N, 2, 2)
     N = unitary_ids.shape[1]
     hamming_mat = 0.5 * (
-        torch.stack((torch.stack((alpha + beta, beta)), torch.stack((beta, alpha + beta))))
+        torch.stack(
+            (torch.stack((alpha + beta, beta)), torch.stack((beta, alpha + beta)))
+        )
         .permute((-1, 0, 1))
         .to(dtype=probas.dtype)
     )
@@ -145,7 +161,10 @@ def global_robust_shadow_hamming(
 
 
 def compute_snapshots(
-    bitstrings: Tensor, unitaries_ids: Tensor, shadow_caller: Callable, local_shadows: bool = True
+    bitstrings: Tensor,
+    unitaries_ids: Tensor,
+    shadow_caller: Callable,
+    local_shadows: bool = True,
 ) -> Tensor:
     snapshots: list = list()
 
@@ -197,7 +216,9 @@ def estimators_from_bitstrings(
             pauli_gates.index(type(p)) for p in observable.blocks if not isinstance(p, I)  # type: ignore[arg-type]
         ]
         ind_I = set(get_qubit_indices_for_op((observable, 1.0), I(0)))
-        obs_qubit_support = [ind for ind in observable.qubit_support if ind not in ind_I]
+        obs_qubit_support = [
+            ind for ind in observable.qubit_support if ind not in ind_I
+        ]
 
     floor = int(np.floor(N / K))
     traces = []
@@ -280,7 +301,9 @@ def expectation_estimations(
     estimations = []
     N = unitaries_ids.shape[0]
 
-    estimator_fct = estimators_from_bitstrings if n_shots == 1 else estimators_from_probas
+    estimator_fct = (
+        estimators_from_bitstrings if n_shots == 1 else estimators_from_probas
+    )
 
     for observable in observables:
         pauli_decomposition = unroll_block_with_scaling(observable)
@@ -305,4 +328,6 @@ def expectation_estimations(
             # current batch.
             batch_estimations.append(sum(pauli_term_estimations))
         estimations.append(batch_estimations)
-    return torch.transpose(torch.tensor(estimations, dtype=torch.get_default_dtype()), 1, 0)
+    return torch.transpose(
+        torch.tensor(estimations, dtype=torch.get_default_dtype()), 1, 0
+    )

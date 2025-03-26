@@ -8,7 +8,9 @@ from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor
 
 from test_qadence_protocols.measurements.shadow import ShadowManager
-from test_qadence_protocols.measurements.utils_shadow.data_acquisition import shadow_samples
+from test_qadence_protocols.measurements.utils_shadow.data_acquisition import (
+    shadow_samples,
+)
 from test_qadence_protocols.measurements.utils_shadow.post_processing import (
     compute_snapshots,
     expectation_estimations,
@@ -47,12 +49,16 @@ class RobustShadowManager(ShadowManager):
 
         shadow_size = options.get("shadow_size", None)
         if shadow_size is None:
-            raise KeyError("Robust Shadow protocol requires an option 'shadow_size' of type 'int'.")
+            raise KeyError(
+                "Robust Shadow protocol requires an option 'shadow_size' of type 'int'."
+            )
         n_shots = options.get("n_shots", 1)
 
         shadow_medians = options.get("shadow_medians", None)
         if shadow_medians is None:
-            raise KeyError("Shadow protocol requires an option 'shadow_medians' of type 'int'.")
+            raise KeyError(
+                "Shadow protocol requires an option 'shadow_medians' of type 'int'."
+            )
 
         calibration = options.get("calibration", None)
 
@@ -142,7 +148,9 @@ class RobustShadowManager(ShadowManager):
         K = int(self.options["shadow_medians"])
         calibration = self.options["calibration"]
         if calibration is None:
-            calibration = torch.tensor([1.0 / 3.0] * self.model._circuit.original.n_qubits)
+            calibration = torch.tensor(
+                [1.0 / 3.0] * self.model._circuit.original.n_qubits
+            )
 
         if self.data.samples.numel() == 0:  # type: ignore[union-attr]
             self.measure()

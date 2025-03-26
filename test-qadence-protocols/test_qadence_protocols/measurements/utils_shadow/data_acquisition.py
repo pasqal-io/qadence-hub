@@ -59,11 +59,15 @@ def _max_observable_weight(observable: AbstractBlock) -> int:
 
 def maximal_weight(observables: list[AbstractBlock]) -> int:
     """Return the maximal weight if a list of observables is provided."""
-    return max([_max_observable_weight(observable=observable) for observable in observables])
+    return max(
+        [_max_observable_weight(observable=observable) for observable in observables]
+    )
 
 
 def number_of_samples(
-    observables: list[AbstractBlock], accuracy: float | None = None, confidence: float | None = None
+    observables: list[AbstractBlock],
+    accuracy: float | None = None,
+    confidence: float | None = None,
 ) -> tuple[int, ...]:
     """
     Estimate an optimal shot budget and a shadow partition size.
@@ -115,7 +119,9 @@ def rotations_unitary_map(
     Returns:
         list: Map of local unitaries.
     """
-    result = torch.empty(idx_array.size() + (2, 2), dtype=rotation_unitaries_choice[0].dtype)
+    result = torch.empty(
+        idx_array.size() + (2, 2), dtype=rotation_unitaries_choice[0].dtype
+    )
     for n in range(3):
         mask = idx_array == n
         result[mask] = rotation_unitaries_choice[n]
@@ -207,7 +213,11 @@ def shadow_samples(
             endianness=endianness,
         )
         all_rotations = [
-            QuantumCircuit(circuit.n_qubits, rots) if rots else QuantumCircuit(circuit.n_qubits)
+            (
+                QuantumCircuit(circuit.n_qubits, rots)
+                if rots
+                else QuantumCircuit(circuit.n_qubits)
+            )
             for rots in all_rotations
         ]
     else:
@@ -246,13 +256,21 @@ def shadow_samples(
             bitstrings.append([list(batch[b].keys())[0] for batch in shadow])
         bitstrings_torch = torch.stack(
             [
-                torch.stack([torch.tensor([int(b_i) for b_i in sample]) for sample in batch])
+                torch.stack(
+                    [torch.tensor([int(b_i) for b_i in sample]) for sample in batch]
+                )
                 for batch in bitstrings
             ]
         )
     else:
         # return probabilities as data
         for b in range(batchsize):
-            bitstrings.append([counter_to_freq_vector(batch[b], endianness) for batch in shadow])
-        bitstrings_torch = torch.stack([torch.stack(batch) for batch in bitstrings]) / n_shots
-    return MeasurementData(samples=bitstrings_torch, unitaries=torch.tensor(unitary_ids))
+            bitstrings.append(
+                [counter_to_freq_vector(batch[b], endianness) for batch in shadow]
+            )
+        bitstrings_torch = (
+            torch.stack([torch.stack(batch) for batch in bitstrings]) / n_shots
+        )
+    return MeasurementData(
+        samples=bitstrings_torch, unitaries=torch.tensor(unitary_ids)
+    )

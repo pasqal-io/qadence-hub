@@ -7,6 +7,8 @@ from qadence.blocks import AbstractBlock, block_is_qubit_hamiltonian, chain, kro
 from qadence.constructors.hamiltonians import hamiltonian_factory
 from qadence.operations import CNOT, CPHASE, CRX, CRY, CRZ, CZ, RX, RY, HamEvo
 from qadence.types import Interaction, Strategy
+from typing import Optional
+
 
 DigitalEntanglers = Union[CNOT, CZ, CRZ, CRY, CRX]
 
@@ -15,7 +17,7 @@ def hea(
     n_qubits: int,
     depth: int = 1,
     param_prefix: str = "theta",
-    support: tuple[int, ...] = None,
+    support: Optional[tuple[int, ...]] = None,
     strategy: Strategy = Strategy.DIGITAL,
     **strategy_args: Any,
 ) -> AbstractBlock:
@@ -96,7 +98,7 @@ def _rotations_digital(
     n_qubits: int,
     depth: int,
     param_prefix: str = "theta",
-    support: tuple[int, ...] = None,
+    support: Optional[tuple[int, ...]] = None,
     operations: list[Type[AbstractBlock]] = [RX, RY, RX],
 ) -> list[AbstractBlock]:
     """Creates the layers of single qubit rotations in an HEA."""
@@ -134,7 +136,7 @@ def _entanglers_digital(
     n_qubits: int,
     depth: int,
     param_prefix: str = "theta",
-    support: tuple[int, ...] = None,
+    support: Optional[tuple[int, ...]] = None,
     periodic: bool = False,
     entangler: Type[DigitalEntanglers] = CNOT,
 ) -> list[AbstractBlock]:
@@ -180,7 +182,7 @@ def hea_digital(
     param_prefix: str = "theta",
     periodic: bool = False,
     operations: list[type[AbstractBlock]] = [RX, RY, RX],
-    support: tuple[int, ...] = None,
+    support: Optional[tuple[int, ...]] = None,
     entangler: Type[DigitalEntanglers] = CNOT,
 ) -> AbstractBlock:
     """
@@ -205,7 +207,9 @@ def hea_digital(
                 "Please provide a valid two-qubit entangler operation for digital HEA."
             )
     except TypeError:
-        raise ValueError("Please provide a valid two-qubit entangler operation for digital HEA.")
+        raise ValueError(
+            "Please provide a valid two-qubit entangler operation for digital HEA."
+        )
 
     rot_list = _rotations_digital(
         n_qubits=n_qubits,
@@ -249,7 +253,7 @@ def hea_sDAQC(
     depth: int = 1,
     param_prefix: str = "theta",
     operations: list[type[AbstractBlock]] = [RX, RY, RX],
-    support: tuple[int, ...] = None,
+    support: Optional[tuple[int, ...]] = None,
     entangler: AbstractBlock | None = None,
 ) -> AbstractBlock:
     """

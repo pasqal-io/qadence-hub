@@ -63,7 +63,10 @@ def normalized_subspace_kron(
 
             # Manually computing the entries of tensor product for only the subspace
             conf_matrix[i, j] = np.prod(
-                [noise_matrices[k][int(bin_i[k])][int(bin_j[k])] for k in range(n_qubits)]
+                [
+                    noise_matrices[k][int(bin_i[k])][int(bin_j[k])]
+                    for k in range(n_qubits)
+                ]
             )
         conf_matrix[:, j] /= np.sum(conf_matrix[:, j])
 
@@ -85,7 +88,9 @@ def tensor_rank_mult(qubit_ops: npt.NDArray, prob_vect: npt.NDArray) -> npt.NDAr
 
     # Contract each tensor index (qubit) with the inverse of the single-qubit
     for i in range(n_qubits):
-        prob_vect_t = np.tensordot(qubit_ops[n_qubits - 1 - i], prob_vect_t, axes=(1, i))
+        prob_vect_t = np.tensordot(
+            qubit_ops[n_qubits - 1 - i], prob_vect_t, axes=(1, i)
+        )
 
     # Obtain corrected measurements by shaping back into a vector
     return prob_vect_t.reshape(2**n_qubits)
@@ -140,7 +145,9 @@ def renormalize_counts(corrected_counts: npt.NDArray, n_shots: int) -> npt.NDArr
         sum_corrected_counts = sum(corrected_counts)
 
         renormalization_factor = n_shots / sum_corrected_counts
-        corrected_counts = np.rint(corrected_counts * renormalization_factor).astype(int)
+        corrected_counts = np.rint(corrected_counts * renormalization_factor).astype(
+            int
+        )
 
     # At this point, the count should be off by at most 2, added or substracted to/from the
     # max count.
@@ -156,15 +163,23 @@ def matrix_inv(K: npt.NDArray) -> npt.NDArray:
     return inv(K) if matrix_rank(K) == K.shape[0] else pinv(K)
 
 
-def constrained_inversion(noise_matrices: npt.NDArray, p_raw: npt.NDArray) -> npt.NDArray:
+def constrained_inversion(
+    noise_matrices: npt.NDArray, p_raw: npt.NDArray
+) -> npt.NDArray:
     # Initial random guess in [0,1].
     p_corr0 = np.random.rand(len(p_raw))
     # Stochasticity constraints.
-    normality_constraint = LinearConstraint(np.ones(len(p_raw)).astype(int), lb=1.0, ub=1.0)
-    positivity_constraint = LinearConstraint(np.eye(len(p_raw)).astype(int), lb=0.0, ub=1.0)
+    normality_constraint = LinearConstraint(
+        np.ones(len(p_raw)).astype(int), lb=1.0, ub=1.0
+    )
+    positivity_constraint = LinearConstraint(
+        np.eye(len(p_raw)).astype(int), lb=0.0, ub=1.0
+    )
     constraints = [normality_constraint, positivity_constraint]
     # Minimize the corrected probabilities.
-    res = minimize(corrected_probas, p_corr0, args=(noise_matrices, p_raw), constraints=constraints)
+    res = minimize(
+        corrected_probas, p_corr0, args=(noise_matrices, p_raw), constraints=constraints
+    )
 
     return res.x
 
@@ -181,13 +196,19 @@ def majority_vote(noise_matrices: npt.NDArray, p_raw: npt.NDArray) -> npt.NDArra
     for i in range(n_qubits):
         p_raw_resize = p_raw.reshape([2] * n_qubits)
         transposed_axes = [i] + list(range(0, i)) + list(range(i + 1, n_qubits))
-        p_raw_resize = np.transpose(p_raw_resize, axes=transposed_axes).reshape(2, 2**n_qubits // 2)
+        p_raw_resize = np.transpose(p_raw_resize, axes=transposed_axes).reshape(
+            2, 2**n_qubits // 2
+        )
         probs = np.sum(p_raw_resize, axis=1)
 
         # Given the output to be 0, the probability of observed outcomes
-        prob_zero = noise_matrices[i][1][0] ** probs[1] * noise_matrices[i][0][0] ** probs[0]
+        prob_zero = (
+            noise_matrices[i][1][0] ** probs[1] * noise_matrices[i][0][0] ** probs[0]
+        )
         # Given the output to be 0, the probability of observed outcomes
-        prob_one = noise_matrices[i][1][1] ** probs[1] * noise_matrices[i][0][1] ** probs[0]
+        prob_one = (
+            noise_matrices[i][1][1] ** probs[1] * noise_matrices[i][0][1] ** probs[0]
+        )
 
         if prob_one > prob_zero:
             output += 2 ** (n_qubits - 1 - i)
@@ -227,7 +248,9 @@ def mitigation_minimization(
     n_qubits = len(list(samples[0].keys())[0])
     readout_noise = convert_readout_noise(n_qubits, noise)
     if readout_noise is None or isinstance(readout_noise, CorrelatedReadoutNoise):
-        raise ValueError("Specify a noise source of type NoiseProtocol.READOUT.INDEPENDENT.")
+        raise ValueError(
+            "Specify a noise source of type NoiseProtocol.READOUT.INDEPENDENT."
+        )
     n_shots = sum(samples[0].values())
     noise_matrices = readout_noise.confusion_matrix
     if readout_noise._compute_confusion:
@@ -254,7 +277,9 @@ def mitigation_minimization(
         elif optimization_type == ReadOutOptimization.MTHREE:
             hamming_dist = options.get("hamming_dist", None)
             if hamming_dist is not None:
-                if not (isinstance(hamming_dist, int) and 1 <= hamming_dist <= n_qubits):
+                if not (
+                    isinstance(hamming_dist, int) and 1 <= hamming_dist <= n_qubits
+                ):
                     raise ValueError(
                         f"hamming_dist must be an integer type between 1 and {n_qubits}."
                     )
@@ -283,14 +308,20 @@ def mitigation_minimization(
 
         corrected_counts = np.rint(p_corr * n_shots).astype(int)
         # Renormalize if total counts differs from n_shots.
-        corrected_counts = renormalize_counts(corrected_counts=corrected_counts, n_shots=n_shots)
+        corrected_counts = renormalize_counts(
+            corrected_counts=corrected_counts, n_shots=n_shots
+        )
 
         assert (
             corrected_counts.sum() == n_shots
         ), f"Corrected counts sum: {corrected_counts.sum()}, n_shots: {n_shots}"
         corrected_counters.append(
             Counter(
-                {bs: count for bs, count in zip(ordered_bitstrings, corrected_counts) if count > 0}
+                {
+                    bs: count
+                    for bs, count in zip(ordered_bitstrings, corrected_counts)
+                    if count > 0
+                }
             )
         )
     return corrected_counters
@@ -303,7 +334,9 @@ def mitigate(
     param_values: dict[str, Tensor] = dict(),
 ) -> list[Counter]:
     if noise.filter(NoiseProtocol.READOUT) is None:
-        raise ValueError("A NoiseProtocol.READOUT model must be provided to .mitigate()")
+        raise ValueError(
+            "A NoiseProtocol.READOUT model must be provided to .mitigate()"
+        )
     samples = options.get("samples", None)
     if samples is None:
         n_shots = options.get("n_shots", None)

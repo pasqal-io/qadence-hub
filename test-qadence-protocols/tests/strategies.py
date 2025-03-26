@@ -47,7 +47,9 @@ OPS_DICT = {"+": lambda x, y: x + y, "-": lambda x, y: x - y, "*": lambda x, y: 
 
 supported_gates_map: dict = {k: supported_gates(k) for k in BackendName.list()}
 supported_gates_list: list[Set] = [
-    set(supported_gates(name)) for name in BackendName.list() if name != BackendName.PULSER
+    set(supported_gates(name))
+    for name in BackendName.list()
+    if name != BackendName.PULSER
 ]
 
 full_gateset = list(
@@ -56,7 +58,9 @@ full_gateset = list(
 minimal_gateset = list(
     reduce(lambda fs, s: fs.intersection(s), supported_gates_list)  # type: ignore[attr-defined]
 )
-digital_gateset = list(set(full_gateset) - set(analog_gateset) - set(non_unitary_gateset))
+digital_gateset = list(
+    set(full_gateset) - set(analog_gateset) - set(non_unitary_gateset)
+)
 
 MIN_N_QUBITS = 2
 MAX_N_QUBITS = 4
@@ -65,7 +69,9 @@ MAX_CIRCUIT_DEPTH = 3
 MIN_BATCH_SIZE = 1
 MAX_BATCH_SIZE = 2
 
-N_QUBITS_STRATEGY: SearchStrategy[int] = st.integers(min_value=MIN_N_QUBITS, max_value=MAX_N_QUBITS)
+N_QUBITS_STRATEGY: SearchStrategy[int] = st.integers(
+    min_value=MIN_N_QUBITS, max_value=MAX_N_QUBITS
+)
 CIRCUIT_DEPTH_STRATEGY: SearchStrategy[int] = st.integers(
     min_value=MIN_CIRCUIT_DEPTH, max_value=MAX_CIRCUIT_DEPTH
 )
@@ -109,7 +115,9 @@ def rand_parameter(draw: Callable[[SearchStrategy[Any]], Any]) -> Basic:
 
 # A strategy to generate random expressions.
 def rand_expression(draw: Callable[[SearchStrategy[Any]], Any]) -> Expr:
-    n_symbols: SearchStrategy[int] = st.integers(min_value=MIN_SYMBOLS, max_value=MAX_SYMBOLS)
+    n_symbols: SearchStrategy[int] = st.integers(
+        min_value=MIN_SYMBOLS, max_value=MAX_SYMBOLS
+    )
     N = draw(n_symbols)
     expr = rand_parameter(draw)
     if N > 1:
@@ -134,7 +142,9 @@ def rand_digital_blocks(gate_list: list[AbstractBlock]) -> Callable:
         qubit_indices = {0}
 
         pool_1q = [gate for gate in single_qubit_gateset if gate in gate_list]
-        pool_1q_fixed = [gate for gate in pool_1q if not issubclass(gate, ParametricBlock)]
+        pool_1q_fixed = [
+            gate for gate in pool_1q if not issubclass(gate, ParametricBlock)
+        ]
         pool_1q_param = list(set(pool_1q) - set(pool_1q_fixed))
         pool_2q = [gate for gate in two_qubit_gateset if gate in gate_list]
         pool_2q_fixed = [
@@ -144,7 +154,9 @@ def rand_digital_blocks(gate_list: list[AbstractBlock]) -> Callable:
         pool_3q = [gate for gate in three_qubit_gateset if gate in gate_list]
         pool_nq = [gate for gate in multi_qubit_gateset if gate in gate_list]
         pool_nq_fixed = [
-            gate for gate in multi_qubit_gateset if not issubclass(gate, ParametricBlock)
+            gate
+            for gate in multi_qubit_gateset
+            if not issubclass(gate, ParametricBlock)
         ]
         pool_nq_param = list(set(pool_nq) - set(pool_nq_fixed))
 
@@ -161,7 +173,9 @@ def rand_digital_blocks(gate_list: list[AbstractBlock]) -> Callable:
                 if gate in pool_1q_fixed:
                     gates_list.append(gate(qubit))
                 elif gate in pool_1q_param:
-                    angles = [rand_expression(draw) for _ in range(gate.num_parameters())]
+                    angles = [
+                        rand_expression(draw) for _ in range(gate.num_parameters())
+                    ]
                     gates_list.append(gate(qubit, *angles))
 
             elif gate in pool_2q:
@@ -203,7 +217,9 @@ def rand_digital_blocks(gate_list: list[AbstractBlock]) -> Callable:
                 if gate in pool_nq_fixed:
                     gates_list.append(gate((qubit, target1), target2))
                 elif gate in pool_nq_param:
-                    gates_list.append(gate((qubit, target1), target2, rand_expression(draw)))
+                    gates_list.append(
+                        gate((qubit, target1), target2, rand_expression(draw))
+                    )
         return chain(*gates_list)
 
     return blocks  # type: ignore[no-any-return]

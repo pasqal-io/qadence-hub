@@ -8,7 +8,7 @@ import numpy.typing as npt
 import pytest
 import strategies as st
 from hypothesis import given, settings
-from metrics import LOW_ACCEPTANCE
+from metrics_protocols import LOW_ACCEPTANCE
 from qadence import (
     AbstractBlock,
     HamEvo,
@@ -42,7 +42,13 @@ from test_qadence_protocols.types import ReadOutOptimization
 @pytest.mark.parametrize(
     "error_probability, n_shots, block, backend, optimization_type",
     [
-        (0.1, 100, kron(X(0), X(1)), BackendName.PYQTORCH, ReadOutOptimization.CONSTRAINED),
+        (
+            0.1,
+            100,
+            kron(X(0), X(1)),
+            BackendName.PYQTORCH,
+            ReadOutOptimization.CONSTRAINED,
+        ),
         (
             0.1,
             200,
@@ -50,12 +56,19 @@ from test_qadence_protocols.types import ReadOutOptimization
             BackendName.PYQTORCH,
             ReadOutOptimization.MLE,
         ),
-        (0.01, 1000, add(Z(0), Z(1), Z(2)), BackendName.PYQTORCH, ReadOutOptimization.MLE),
+        (
+            0.01,
+            1000,
+            add(Z(0), Z(1), Z(2)),
+            BackendName.PYQTORCH,
+            ReadOutOptimization.MLE,
+        ),
         (
             0.1,
             2000,
             HamEvo(
-                generator=kron(X(0), X(1)) + kron(Z(0), Z(1)) + kron(X(2), X(3)), parameter=0.005
+                generator=kron(X(0), X(1)) + kron(Z(0), Z(1)) + kron(X(2), X(3)),
+                parameter=0.005,
             ),
             BackendName.PYQTORCH,
             ReadOutOptimization.CONSTRAINED,
@@ -100,7 +113,8 @@ def test_readout_mitigation(
     diff_mode = "ad" if backend == BackendName.PYQTORCH else "gpsr"
     circuit = QuantumCircuit(block.n_qubits, block)
     noise = NoiseHandler(
-        protocol=NoiseProtocol.READOUT.INDEPENDENT, options={"error_probability": error_probability}
+        protocol=NoiseProtocol.READOUT.INDEPENDENT,
+        options={"error_probability": error_probability},
     )
     model = QuantumModel(circuit=circuit, backend=backend, diff_mode=diff_mode)
 
@@ -130,7 +144,9 @@ def test_readout_mitigation(
     assert js_mitigated < js_noisy
 
     # Noisy simulations through the QM.
-    noisy_model = QuantumModel(circuit=circuit, backend=backend, diff_mode=diff_mode, noise=noise)
+    noisy_model = QuantumModel(
+        circuit=circuit, backend=backend, diff_mode=diff_mode, noise=noise
+    )
     noisy_samples = noisy_model.sample(noise=noise, n_shots=n_shots)
     mitigate = Mitigations(
         protocol=Mitigations.READOUT,
@@ -163,7 +179,8 @@ def test_compare_readout_methods(circuit: QuantumCircuit) -> None:
     model = QuantumModel(circuit=circuit, backend=backend, diff_mode=diff_mode)
 
     noise = NoiseHandler(
-        protocol=NoiseProtocol.READOUT.INDEPENDENT, options={"error_probability": error_probability}
+        protocol=NoiseProtocol.READOUT.INDEPENDENT,
+        options={"error_probability": error_probability},
     )
 
     noiseless_samples: list[Counter] = model.sample(inputs, n_shots=n_shots)
@@ -178,7 +195,10 @@ def test_compare_readout_methods(circuit: QuantumCircuit) -> None:
 
     mitigation_constrained_opt = Mitigations(
         protocol=Mitigations.READOUT,
-        options={"optimization_type": ReadOutOptimization.CONSTRAINED, "n_shots": n_shots},
+        options={
+            "optimization_type": ReadOutOptimization.CONSTRAINED,
+            "n_shots": n_shots,
+        },
     )
     mitigated_samples_constrained_opt: list[Counter] = mitigation_constrained_opt(
         noise=noise, model=model, param_values=inputs
@@ -219,12 +239,15 @@ def test_readout_mthree_mitigation(
     error_probability = np.random.rand()
     backend = BackendName.PYQTORCH
     noise = NoiseHandler(
-        protocol=NoiseProtocol.READOUT.INDEPENDENT, options={"error_probability": error_probability}
+        protocol=NoiseProtocol.READOUT.INDEPENDENT,
+        options={"error_probability": error_probability},
     )
 
     model = QuantumModel(circuit=circuit, backend=backend)
 
-    ordered_bitstrings = [bin(k)[2:].zfill(circuit.n_qubits) for k in range(2**circuit.n_qubits)]
+    ordered_bitstrings = [
+        bin(k)[2:].zfill(circuit.n_qubits) for k in range(2**circuit.n_qubits)
+    ]
 
     mitigation_mle = Mitigations(
         protocol=Mitigations.READOUT,
@@ -232,7 +255,9 @@ def test_readout_mthree_mitigation(
     )
 
     samples_mle = mitigation_mle(model=model, noise=noise, param_values=values)[0]
-    p_mle = np.array([samples_mle[bs] for bs in ordered_bitstrings]) / sum(samples_mle.values())
+    p_mle = np.array([samples_mle[bs] for bs in ordered_bitstrings]) / sum(
+        samples_mle.values()
+    )
 
     mitigation_mthree = Mitigations(
         protocol=Mitigations.READOUT,
@@ -263,7 +288,9 @@ def test_readout_mthree_sparse() -> None:
         K = np.array([[1 - t_a, t_a], [t_b, 1 - t_b]]).transpose()  # column sum be 1
         noise_matrices.append(K)
 
-    confusion_matrix_subspace = normalized_subspace_kron(noise_matrices, observed_prob.nonzero()[0])
+    confusion_matrix_subspace = normalized_subspace_kron(
+        noise_matrices, observed_prob.nonzero()[0]
+    )
 
     input_csr = csr_matrix(observed_prob, shape=(1, 2**n_qubits)).T
 
@@ -273,7 +300,9 @@ def test_readout_mthree_sparse() -> None:
     noise_matrices_inv = list(map(matrix_inv, noise_matrices))
     p_corr_inv_mle = mle_solve(tensor_rank_mult(noise_matrices_inv, observed_prob))
 
-    assert wasserstein_distance(p_corr_mthree_gmres_mle, p_corr_inv_mle) < LOW_ACCEPTANCE
+    assert (
+        wasserstein_distance(p_corr_mthree_gmres_mle, p_corr_inv_mle) < LOW_ACCEPTANCE
+    )
 
 
 def test_readout_mthree_sparse_hamming() -> None:
@@ -301,16 +330,21 @@ def test_readout_mthree_sparse_hamming() -> None:
 
     input_csr = csr_matrix(observed_prob, shape=(1, 2**n_qubits)).T
 
-    corrected_prob_mthree_gmres = gmres(subspace_confusion_matrix, input_csr.toarray())[0]
+    corrected_prob_mthree_gmres = gmres(subspace_confusion_matrix, input_csr.toarray())[
+        0
+    ]
     corrected_prob_mthree_mle = mle_solve(
         corrected_prob_mthree_gmres
     )  # Apply Maximum Likelihood Estimation (MLE)
 
     inverse_noise_matrices = list(map(matrix_inv, noise_matrices))
-    corrected_prob_inverse_mle = mle_solve(tensor_rank_mult(inverse_noise_matrices, observed_prob))
+    corrected_prob_inverse_mle = mle_solve(
+        tensor_rank_mult(inverse_noise_matrices, observed_prob)
+    )
 
     assert (
-        wasserstein_distance(corrected_prob_mthree_mle, corrected_prob_inverse_mle) < LOW_ACCEPTANCE
+        wasserstein_distance(corrected_prob_mthree_mle, corrected_prob_inverse_mle)
+        < LOW_ACCEPTANCE
     )
 
 

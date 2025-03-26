@@ -8,6 +8,8 @@ from qadence.blocks import AddBlock, ChainBlock, add, chain
 from qadence.constructors import hamiltonian_factory
 from qadence.operations import N, X, Y, Z
 from qadence.parameters import Parameter, VariationalParameter
+from typing import Optional
+
 
 TPauliOp = Union[Type[X], Type[Y], Type[Z], Type[N]]
 
@@ -38,7 +40,9 @@ def _amplitude_map(
         return add(pauli_op(j) for j in range(n_qubits))
     else:
         assert len(weights) <= n_qubits, "Wrong weights supplied"
-        return add(w * pauli_op(j) for j, w in enumerate(weights))  # type:ignore [operator]
+        return add(
+            w * pauli_op(j) for j, w in enumerate(weights)
+        )  # type:ignore [operator]
 
 
 def rydberg_hea_layer(
@@ -106,7 +110,7 @@ def rydberg_hea(
     addressable_detuning: bool = True,
     addressable_drive: bool = False,
     tunable_phase: bool = False,
-    additional_prefix: str = None,
+    additional_prefix: Optional[str] = None,
 ) -> qd.blocks.ChainBlock:
     """Hardware efficient ansatz for neutral atom (Rydberg) platforms.
 

@@ -13,7 +13,10 @@ from test_qadence_protocols.types import MeasurementData
 PROTOCOL_TO_MODULE = {
     "tomography": ("test_qadence_protocols.measurements.tomography", "Tomography"),
     "shadow": ("test_qadence_protocols.measurements.shadow", "ShadowManager"),
-    "robust_shadow": ("test_qadence_protocols.measurements.robust_shadow", "RobustShadowManager"),
+    "robust_shadow": (
+        "test_qadence_protocols.measurements.robust_shadow",
+        "RobustShadowManager",
+    ),
 }
 
 

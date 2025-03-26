@@ -47,7 +47,9 @@ class Tomography(MeasurementManager):
         else:
             model_obs = model._observable or list()
             self.observables = (
-                observables if (len(observables) > 0) else [obs.abstract for obs in model_obs]
+                observables
+                if (len(observables) > 0)
+                else [obs.abstract for obs in model_obs]
             )
         self.data = self.validate_data(data)
 
@@ -65,7 +67,9 @@ class Tomography(MeasurementManager):
         """
         n_shots = options.get("n_shots")
         if n_shots is None:
-            raise KeyError("Tomography protocol requires a 'n_shots' kwarg of type 'int').")
+            raise KeyError(
+                "Tomography protocol requires a 'n_shots' kwarg of type 'int')."
+            )
         return options
 
     def validate_data(self, data: MeasurementData) -> MeasurementData:
@@ -119,7 +123,9 @@ class Tomography(MeasurementManager):
             samples.append(
                 iterate_pauli_decomposition(
                     circuit=circuit,
-                    param_values=self.model.embedding_fn(self.model._params, self.param_values),
+                    param_values=self.model.embedding_fn(
+                        self.model._params, self.param_values
+                    ),
                     pauli_decomposition=pauli_decomposition,
                     n_shots=n_shots,
                     state=self.state,
@@ -149,6 +155,8 @@ class Tomography(MeasurementManager):
         estimated_values = []
         for samples, observable in zip(self.data.samples, observables):  # type: ignore[arg-type]
             estimated_values.append(
-                convert_samples_to_pauli_expectation(samples, unroll_block_with_scaling(observable))
+                convert_samples_to_pauli_expectation(
+                    samples, unroll_block_with_scaling(observable)
+                )
             )
         return torch.transpose(torch.vstack(estimated_values), 1, 0)

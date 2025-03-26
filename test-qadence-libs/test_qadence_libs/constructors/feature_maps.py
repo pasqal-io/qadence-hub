@@ -10,6 +10,8 @@ from qadence.operations import PHASE, RX, RY, RZ, H
 from qadence.parameters import FeatureParameter, Parameter, VariationalParameter
 from qadence.types import PI, BasisSet, ReuploadScaling, TParameter
 from sympy import Basic, acos
+from typing import Optional
+
 
 logger = get_logger(__name__)
 
@@ -50,7 +52,9 @@ def fm_parameter_scaling(
     target_range = _set_range(fm_type) if target_range is None else target_range
 
     # Rescale the feature parameter
-    scaling = (max(target_range) - min(target_range)) / (max(feature_range) - min(feature_range))
+    scaling = (max(target_range) - min(target_range)) / (
+        max(feature_range) - min(feature_range)
+    )
     shift = min(target_range) - min(feature_range) * scaling
 
     if isclose(scaling, 1.0):
@@ -200,9 +204,9 @@ def feature_map(
 
 def exp_fourier_feature_map(
     n_qubits: int,
-    support: tuple[int, ...] = None,
+    support: Optional[tuple[int, ...]] = None,
     param: str = "x",
-    feature_range: tuple[float, float] = None,
+    feature_range: Optional[tuple[float, float]] = None,
 ) -> AbstractBlock:
     """
     Exponential fourier feature map.

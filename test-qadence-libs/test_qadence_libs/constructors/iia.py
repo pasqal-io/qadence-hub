@@ -3,7 +3,14 @@ from __future__ import annotations
 from typing import Any, Type, Union
 
 import torch
-from qadence.blocks import AbstractBlock, KronBlock, block_is_qubit_hamiltonian, chain, kron, tag
+from qadence.blocks import (
+    AbstractBlock,
+    KronBlock,
+    block_is_qubit_hamiltonian,
+    chain,
+    kron,
+    tag,
+)
 from qadence.constructors.hamiltonians import hamiltonian_factory
 from qadence.operations import CNOT, CPHASE, CRX, CRY, CRZ, CZ, RX, RY, HamEvo
 from qadence.parameters import Parameter
@@ -183,7 +190,9 @@ def identity_initialized_ansatz(
             kron(
                 RX(
                     target=n,
-                    parameter=Parameter(name=f"{param_prefix}_γ" + f"_{layer}{n}", value=gamma[n]),
+                    parameter=Parameter(
+                        name=f"{param_prefix}_γ" + f"_{layer}{n}", value=gamma[n]
+                    ),
                 )
                 for n in range(n_qubits)
             )

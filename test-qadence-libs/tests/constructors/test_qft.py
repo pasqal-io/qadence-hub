@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pytest
-from metrics import ATOL_64
+from metrics_libs import ATOL_64
 from qadence import (
     BackendName,
     Interaction,
@@ -48,7 +48,9 @@ def test_qft() -> None:
     wf_init = random_state(n_qubits)
 
     # Runs QFT circuit with swaps to match standard QFT definition
-    qc_qft = QuantumCircuit(n_qubits, qft(n_qubits, swaps_out=True, strategy=Strategy.DIGITAL))
+    qc_qft = QuantumCircuit(
+        n_qubits, qft(n_qubits, swaps_out=True, strategy=Strategy.DIGITAL)
+    )
     model = QuantumModel(qc_qft, backend=BackendName.PYQTORCH)
     wf_qft = model.run(values={}, state=wf_init)
 
@@ -95,7 +97,9 @@ def test_qft_digital_analog(n_qubits: int, extra_qubit: bool, param_dict: dict) 
 
     qc_qft_digital_analog = QuantumCircuit(
         circ_n_qubits,
-        qft(n_qubits, strategy=Strategy.SDAQC, gen_build=qft_analog_block, **param_dict),
+        qft(
+            n_qubits, strategy=Strategy.SDAQC, gen_build=qft_analog_block, **param_dict
+        ),
     )
     model_digital = QuantumModel(qc_qft_digital)
     model_analog = QuantumModel(qc_qft_digital_analog)

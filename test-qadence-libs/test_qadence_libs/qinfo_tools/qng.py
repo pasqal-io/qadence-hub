@@ -8,7 +8,10 @@ from qadence import QNN, Parameter, QuantumCircuit, QuantumModel
 from qadence.logger import get_logger
 from torch.optim.optimizer import Optimizer, required
 
-from test_qadence_libs.qinfo_tools.qfi import get_quantum_fisher, get_quantum_fisher_spsa
+from test_qadence_libs.qinfo_tools.qfi import (
+    get_quantum_fisher,
+    get_quantum_fisher_spsa,
+)
 from test_qadence_libs.types import FisherApproximation
 
 logger = get_logger(__name__)
@@ -122,7 +125,9 @@ class QuantumNaturalGradient(Optimizer):
         super().__init__(vparams_values, defaults)
 
         if len(self.param_groups) != 1:
-            raise ValueError("QNG doesn't support per-parameter options (parameter groups)")
+            raise ValueError(
+                "QNG doesn't support per-parameter options (parameter groups)"
+            )
 
         if approximation == FisherApproximation.SPSA:
             state = self.state
@@ -155,7 +160,16 @@ class QuantumNaturalGradient(Optimizer):
         if approximation == FisherApproximation.EXACT:
             qng_exact(vparams_values, vparams_keys, grad_vec, lr, circuit, beta)
         elif approximation == FisherApproximation.SPSA:
-            qng_spsa(vparams_values, vparams_keys, grad_vec, lr, circuit, self.state, epsilon, beta)
+            qng_spsa(
+                vparams_values,
+                vparams_keys,
+                grad_vec,
+                lr,
+                circuit,
+                self.state,
+                epsilon,
+                beta,
+            )
         else:
             raise NotImplementedError(
                 f"""Approximation {approximation} of the QNG optimizer

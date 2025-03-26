@@ -10,7 +10,10 @@ from qadence.parameters import FeatureParameter, Parameter, VariationalParameter
 from qadence.types import PI, BasisSet, ReuploadScaling, TParameter
 from sympy import Basic
 
-from test_qadence_libs.constructors.feature_maps import fm_parameter_func, fm_parameter_scaling
+from test_qadence_libs.constructors.feature_maps import (
+    fm_parameter_func,
+    fm_parameter_scaling,
+)
 
 logger = get_logger(__file__)
 
@@ -116,4 +119,6 @@ def analog_feature_map(
     # TODO: implement tower scaling by reuploading multiple times
     # using different analog rotations
     else:
-        raise NotImplementedError(f"Reupload scaling {str(reupload_scaling)} not implemented!")
+        raise NotImplementedError(
+            f"Reupload scaling {str(reupload_scaling)} not implemented!"
+        )

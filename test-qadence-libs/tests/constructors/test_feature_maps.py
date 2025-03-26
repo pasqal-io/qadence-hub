@@ -5,7 +5,7 @@ from typing import Callable
 import pytest
 import sympy
 import torch
-from metrics import ATOL_64
+from metrics_libs import ATOL_64
 from qadence.execution import expectation, run
 from qadence.operations import PHASE, RX, X, Z
 from qadence.parameters import FeatureParameter
@@ -53,7 +53,10 @@ def test_feature_map_creation_and_run(
     n_qubits = 4
 
     block = feature_map(
-        n_qubits=n_qubits, fm_type=fm_type, reupload_scaling=reupload_scaling, **param_dict
+        n_qubits=n_qubits,
+        fm_type=fm_type,
+        reupload_scaling=reupload_scaling,
+        **param_dict,
     )
 
     values = {"x": torch.rand(1), "y": torch.rand(1)}
@@ -108,7 +111,8 @@ def test_feature_map_correctness(
         support = tuple(reversed(range(n_qubits)))
 
     target = torch.cat(
-        [torch.cos(scaling(j) * transformed_xv).unsqueeze(1) for j in range(n_qubits)], 1
+        [torch.cos(scaling(j) * transformed_xv).unsqueeze(1) for j in range(n_qubits)],
+        1,
     )
 
     # Running the block expectation
@@ -135,7 +139,10 @@ def test_exp_fourier_feature_map_correctness(n_qubits: int) -> None:
     xv = torch.linspace(0.0, 2**n_qubits - 1, 100)
     yv = expectation(block, [X(j) for j in range(n_qubits)], values={"x": xv})
     target = torch.cat(
-        [torch.cos(2 ** (j + 1) * PI * xv / 2**n_qubits).unsqueeze(1) for j in range(n_qubits)],
+        [
+            torch.cos(2 ** (j + 1) * PI * xv / 2**n_qubits).unsqueeze(1)
+            for j in range(n_qubits)
+        ],
         1,
     )
     assert torch.allclose(yv, target)

@@ -22,7 +22,7 @@ jobs:
         working-directory: test-qadence-protocols
     steps:
 
-    - name: Checkout Qadence
+    - name: Checkout Qadence Extras
       uses: actions/checkout@v4
 
     - name: Install JetBrains Mono font

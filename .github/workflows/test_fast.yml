@@ -27,7 +27,7 @@ jobs:
       run:
         working-directory: test-qadence-protocols
     steps:
-    - name: Checkout Qadence Extras
+    - name: Checkout Qadence extras
       uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
@@ -55,7 +55,7 @@ jobs:
   #     # IMPORTANT: this permission is mandatory for trusted publishing
   #     id-token: write
   #   steps:
-  #     - name: Check out Qadence Extras
+  #     - name: Check out Qadence extras
   #       uses: actions/checkout@v4
   #       with:
   #         ref: ${{ github.ref }}

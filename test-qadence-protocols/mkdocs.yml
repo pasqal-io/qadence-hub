@@ -1,6 +1,5 @@
 site_name: Test Qadence Extras
 site_url: "https://pasqal-io.github.io/prototype-qextras/"
-# site_dir: ../site/test-qadence-protocols
 repo_url: "https://github.com/pasqal-io/prototype-qextras.git"
 repo_name: "prototype-qextras"
 
@@ -89,7 +88,7 @@ plugins:
 extra:
  version:
    provider: mike
-   version_path: test-qadence-protocols
+  #  version_path: test-qadence-protocols
 
 # To get nice tabs
 extra_css:

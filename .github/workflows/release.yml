@@ -1,0 +1,28 @@
+name: Release on main push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest commit info
+        id: vars
+        run: |
+          echo "TAG_NAME=$(date +v%Y%m%d-%H%M%S)" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Release from $(date)" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          name: ${{ env.RELEASE_NAME }}
+          body: "auto release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

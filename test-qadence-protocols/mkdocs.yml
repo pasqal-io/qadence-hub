@@ -1,6 +1,6 @@
 site_name: Test Qadence Extras
-site_url: "https://pasqal-io.github.io/prototype-qextras/test-qadence-protocols/"
-site_dir: ../site/test-qadence-protocols
+site_url: "https://pasqal-io.github.io/prototype-qextras/"
+# site_dir: ../site/test-qadence-protocols
 repo_url: "https://github.com/pasqal-io/prototype-qextras.git"
 repo_name: "prototype-qextras"
 

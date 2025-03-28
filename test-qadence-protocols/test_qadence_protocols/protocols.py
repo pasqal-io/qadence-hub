@@ -5,17 +5,17 @@ import importlib
 from test_qadence_protocols.types import qadence_available_protocols
 
 
-def available_protocols() -> dict:
-    """Return the available protocols."""
+# def available_protocols() -> dict:
+#     """Return the available protocols."""
 
-    test_qadence_protocols: dict = dict()
+#     test_qadence_protocols: dict = dict()
 
-    for protocol in qadence_available_protocols:
-        module = importlib.import_module(f"test_qadence_protocols.{protocol}.protocols")
-        ProtocolCls = getattr(module, protocol.capitalize())
-        test_qadence_protocols[protocol] = ProtocolCls
+#     for protocol in qadence_available_protocols:
+#         module = importlib.import_module(f"test_qadence_protocols.{protocol}.protocols")
+#         ProtocolCls = getattr(module, protocol.capitalize())
+#         test_qadence_protocols[protocol] = ProtocolCls
 
-    return test_qadence_protocols
+#     return test_qadence_protocols
 
 
 class Protocol:

@@ -13,6 +13,6 @@ Each module (e.g., `test-qadence-libs`, `test-qadence-protocols`) is independent
 
 ## Directory Conventions
 
-- Use `src/` layout inside each module if needed  
-- Tests should live in `tests/` inside each module  
-- Documentation should reside in the root `docs/` or module-specific docs  
+- Use `src/` layout inside each module if needed
+- Tests should live in `tests/` inside each module
+- Documentation should reside in the root `docs/` or module-specific docs

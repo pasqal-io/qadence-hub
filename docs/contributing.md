@@ -28,6 +28,6 @@ Run all checks with:
 
 ## ✅ Pull Request Checklist
 
-- [ ] All tests pass  
-- [ ] Linting passes  
-- [ ] Docs updated if needed  
+- [ ] All tests pass
+- [ ] Linting passes
+- [ ] Docs updated if needed

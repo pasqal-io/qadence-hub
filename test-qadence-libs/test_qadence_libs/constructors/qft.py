@@ -81,9 +81,7 @@ def qft(
     )
 
     if swaps_out:
-        swap_ops = [
-            SWAP(support[i], support[n_qubits - i - 1]) for i in range(n_qubits // 2)
-        ]
+        swap_ops = [SWAP(support[i], support[n_qubits - i - 1]) for i in range(n_qubits // 2)]
         qft_circ = chain(*swap_ops, qft_circ) if inverse else chain(qft_circ, *swap_ops)
 
     return tag(qft_circ, tag="iQFT") if inverse else tag(qft_circ, tag="QFT")
@@ -139,9 +137,7 @@ def _alpha(c: int, m: int, k: int) -> float:
         return 0.0
 
 
-def _sqg_gen(
-    n_qubits: int, support: tuple[int, ...], m: int, inverse: bool
-) -> list[AbstractBlock]:
+def _sqg_gen(n_qubits: int, support: tuple[int, ...], m: int, inverse: bool) -> list[AbstractBlock]:
     """Equation (13) from [1].
 
     Creates the generator corresponding to single-qubit rotations coming
@@ -149,25 +145,19 @@ def _sqg_gen(
     for the Hadamard of each layer here, but we left it explicit at
     the start of each layer.
     """
-    k_sqg_list = (
-        reversed(range(2, n_qubits - m + 2)) if inverse else range(2, n_qubits - m + 2)
-    )
+    k_sqg_list = reversed(range(2, n_qubits - m + 2)) if inverse else range(2, n_qubits - m + 2)
 
     sqg_gen_list = []
     for k in k_sqg_list:
         sqg_gen = (
-            kron(I(support[j]) for j in range(n_qubits))
-            - Z(support[k + m - 2])
-            - Z(support[m - 1])
+            kron(I(support[j]) for j in range(n_qubits)) - Z(support[k + m - 2]) - Z(support[m - 1])
         )
         sqg_gen_list.append(_theta(k) * sqg_gen)
 
     return sqg_gen_list
 
 
-def _tqg_gen(
-    n_qubits: int, support: tuple[int, ...], m: int, inverse: bool
-) -> list[AbstractBlock]:
+def _tqg_gen(n_qubits: int, support: tuple[int, ...], m: int, inverse: bool) -> list[AbstractBlock]:
     """Equation (14) from [1].
 
     Creates the generator corresponding to the two-qubit ZZ
@@ -208,9 +198,7 @@ def _qft_layer_sDAQC(
     # TODO: Properly check and include support for changing qubit support
     allowed_support = tuple(range(n_qubits))
     if support != allowed_support and support != allowed_support[::-1]:
-        raise NotImplementedError(
-            "Changing support for DigitalAnalog QFT not yet supported."
-        )
+        raise NotImplementedError("Changing support for DigitalAnalog QFT not yet supported.")
 
     if gen_build is None:
         gen_build = hamiltonian_factory(n_qubits, interaction=Interaction.NN)

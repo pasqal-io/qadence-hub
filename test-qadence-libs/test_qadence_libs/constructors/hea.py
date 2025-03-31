@@ -207,9 +207,7 @@ def hea_digital(
                 "Please provide a valid two-qubit entangler operation for digital HEA."
             )
     except TypeError:
-        raise ValueError(
-            "Please provide a valid two-qubit entangler operation for digital HEA."
-        )
+        raise ValueError("Please provide a valid two-qubit entangler operation for digital HEA.")
 
     rot_list = _rotations_digital(
         n_qubits=n_qubits,

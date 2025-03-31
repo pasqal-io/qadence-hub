@@ -144,9 +144,7 @@ def test_readout_mitigation(
     assert js_mitigated < js_noisy
 
     # Noisy simulations through the QM.
-    noisy_model = QuantumModel(
-        circuit=circuit, backend=backend, diff_mode=diff_mode, noise=noise
-    )
+    noisy_model = QuantumModel(circuit=circuit, backend=backend, diff_mode=diff_mode, noise=noise)
     noisy_samples = noisy_model.sample(noise=noise, n_shots=n_shots)
     mitigate = Mitigations(
         protocol=Mitigations.READOUT,
@@ -245,9 +243,7 @@ def test_readout_mthree_mitigation(
 
     model = QuantumModel(circuit=circuit, backend=backend)
 
-    ordered_bitstrings = [
-        bin(k)[2:].zfill(circuit.n_qubits) for k in range(2**circuit.n_qubits)
-    ]
+    ordered_bitstrings = [bin(k)[2:].zfill(circuit.n_qubits) for k in range(2**circuit.n_qubits)]
 
     mitigation_mle = Mitigations(
         protocol=Mitigations.READOUT,
@@ -255,9 +251,7 @@ def test_readout_mthree_mitigation(
     )
 
     samples_mle = mitigation_mle(model=model, noise=noise, param_values=values)[0]
-    p_mle = np.array([samples_mle[bs] for bs in ordered_bitstrings]) / sum(
-        samples_mle.values()
-    )
+    p_mle = np.array([samples_mle[bs] for bs in ordered_bitstrings]) / sum(samples_mle.values())
 
     mitigation_mthree = Mitigations(
         protocol=Mitigations.READOUT,
@@ -288,9 +282,7 @@ def test_readout_mthree_sparse() -> None:
         K = np.array([[1 - t_a, t_a], [t_b, 1 - t_b]]).transpose()  # column sum be 1
         noise_matrices.append(K)
 
-    confusion_matrix_subspace = normalized_subspace_kron(
-        noise_matrices, observed_prob.nonzero()[0]
-    )
+    confusion_matrix_subspace = normalized_subspace_kron(noise_matrices, observed_prob.nonzero()[0])
 
     input_csr = csr_matrix(observed_prob, shape=(1, 2**n_qubits)).T
 
@@ -300,9 +292,7 @@ def test_readout_mthree_sparse() -> None:
     noise_matrices_inv = list(map(matrix_inv, noise_matrices))
     p_corr_inv_mle = mle_solve(tensor_rank_mult(noise_matrices_inv, observed_prob))
 
-    assert (
-        wasserstein_distance(p_corr_mthree_gmres_mle, p_corr_inv_mle) < LOW_ACCEPTANCE
-    )
+    assert wasserstein_distance(p_corr_mthree_gmres_mle, p_corr_inv_mle) < LOW_ACCEPTANCE
 
 
 def test_readout_mthree_sparse_hamming() -> None:
@@ -330,21 +320,16 @@ def test_readout_mthree_sparse_hamming() -> None:
 
     input_csr = csr_matrix(observed_prob, shape=(1, 2**n_qubits)).T
 
-    corrected_prob_mthree_gmres = gmres(subspace_confusion_matrix, input_csr.toarray())[
-        0
-    ]
+    corrected_prob_mthree_gmres = gmres(subspace_confusion_matrix, input_csr.toarray())[0]
     corrected_prob_mthree_mle = mle_solve(
         corrected_prob_mthree_gmres
     )  # Apply Maximum Likelihood Estimation (MLE)
 
     inverse_noise_matrices = list(map(matrix_inv, noise_matrices))
-    corrected_prob_inverse_mle = mle_solve(
-        tensor_rank_mult(inverse_noise_matrices, observed_prob)
-    )
+    corrected_prob_inverse_mle = mle_solve(tensor_rank_mult(inverse_noise_matrices, observed_prob))
 
     assert (
-        wasserstein_distance(corrected_prob_mthree_mle, corrected_prob_inverse_mle)
-        < LOW_ACCEPTANCE
+        wasserstein_distance(corrected_prob_mthree_mle, corrected_prob_inverse_mle) < LOW_ACCEPTANCE
     )
 
 

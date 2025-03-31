@@ -20,9 +20,7 @@ def twirl_swap(n_qubits: int, twirl: tuple, samples_twirl: Counter[str]) -> dict
     output = {}
     operand = "".join(map(str, [1 if i in twirl else 0 for i in range(n_qubits)]))
     for key in samples_twirl.keys():
-        output[bin(int(key, 2) ^ int(operand, 2))[2:].zfill(n_qubits)] = samples_twirl[
-            key
-        ]
+        output[bin(int(key, 2) ^ int(operand, 2))[2:].zfill(n_qubits)] = samples_twirl[key]
 
     return Counter(output)
 
@@ -54,9 +52,7 @@ def mitigate(
 
     # Validity check for twirl_samples
     if twirl_samples is not None:
-        if not (
-            isinstance(twirl_samples, int) and 1 <= twirl_samples <= num_total_comb
-        ):
+        if not (isinstance(twirl_samples, int) and 1 <= twirl_samples <= num_total_comb):
             raise ValueError(
                 f"twirl_samples must be an integer type between 1 and {num_total_comb}"
             )
@@ -71,10 +67,7 @@ def mitigate(
     # If twirl_samples is None, generate all combinations
     else:
         twirls = sum(
-            (
-                list(itertools.combinations(all_qubits, k))
-                for k in range(1, block.n_qubits + 1)
-            ),
+            (list(itertools.combinations(all_qubits, k)) for k in range(1, block.n_qubits + 1)),
             [],
         )
 
@@ -86,27 +79,15 @@ def mitigate(
 
         # Twirl outputs for given circuit (Numerator)
         circ_twirl_num = QuantumCircuit(block_twirl.n_qubits, block_twirl)
-        model_twirl_num = QuantumModel(
-            circuit=circ_twirl_num, backend=model._backend_name
-        )
-        samples_twirl_num = model_twirl_num.sample(noise=model._noise, n_shots=n_shots)[
-            0
-        ]
-        samples_twirl_num_list.append(
-            twirl_swap(block_twirl.n_qubits, twirl, samples_twirl_num)
-        )
+        model_twirl_num = QuantumModel(circuit=circ_twirl_num, backend=model._backend_name)
+        samples_twirl_num = model_twirl_num.sample(noise=model._noise, n_shots=n_shots)[0]
+        samples_twirl_num_list.append(twirl_swap(block_twirl.n_qubits, twirl, samples_twirl_num))
 
         # Twirl outputs on input state (Denominator)
         circ_twirl_den = QuantumCircuit(block_twirl.n_qubits, kron(X(i) for i in twirl))
-        model_twirl_den = QuantumModel(
-            circuit=circ_twirl_den, backend=model._backend_name
-        )
-        samples_twirl_den = model_twirl_den.sample(noise=model._noise, n_shots=n_shots)[
-            0
-        ]
-        samples_twirl_den_list.append(
-            twirl_swap(block_twirl.n_qubits, twirl, samples_twirl_den)
-        )
+        model_twirl_den = QuantumModel(circuit=circ_twirl_den, backend=model._backend_name)
+        samples_twirl_den = model_twirl_den.sample(noise=model._noise, n_shots=n_shots)[0]
+        samples_twirl_den_list.append(twirl_swap(block_twirl.n_qubits, twirl, samples_twirl_den))
 
     output_exp = []
 
@@ -117,20 +98,12 @@ def mitigate(
             [pauli[1] for pauli in unroll_block_with_scaling(observable.original)],
             dtype=float,
         )
-        obs_list = [
-            pauli[0] for pauli in unroll_block_with_scaling(observable.original)
-        ]
+        obs_list = [pauli[0] for pauli in unroll_block_with_scaling(observable.original)]
 
-        expectation_num = torch.stack(
-            compute_expectation(obs_list, samples_twirl_num_list)
-        )
-        expectation_den = torch.stack(
-            compute_expectation(obs_list, samples_twirl_den_list)
-        )
+        expectation_num = torch.stack(compute_expectation(obs_list, samples_twirl_num_list))
+        expectation_den = torch.stack(compute_expectation(obs_list, samples_twirl_den_list))
 
-        expectation = torch.sum(expectation_num, dim=1) / torch.sum(
-            expectation_den, dim=1
-        )
+        expectation = torch.sum(expectation_num, dim=1) / torch.sum(expectation_den, dim=1)
 
         output_exp.append(torch.sum(torch.dot(coeffs, expectation)))
 

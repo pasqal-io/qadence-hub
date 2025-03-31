@@ -48,9 +48,7 @@ def test_qfi_exact_with_params(textbook_qfi_model: QNN) -> None:
     circuit = textbook_qfi_model._circuit.abstract
     vparams_dict = textbook_qfi_model.vparams
     fm_dict = {"phi": torch.Tensor([0])}
-    qfi_mat_exact = get_quantum_fisher(
-        circuit, vparams_dict=vparams_dict, fm_dict=fm_dict
-    )
+    qfi_mat_exact = get_quantum_fisher(circuit, vparams_dict=vparams_dict, fm_dict=fm_dict)
     n_vparams = len(vparams_dict)
     assert qfi_mat_exact.shape == Size([n_vparams, n_vparams])
     assert allclose(textbook_qfi, qfi_mat_exact)

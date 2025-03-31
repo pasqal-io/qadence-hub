@@ -30,11 +30,7 @@ def get_qubit_indices_for_op(
     Returns: A list of integers representing qubit indices.
     """
     blocks = getattr(pauli_term[0], "blocks", None) or [pauli_term[0]]
-    indices = [
-        block.qubit_support[0]
-        for block in blocks
-        if (op is None) or (type(block) is op)
-    ]
+    indices = [block.qubit_support[0] for block in blocks if (op is None) or (type(block) is op)]
     return indices
 
 
@@ -50,10 +46,7 @@ def get_counts(samples: list, support: list[int]) -> list[Counter]:
     return [
         reduce(
             lambda x, y: x + y,
-            [
-                Counter({"".join([k[i] for i in support]): sample[k]})
-                for k, v in sample.items()
-            ],
+            [Counter({"".join([k[i] for i in support]): sample[k]}) for k, v in sample.items()],
         )
         for sample in samples
     ]
@@ -75,16 +68,12 @@ def empirical_average(samples: list, support: list[int]) -> Tensor:
     for counter in counters:
         counter_exps = []
         for bitstring, count in counter.items():
-            counter_exps.append(
-                count * PARITY ** (np.sum([int(bit) for bit in bitstring]))
-            )
+            counter_exps.append(count * PARITY ** (np.sum([int(bit) for bit in bitstring])))
         expectations.append(np.sum(counter_exps) / n_shots)
     return torch.tensor(expectations)
 
 
-def rotate(
-    circuit: QuantumCircuit, pauli_term: tuple[AbstractBlock, Basic]
-) -> QuantumCircuit:
+def rotate(circuit: QuantumCircuit, pauli_term: tuple[AbstractBlock, Basic]) -> QuantumCircuit:
     """Rotate circuit to measurement basis and return the qubit support.
 
     Args:

@@ -76,9 +76,7 @@ def test_readout_twirl_mitigation(
     )
     mitigate = Mitigations(protocol=Mitigations.TWIRL)
     expectation_mitigated = mitigate(noise=noise, model=noisy_model)
-    assert torch.allclose(
-        expectation_mitigated, expectation_noiseless, atol=1.0e-1, rtol=5.0e-2
-    )
+    assert torch.allclose(expectation_mitigated, expectation_noiseless, atol=1.0e-1, rtol=5.0e-2)
 
 
 @pytest.mark.parametrize(
@@ -141,6 +139,4 @@ def test_readout_twirl_mitigation_sample(
     options = {"twirl_samples": block.n_qubits}
     mitigate = Mitigations(protocol=Mitigations.TWIRL, options=options)
     expectation_mitigated = mitigate(noise=noise, model=noisy_model)
-    assert torch.allclose(
-        expectation_mitigated, expectation_noiseless, atol=1.0e-1, rtol=5.0e-2
-    )
+    assert torch.allclose(expectation_mitigated, expectation_noiseless, atol=1.0e-1, rtol=5.0e-2)

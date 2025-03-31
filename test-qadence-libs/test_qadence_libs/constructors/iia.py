@@ -190,9 +190,7 @@ def identity_initialized_ansatz(
             kron(
                 RX(
                     target=n,
-                    parameter=Parameter(
-                        name=f"{param_prefix}_γ" + f"_{layer}{n}", value=gamma[n]
-                    ),
+                    parameter=Parameter(name=f"{param_prefix}_γ" + f"_{layer}{n}", value=gamma[n]),
                 )
                 for n in range(n_qubits)
             )

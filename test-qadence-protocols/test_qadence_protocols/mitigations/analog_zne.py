@@ -50,9 +50,7 @@ def zne_exp(noise_levels: Tensor, zne_datasets: list[list[float]]) -> Tensor:
 
         # check if datapoints are enough
         if len(noise_levels_np) < 3:
-            raise ValueError(
-                "At least 3 noise levels are required for exponential fitting."
-            )
+            raise ValueError("At least 3 noise levels are required for exponential fitting.")
 
         try:
             # Execute fitting
@@ -230,9 +228,7 @@ def mitigate(
     param_values: dict[str, Tensor] = dict(),
 ) -> Tensor:
     if noise.protocol[-1] not in supported_noise_models:
-        raise ValueError(
-            "A NoiseProtocol.ANALOG noise model must be provided to .mitigate()"
-        )
+        raise ValueError("A NoiseProtocol.ANALOG noise model must be provided to .mitigate()")
     mitigation_zne = analog_zne(
         model=model, options=options, noise=noise, param_values=param_values
     )

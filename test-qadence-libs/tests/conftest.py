@@ -13,9 +13,7 @@ from qadence.operations import RX, RY, Z
 def textbook_qfi_model() -> QNN:
     n_qubits, n_layers = [2, 2]
     feature_param = FeatureParameter("phi", value=0)
-    fm = feature_map(
-        n_qubits, range(n_qubits), param=feature_param, fm_type=BasisSet.FOURIER
-    )
+    fm = feature_map(n_qubits, range(n_qubits), param=feature_param, fm_type=BasisSet.FOURIER)
     ansatz = hea(
         n_qubits,
         n_layers,

@@ -28,16 +28,10 @@ from test_qadence_libs.constructors import hea, identity_initialized_ansatz
 @pytest.mark.parametrize("n_qubits", [2, 3])
 @pytest.mark.parametrize("depth", [2, 3])
 @pytest.mark.parametrize("entangler", [CNOT, CRX])
-def test_hea_duplicate_params(
-    n_qubits: int, depth: int, entangler: AbstractBlock
-) -> None:
+def test_hea_duplicate_params(n_qubits: int, depth: int, entangler: AbstractBlock) -> None:
     """Tests that HEAs are initialized with correct parameter namings."""
-    hea1 = hea(
-        n_qubits=n_qubits, depth=depth, operations=[RZ, RX, RZ], entangler=entangler
-    )
-    hea2 = hea(
-        n_qubits=n_qubits, depth=depth, operations=[RZ, RX, RZ], entangler=entangler
-    )
+    hea1 = hea(n_qubits=n_qubits, depth=depth, operations=[RZ, RX, RZ], entangler=entangler)
+    hea2 = hea(n_qubits=n_qubits, depth=depth, operations=[RZ, RX, RZ], entangler=entangler)
     block1 = chain(hea1, hea2)
     assert has_duplicate_vparams(block1)
     hea1 = hea(
@@ -104,9 +98,7 @@ def test_hea_forward(n_qubits: int, depth: int, strategy: Strategy) -> None:
 @pytest.mark.parametrize("n_qubits", [2, 3])
 @pytest.mark.parametrize("depth", [2, 3])
 @pytest.mark.parametrize("entangler", [CNOT, CRX])
-def test_iia_duplicate_params(
-    n_qubits: int, depth: int, entangler: AbstractBlock
-) -> None:
+def test_iia_duplicate_params(n_qubits: int, depth: int, entangler: AbstractBlock) -> None:
     """Tests that IIAs are initialized with correct parameter namings."""
     iia1 = identity_initialized_ansatz(
         n_qubits=n_qubits, depth=depth, rotations=[RZ, RX, RZ], entangler=entangler

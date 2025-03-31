@@ -14,41 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # docs_monorepo:
-  #   name: docs (monorepo)
-  #   runs-on: ubuntu-latest
-  #   defaults:
-  #     run:
-  #       working-directory: .
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-
-  #     - name: Install JetBrains Mono font
-  #       run: |
-  #         sudo apt install -y wget unzip fontconfig
-  #         wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
-  #         unzip JetBrainsMono-2.304.zip -d JetBrainsMono
-  #         mkdir -p /usr/share/fonts/truetype/jetbrains
-  #         cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
-  #         fc-cache -f -v
-
-  #     - name: Install graphviz
-  #       run: sudo apt-get install -y graphviz
-
-  #     - name: Set up Python 3.10
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: '3.10'
-
-  #     - name: Install MkDocs & plugins
-  #       run: |
-  #         pip install mkdocs-material mkdocstrings[python] markdown-exec mike
-
-  #     - name: Build monorepo docs
-  #       run: |
-  #         mkdocs build --strict
-
 
   docs_monorepo:
     name: docs (monorepo)
@@ -88,7 +53,7 @@ jobs:
 
   docs_protocols:
     name: docs (test-qadence-protocols)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-protocols/')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-protocols/')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -124,7 +89,7 @@ jobs:
 
   docs_libs:
     name: docs (test-qadence-libs)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
     runs-on: ubuntu-latest
     defaults:
       run:

@@ -139,10 +139,7 @@ def test_exp_fourier_feature_map_correctness(n_qubits: int) -> None:
     xv = torch.linspace(0.0, 2**n_qubits - 1, 100)
     yv = expectation(block, [X(j) for j in range(n_qubits)], values={"x": xv})
     target = torch.cat(
-        [
-            torch.cos(2 ** (j + 1) * PI * xv / 2**n_qubits).unsqueeze(1)
-            for j in range(n_qubits)
-        ],
+        [torch.cos(2 ** (j + 1) * PI * xv / 2**n_qubits).unsqueeze(1) for j in range(n_qubits)],
         1,
     )
     assert torch.allclose(yv, target)

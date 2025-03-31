@@ -125,9 +125,7 @@ class QuantumNaturalGradient(Optimizer):
         super().__init__(vparams_values, defaults)
 
         if len(self.param_groups) != 1:
-            raise ValueError(
-                "QNG doesn't support per-parameter options (parameter groups)"
-            )
+            raise ValueError("QNG doesn't support per-parameter options (parameter groups)")
 
         if approximation == FisherApproximation.SPSA:
             state = self.state

@@ -119,6 +119,4 @@ def analog_feature_map(
     # TODO: implement tower scaling by reuploading multiple times
     # using different analog rotations
     else:
-        raise NotImplementedError(
-            f"Reupload scaling {str(reupload_scaling)} not implemented!"
-        )
+        raise NotImplementedError(f"Reupload scaling {str(reupload_scaling)} not implemented!")

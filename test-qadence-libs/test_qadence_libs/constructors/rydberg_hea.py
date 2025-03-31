@@ -40,9 +40,7 @@ def _amplitude_map(
         return add(pauli_op(j) for j in range(n_qubits))
     else:
         assert len(weights) <= n_qubits, "Wrong weights supplied"
-        return add(
-            w * pauli_op(j) for j, w in enumerate(weights)
-        )  # type:ignore [operator]
+        return add(w * pauli_op(j) for j, w in enumerate(weights))  # type:ignore [operator]
 
 
 def rydberg_hea_layer(

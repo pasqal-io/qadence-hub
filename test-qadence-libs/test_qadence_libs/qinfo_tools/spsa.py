@@ -32,9 +32,7 @@ def _shifted_overlap(
         fm_dict (dict[str, Tensor]): Feature map dictionary
         vparams_dict (dict[str, Tensor]): Variational parameter dictionary
     """
-    shifted_vparams_dict = {
-        k: (v + s) for (k, v), s in zip(vparams_dict.items(), shift)
-    }
+    shifted_vparams_dict = {k: (v + s) for (k, v), s in zip(vparams_dict.items(), shift)}
 
     ovrlp_shifted = model(
         bra_param_values=fm_dict | vparams_dict,
@@ -113,9 +111,7 @@ def spsa_2gradient_step(
     ovrlp_shifted_m1p2 = _shifted_overlap(model, shift_m1p2, fm_dict, vparams_dict)
 
     # Prefactor
-    delta_F = (
-        ovrlp_shifted_p1p2 - ovrlp_shifted_p1 - ovrlp_shifted_m1p2 + ovrlp_shifted_m1
-    )
+    delta_F = ovrlp_shifted_p1p2 - ovrlp_shifted_p1 - ovrlp_shifted_m1p2 + ovrlp_shifted_m1
 
     # Hessian
     dir_product = torch.matmul(rand_dir1, rand_dir2.transpose(0, 1)) + torch.matmul(

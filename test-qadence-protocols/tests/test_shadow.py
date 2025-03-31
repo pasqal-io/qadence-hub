@@ -63,9 +63,7 @@ def test_number_of_samples(
     confidence: float,
     exp_samples: tuple,
 ) -> None:
-    N, K = number_of_samples(
-        observables=observables, accuracy=accuracy, confidence=confidence
-    )
+    N, K = number_of_samples(observables=observables, accuracy=accuracy, confidence=confidence)
     assert N == exp_samples[0]
     assert K == exp_samples[1]
 
@@ -78,10 +76,8 @@ def test_number_of_samples(
             torch.tensor([0, 2]),
             torch.stack(
                 [
-                    3 * (UNITARY_TENSOR[0].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[0])
-                    - idmat,
-                    3 * (UNITARY_TENSOR[2].adjoint() @ P0_MATRIX @ UNITARY_TENSOR[2])
-                    - idmat,
+                    3 * (UNITARY_TENSOR[0].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[0]) - idmat,
+                    3 * (UNITARY_TENSOR[2].adjoint() @ P0_MATRIX @ UNITARY_TENSOR[2]) - idmat,
                 ]
             ),
         ),
@@ -90,14 +86,10 @@ def test_number_of_samples(
             torch.tensor([2, 0, 2, 2]),
             torch.stack(
                 [
-                    3 * (UNITARY_TENSOR[2].adjoint() @ P0_MATRIX @ UNITARY_TENSOR[2])
-                    - idmat,
-                    3 * (UNITARY_TENSOR[0].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[0])
-                    - idmat,
-                    3 * (UNITARY_TENSOR[2].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[2])
-                    - idmat,
-                    3 * (UNITARY_TENSOR[2].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[2])
-                    - idmat,
+                    3 * (UNITARY_TENSOR[2].adjoint() @ P0_MATRIX @ UNITARY_TENSOR[2]) - idmat,
+                    3 * (UNITARY_TENSOR[0].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[0]) - idmat,
+                    3 * (UNITARY_TENSOR[2].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[2]) - idmat,
+                    3 * (UNITARY_TENSOR[2].adjoint() @ P1_MATRIX @ UNITARY_TENSOR[2]) - idmat,
                 ]
             ),
         ),
@@ -137,15 +129,11 @@ def test_estimations_comparison_exact(
     circuit: QuantumCircuit, observable: AbstractBlock, values: dict
 ) -> None:
     backend = backend_factory(backend=BackendName.PYQTORCH, diff_mode=DiffMode.GPSR)
-    (conv_circ, _, embed, params) = backend.convert(
-        circuit=circuit, observable=observable
-    )
+    (conv_circ, _, embed, params) = backend.convert(circuit=circuit, observable=observable)
     param_values = embed(params, values)
     exact_exp = expectation(circuit, observable, values=values)
 
-    measurement_data = shadow_samples(
-        shadow_size=5000, circuit=circuit, param_values=param_values
-    )
+    measurement_data = shadow_samples(shadow_size=5000, circuit=circuit, param_values=param_values)
     observables = [observable]
     K = number_of_samples(observables=observables, accuracy=0.1, confidence=0.1)[1]
     estimated_exp = expectation_estimations(
@@ -200,15 +188,11 @@ def test_estimations_comparison_tomo_forward_pass(
     )
 
     options = {"n_shots": 100000}
-    tomo_measurements = Measurements(
-        protocol=MeasurementProtocol.TOMOGRAPHY, options=options
-    )
+    tomo_measurements = Measurements(protocol=MeasurementProtocol.TOMOGRAPHY, options=options)
     estimated_exp_tomo = tomo_measurements(model=model, param_values=values)
 
     shadow_options = {"accuracy": 0.1, "confidence": 0.1}
-    shadow_measurements = Measurements(
-        protocol=MeasurementProtocol.SHADOW, options=shadow_options
-    )
+    shadow_measurements = Measurements(protocol=MeasurementProtocol.SHADOW, options=shadow_options)
     estimated_exp_shadow = shadow_measurements(model=model, param_values=values)
 
     n_shots = 1000
@@ -255,15 +239,11 @@ def test_estimations_comparison_tomo_forward_pass(
     )
 
     assert torch.allclose(estimated_exp_tomo, pyq_exp_exact, atol=1.0e-2)
-    assert torch.allclose(
-        estimated_exp_shadow, pyq_exp_exact, atol=shadow_options["accuracy"]
-    )
+    assert torch.allclose(estimated_exp_shadow, pyq_exp_exact, atol=shadow_options["accuracy"])
     assert torch.allclose(
         robust_estimated_exp_shadow, pyq_exp_exact, atol=shadow_options["accuracy"]
     )
-    assert torch.allclose(
-        estimated_exp_shadow2, pyq_exp_exact, atol=shadow_options["accuracy"]
-    )
+    assert torch.allclose(estimated_exp_shadow2, pyq_exp_exact, atol=shadow_options["accuracy"])
     assert torch.allclose(
         robust_estimated_exp_shadow2, pyq_exp_exact, atol=shadow_options["accuracy"]
     )
@@ -278,22 +258,14 @@ def test_estimations_comparison_tomo_forward_pass(
     exp_snapshots_shadow = expectation_trace(state_snapshots_shadow, observable)
     exp_snapshots_rshadow = expectation_trace(state_snapshots_rshadow, observable)
 
-    assert torch.allclose(
-        exp_snapshots_shadow, pyq_exp_exact, atol=shadow_options["accuracy"]
-    )
-    assert torch.allclose(
-        exp_snapshots_rshadow, pyq_exp_exact, atol=shadow_options["accuracy"]
-    )
+    assert torch.allclose(exp_snapshots_shadow, pyq_exp_exact, atol=shadow_options["accuracy"])
+    assert torch.allclose(exp_snapshots_rshadow, pyq_exp_exact, atol=shadow_options["accuracy"])
 
     exp_snapshots_shadow2 = expectation_trace(state_snapshots_shadow2, observable)
     exp_snapshots_rshadow2 = expectation_trace(state_snapshots_rshadow2, observable)
 
-    assert torch.allclose(
-        exp_snapshots_shadow2, pyq_exp_exact, atol=shadow_options["accuracy"]
-    )
-    assert torch.allclose(
-        exp_snapshots_rshadow2, pyq_exp_exact, atol=shadow_options["accuracy"]
-    )
+    assert torch.allclose(exp_snapshots_shadow2, pyq_exp_exact, atol=shadow_options["accuracy"])
+    assert torch.allclose(exp_snapshots_rshadow2, pyq_exp_exact, atol=shadow_options["accuracy"])
 
 
 def test_shadow_raise_errors() -> None:

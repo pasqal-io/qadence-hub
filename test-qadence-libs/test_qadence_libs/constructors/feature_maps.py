@@ -52,9 +52,7 @@ def fm_parameter_scaling(
     target_range = _set_range(fm_type) if target_range is None else target_range
 
     # Rescale the feature parameter
-    scaling = (max(target_range) - min(target_range)) / (
-        max(feature_range) - min(feature_range)
-    )
+    scaling = (max(target_range) - min(target_range)) / (max(feature_range) - min(feature_range))
     shift = min(target_range) - min(feature_range) * scaling
 
     if isclose(scaling, 1.0):

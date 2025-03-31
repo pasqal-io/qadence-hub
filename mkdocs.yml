@@ -8,8 +8,8 @@ nav:
 
   - 🏠 Home: index.md
   - 📦 Module Docs:
-      - libs: test-qadence-libs/latest/
-      - protocols: test-qadence-protocols/latest/
+      - libs: test-qadence-libs/
+      - protocols: test-qadence-protocols/
   - 🛠 Development:
       - Setup: setup.md
       - Build & Test: build.md

@@ -2,5 +2,75 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.workspaces]
-default = ["prototype-qadence-libs", "prototoype-qadence-protocols"]
+[tool.hatch.metadata]
+allow-direct-references = true
+allow-ambiguous-features = true
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pre-commit",
+  "black",
+  "isort",
+  "ruff",
+  "pydocstringformatter",
+]
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs",
+  "mkdocs-material",
+  "mkdocstrings",
+  "mkdocstrings-python",
+  "mkdocs-section-index",
+  "mkdocs-exclude",
+  "markdown-exec",
+  "mkdocs-jupyter",
+  "mike",
+]
+
+[tool.hatch.envs.docs.scripts]
+build = "mkdocs build --clean --strict"
+serve = "mkdocs serve --dev-addr localhost:8000"
+
+
+[tool.ruff]
+select = ["E", "F", "I", "Q"]
+extend-ignore = ["F841","F403"]
+line-length = 100
+
+[tool.ruff.isort]
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.mccabe]
+max-complexity = 15
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+no_implicit_optional = false
+ignore_missing_imports = true

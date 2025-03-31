@@ -11,8 +11,8 @@ This repository contains multiple modular Python packages developed and maintain
 
 ## 📚 Module Docs
 
-- [📖 libs documentation](test-qadence-libs/latest/)
-- [📖 protocols documentation](test-qadence-protocols/latest/)
+- [📖 libs documentation]
+- [📖 protocols documentation]
 
 > Navigate via the sidebar or links above.
 

@@ -7,9 +7,9 @@ repo_name: "prototype-qextras"
 nav:
 
   - 🏠 Home: index.md
-  - 📦 Module Docs:
-      - libs: test-qadence-libs/
-      - protocols: test-qadence-protocols/
+  # - 📦 Module Docs:
+      # - libs: test-qadence-libs/docs/index.md
+      # - protocols: test-qadence-protocols/docs/index.md
   - 🛠 Development:
       - Setup: setup.md
       - Build & Test: build.md

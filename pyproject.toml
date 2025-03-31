@@ -2,6 +2,10 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[project]
+name = "monorepo-root"
+version = "0.0.0"
+
 [tool.hatch.metadata]
 allow-direct-references = true
 allow-ambiguous-features = true

@@ -6,6 +6,9 @@ build-backend = "hatchling.build"
 name = "monorepo-root"
 version = "0.0.0"
 
+[tool.hatch.build.targets.wheel]
+packages = []
+
 [tool.hatch.metadata]
 allow-direct-references = true
 allow-ambiguous-features = true
@@ -79,5 +82,4 @@ disallow_untyped_defs = true
 no_implicit_optional = false
 ignore_missing_imports = true
 
-[tool.hatch.build.targets.wheel]
-packages = []
+

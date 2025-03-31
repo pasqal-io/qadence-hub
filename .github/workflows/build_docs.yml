@@ -53,7 +53,6 @@ jobs:
 
   docs_protocols:
     name: docs (test-qadence-protocols)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-protocols/')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -89,7 +88,6 @@ jobs:
 
   docs_libs:
     name: docs (test-qadence-libs)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
     runs-on: ubuntu-latest
     defaults:
       run:

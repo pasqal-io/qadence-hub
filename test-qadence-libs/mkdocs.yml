@@ -1,6 +1,6 @@
 site_name: Test Qadence Libs
-repo_url: "https://github.com/pasqal-io/prototype-qextras.git"
-repo_name: "prototype-qextras"
+repo_url: "https://github.com/pasqal-io/qadence-hub.git"
+repo_name: "qadence-hub"
 
 nav:
   - Overview: index.md

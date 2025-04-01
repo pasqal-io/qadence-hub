@@ -2,8 +2,8 @@
 
 ## 1. Clone the Monorepo
 
-    git clone https://github.com/pasqal-io/prototype-qextras.git
-    cd prototype-qextras
+    git clone https://github.com/pasqal-io/qadence-hub.git
+    cd qadence-hub
 
 ## 2. Install Dependencies
 

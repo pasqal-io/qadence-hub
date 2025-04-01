@@ -1,16 +1,16 @@
-# 🧪 Test Guide
+# Test Guide
 
-## 🧼 Lint & Type Check
+## Lint & Type Check
 
     pre-commit run --all-files
 
-## 📄 Build Documentation
+## Build Documentation
 
     hatch run docs:build
 
 This will build the root documentation site into the `site/` directory.
 
-## 🧪 Run Tests
+## Run Tests
 
 Each module has its own test configuration. For example:
 

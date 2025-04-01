@@ -6,11 +6,9 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - 🏠 Qadence Hub: index.md
-  # - 📦 Hub Packages:
-      # - libs: test-qadence-libs/docs/index.md
-      # - protocols: test-qadence-protocols/docs/index.md
-  - 📦 Development Resources:
+  - Qadence Hub: index.md
+
+  - Development Resources:
       - Setup: setup.md
       - Test: test.md
 

@@ -1,4 +1,4 @@
-site_name: Qadence extensions Monorepo
+site_name: Qadence Hub
 site_url: "https://pasqal-io.github.io/qadence-hub/latest"
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
@@ -6,15 +6,15 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - 🏠 Home: index.md
-  # - 📦 Module Docs:
+  - 🏠 Qadence Hub: index.md
+  # - 📦 Hub Packages:
       # - libs: test-qadence-libs/docs/index.md
       # - protocols: test-qadence-protocols/docs/index.md
-  - 🛠 Development:
+  - 📦 Development Resources:
       - Setup: setup.md
-      - Build & Test: build.md
-      - Contributing: contributing.md
-      - Structure: structure.md
+      - Test: test.md
+      - Contributing: CONTRIBUTING.md
+
 
 theme:
   name: material

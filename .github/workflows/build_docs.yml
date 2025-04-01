@@ -15,8 +15,8 @@ concurrency:
 
 jobs:
 
-  docs_monorepo:
-    name: docs (monorepo)
+  docs_hub:
+    name: docs (hub)
     runs-on: ubuntu-latest
     defaults:
       run:

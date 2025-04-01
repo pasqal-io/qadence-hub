@@ -19,7 +19,6 @@ This repository contains multiple modular Python packages developed for **Qadenc
 
 - [Setup Guide](setup.md)
 - [Testing](test.md)
-- [Contributing](CONTRIBUTING.md)
 
 
 # 🗂️ Qadence-Hub Structure

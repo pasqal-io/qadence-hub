@@ -13,7 +13,6 @@ nav:
   - 📦 Development Resources:
       - Setup: setup.md
       - Test: test.md
-      - Contributing: CONTRIBUTING.md
 
 
 theme:

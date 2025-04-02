@@ -51,7 +51,7 @@ jobs:
 
   test_libs_ubuntu:
     name: Qadence Libs (ubuntu)
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
     runs-on: ubuntu-latest
     strategy:
       matrix:

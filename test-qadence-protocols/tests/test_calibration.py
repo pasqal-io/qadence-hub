@@ -4,7 +4,7 @@ import torch
 from qadence import NoiseHandler
 from qadence.types import NoiseProtocol
 
-from test_qadence_protocols.measurements.calibration import zero_state_calibration
+from qadence_protocols.measurements.calibration import zero_state_calibration
 
 
 def test_zero_state_calibration() -> None:

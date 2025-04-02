@@ -1,4 +1,4 @@
-site_name: Test Qadence Libs
+site_name: Qadence Libs
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
@@ -64,7 +64,7 @@ plugins:
           docstring_section_style: spacy
 
 watch:
-  - test_qadence_libs
+  - qadence_libs
 
 extra:
  version:

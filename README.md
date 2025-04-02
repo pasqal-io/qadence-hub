@@ -14,8 +14,8 @@
 
 | Name | Description |
 |------|-------------|
-| `test-qadence-protocols` | Quantum measurement and mitigation APIs |
-| `test-qadence-libs` | Quantum utility libraries |
+| `qadence-protocols` | Quantum measurement and mitigation APIs |
+| `qadence-libs` | Quantum utility libraries |
 
 
 ## Contributing

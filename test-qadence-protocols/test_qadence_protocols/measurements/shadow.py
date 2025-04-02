@@ -7,18 +7,18 @@ from qadence import QuantumModel
 from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor
 
-from test_qadence_protocols.measurements.abstract import MeasurementManager
-from test_qadence_protocols.measurements.utils_shadow.data_acquisition import (
+from qadence_protocols.measurements.abstract import MeasurementManager
+from qadence_protocols.measurements.utils_shadow.data_acquisition import (
     number_of_samples,
     shadow_samples,
 )
-from test_qadence_protocols.measurements.utils_shadow.post_processing import (
+from qadence_protocols.measurements.utils_shadow.post_processing import (
     compute_snapshots,
     expectation_estimations,
     global_shadow_hamming,
     local_shadow,
 )
-from test_qadence_protocols.types import MeasurementData
+from qadence_protocols.types import MeasurementData
 
 
 class ShadowManager(MeasurementManager):

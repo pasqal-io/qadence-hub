@@ -7,8 +7,8 @@ import torch
 from qadence import QNN
 from torch import Size, allclose
 
-from test_qadence_libs.qinfo_tools import get_quantum_fisher, get_quantum_fisher_spsa
-from test_qadence_libs.qinfo_tools.qfi import _positive_semidefinite_sqrt
+from qadence_libs.qinfo_tools import get_quantum_fisher, get_quantum_fisher_spsa
+from qadence_libs.qinfo_tools.qfi import _positive_semidefinite_sqrt
 
 SEED = 42
 torch.manual_seed(SEED)

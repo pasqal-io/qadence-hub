@@ -12,7 +12,7 @@ from qadence.parameters import VariationalParameter
 from qadence.register import Register
 from qadence.types import PI, BasisSet
 
-from test_qadence_libs.constructors import (
+from qadence_libs.constructors import (
     analog_feature_map,
     rydberg_feature_map,
     rydberg_hea,

@@ -1,5 +1,5 @@
-site_name: Test Qadence Protocols
-site_url: "https://pasqal-io.github.io/qadence-hub/test-qadence-protocols/latest"
+site_name: Qadence Protocols
+site_url: "https://pasqal-io.github.io/qadence-hub/qadence-protocols/latest"
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
@@ -100,4 +100,4 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - test_qadence_protocols
+  - qadence_protocols

@@ -26,8 +26,8 @@ import matplotlib.pyplot as plt
 from qadence import QuantumCircuit, QNN, FeatureParameter
 from qadence import kron, tag, hea, RX, Z, hamiltonian_factory
 
-from test_qadence_libs.qinfo_tools import QuantumNaturalGradient
-from test_qadence_libs.types import FisherApproximation
+from qadence_libs.qinfo_tools import QuantumNaturalGradient
+from qadence_libs.types import FisherApproximation
 ```
 
 First, we prepare the Quantum Circuit Learning data. In this case we will fit a simple one-dimensional sin($x$) function:

@@ -33,10 +33,10 @@ pyenv local 3.10
 
 ## Install from PyPi
 
-`test-qadence-protocols` is available on PyPi through `pip`.
+`qadence-protocols` is available on PyPi through `pip`.
 
 ```bash
-pip install test-qadence-protocols
+pip install qadence-protocols
 ```
 
 ## Install from source

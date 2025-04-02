@@ -148,7 +148,7 @@ def feature_map(
 
     Example:
     ```python exec="on" source="material-block" result="json"
-    from test_qadence_libs import feature_map, BasisSet, ReuploadScaling
+    from qadence_libs import feature_map, BasisSet, ReuploadScaling
 
     fm = feature_map(3, fm_type=BasisSet.FOURIER)
     print(f"{fm = }")

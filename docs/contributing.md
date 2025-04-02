@@ -4,7 +4,7 @@ We're grateful for your interest in participating in qadence-hub. Please follow 
 
 ## Reporting an issue or proposing a feature
 
-Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence**, feel free to create an issue on [test-qadence-protocols's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
+Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence**, feel free to create an issue on [qadence-hubs's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
 
 1. Quickly search the existing issues using relevant keywords to ensure your issue hasn't been addressed already.
 2. If your issue is not listed, create a new one. Try to be as detailed and clear as possible in your description.

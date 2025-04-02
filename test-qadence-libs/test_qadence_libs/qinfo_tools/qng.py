@@ -8,11 +8,11 @@ from qadence import QNN, Parameter, QuantumCircuit, QuantumModel
 from qadence.logger import get_logger
 from torch.optim.optimizer import Optimizer, required
 
-from test_qadence_libs.qinfo_tools.qfi import (
+from qadence_libs.qinfo_tools.qfi import (
     get_quantum_fisher,
     get_quantum_fisher_spsa,
 )
-from test_qadence_libs.types import FisherApproximation
+from qadence_libs.types import FisherApproximation
 
 logger = get_logger(__name__)
 
@@ -188,7 +188,7 @@ def qng_exact(
 ) -> None:
     """Functional API that performs exact QNG algorithm computation.
 
-    See :class:`~test_qadence_libs.qinfo_tools.QuantumNaturalGradient` for details.
+    See :class:`~qadence_libs.qinfo_tools.QuantumNaturalGradient` for details.
     """
 
     # EXACT metric tensor
@@ -225,7 +225,7 @@ def qng_spsa(
 ) -> None:
     """Functional API that performs the QNG-SPSA algorithm computation.
 
-    See :class:`~test_qadence_libs.qinfo_tools.QuantumNaturalGradient` for details.
+    See :class:`~qadence_libs.qinfo_tools.QuantumNaturalGradient` for details.
     """
     with torch.no_grad():
         # Get estimation of the QFI matrix

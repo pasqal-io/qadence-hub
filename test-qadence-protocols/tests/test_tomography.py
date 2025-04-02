@@ -22,14 +22,14 @@ from qadence.parameters import Parameter
 from qadence.types import BackendName, DiffMode
 from torch import allclose, tensor
 
-from test_qadence_protocols import Measurements
-from test_qadence_protocols.measurements.utils_tomography import (
+from qadence_protocols import Measurements
+from qadence_protocols.measurements.utils_tomography import (
     empirical_average,
     get_counts,
     get_qubit_indices_for_op,
     rotate,
 )
-from test_qadence_protocols.types import MeasurementProtocol
+from qadence_protocols.types import MeasurementProtocol
 
 
 @pytest.mark.parametrize(

@@ -11,7 +11,7 @@ from qadence.operations import PHASE, RX, X, Z
 from qadence.parameters import FeatureParameter
 from qadence.types import PI, BasisSet, ReuploadScaling
 
-from test_qadence_libs.constructors import exp_fourier_feature_map, feature_map
+from qadence_libs.constructors import exp_fourier_feature_map, feature_map
 
 PARAM_DICT_0 = {
     "support": None,

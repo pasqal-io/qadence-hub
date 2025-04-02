@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import importlib
 
-from test_qadence_protocols.types import qadence_available_protocols
+from qadence_protocols.types import qadence_available_protocols
 
 
 class Protocol:

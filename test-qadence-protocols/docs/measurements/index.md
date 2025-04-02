@@ -29,7 +29,7 @@ In Qadence, running a tomographical experiment is made simple by defining a `Mea
 from torch import tensor
 from qadence import hamiltonian_factory, BackendName, DiffMode, NoiseHandler
 from qadence import chain, kron, X, Z, QuantumCircuit, QuantumModel
-from test_qadence_protocols import Measurements, MeasurementProtocol
+from qadence_protocols import Measurements, MeasurementProtocol
 
 blocks = chain(
     kron(X(0), X(1)),
@@ -96,7 +96,7 @@ Along the same lines as the example before, estimating the expectation value usi
 
 ```python exec="on" source="material-block" session="measurements" result="json"
 # Classical shadows are defined up to some accuracy and confidence.
-from test_qadence_protocols.measurements.utils_shadow.data_acquisition import number_of_samples
+from qadence_protocols.measurements.utils_shadow.data_acquisition import number_of_samples
 
 shadow_options = {"accuracy": 0.1, "confidence": 0.1}
 N, K = number_of_samples(observable, shadow_options["accuracy"], shadow_options["confidence"])
@@ -138,7 +138,7 @@ Such a measurement data can be used directly for computing different quantities 
 state = shadow_measurement.reconstruct_state()
 
 # calculate expectations
-from test_qadence_protocols.utils_trace import expectation_trace
+from qadence_protocols.utils_trace import expectation_trace
 exp_reconstructed_state = expectation_trace(state, observable)
 print(exp_reconstructed_state) # markdown-exec: hide
 ```
@@ -149,7 +149,7 @@ print(exp_reconstructed_state) # markdown-exec: hide
 Robust shadows [^4] were built upon the classical shadow scheme but have the particularity to be noise-resilient. It involves an experimental simple calibration procedure based on the preparation of a all-zero state with very high fidelity. We then perform noisy randomized measurements to learn about the averaged, as known as ``twirled'', effect of the noise, obtaining calibration coefficients for shadows. One can eﬃciently characterize and mitigate noises in the shadow estimation scheme, given only minimal assumptions on the experimental conditions. Such a procedure has been used in [^5] to estimate the Quantum Fisher information out of a quantum system. Note that robust shadows are equivalent to classical shadows in non-noisy settings by setting the `calibration` coefficients to $\frac{1}{3}$ for each qubit, as shown below:
 
 ```python exec="on" source="material-block" session="measurements" result="json"
-from test_qadence_protocols.measurements.calibration import zero_state_calibration
+from qadence_protocols.measurements.calibration import zero_state_calibration
 # Calibration coefficients are by default 1/3
 calibration = zero_state_calibration(N, n_qubits=2, n_shots=100, backend=model.backend, noise=None)
 

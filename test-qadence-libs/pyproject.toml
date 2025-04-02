@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "test-qadence-libs"
+name = "qadence-libs"
 description = "Libraries to extend Qadence functionalities."
 readme = "README.md"
 authors = [
@@ -62,14 +62,14 @@ dependencies = [
 features = ["visualization"]
 
 [tool.hatch.envs.default.scripts]
-test = "pytest -n auto --cov-report=xml --cov-config=pyproject.toml --cov=test_qadence_libs --cov=tests --ignore=./tests/test_examples.py {args}"
+test = "pytest -n auto --cov-report=xml --cov-config=pyproject.toml --cov=qadence_libs --cov=tests --ignore=./tests/test_examples.py {args}"
 test-examples = "pytest ./tests/test_examples.py {args}"
 no-cov = "cov --no-cov {args}"
 test-docs = "mkdocs build --clean --strict"
 test-all = "pytest -n auto {args}  && mkdocs build --clean --strict"
 
 [tool.pytest.ini_options]
-pythonpath = ["test_qadence_libs"]
+pythonpath = ["qadence_libs"]
 testpaths = ["tests"]
 addopts = """-vvv"""
 xfail_strict = true
@@ -117,7 +117,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["test_qadence_libs"]
+packages = ["qadence_libs"]
 
 [tool.coverage.run]
 branch = true

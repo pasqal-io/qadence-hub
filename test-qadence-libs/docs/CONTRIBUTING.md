@@ -1,10 +1,10 @@
 # How to contribute
 
-We're grateful for your interest in participating in Qadence-Libs. Please follow our guidelines to ensure a smooth contribution process.
+We're grateful for your interest in participating in Qadence-Hub. Please follow our guidelines to ensure a smooth contribution process.
 
 ## Reporting an issue or proposing a feature
 
-Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence-libs**, feel free to create an issue on [qadence's GitHub issue tracker](https://github.com/pasqal-io/qadence-libs/issues). Here are some steps to take:
+Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence-libs**, feel free to create an issue on [qadence-hub's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
 
 1. Quickly search the existing issues using relevant keywords to ensure your issue hasn't been addressed already.
 2. If your issue is not listed, create a new one. Try to be as detailed and clear as possible in your description.
@@ -14,11 +14,11 @@ Your course of action will depend on your objective, but generally, you should s
 
 ## Submitting a pull request
 
-We're excited that you're eager to contribute to Qadence. To contribute, fork the `main` branch of qadence repository and once you are satisfied with your feature and all the tests pass create a [Pull Request](https://github.com/pasqal-io/qadence-libs/pulls).
+We're excited that you're eager to contribute to Qadence. To contribute, fork the `main` branch of qadence repository and once you are satisfied with your feature and all the tests pass create a [Pull Request](https://github.com/pasqal-io/qadence-hub/pulls).
 
 Here's the process for making a contribution:
 
-Click the "Fork" button at the upper right corner of the [repo page](https://github.com/pasqal-io/qadence-libs) to create a new GitHub repo at `https://github.com/USERNAME/qadence`, where `USERNAME` is your GitHub ID. Then, `cd` into the directory where you want to place your new fork and clone it:
+Click the "Fork" button at the upper right corner of the [repo page](https://github.com/pasqal-io/qadence-hub) to create a new GitHub repo at `https://github.com/USERNAME/qadence`, where `USERNAME` is your GitHub ID. Then, `cd` into the directory where you want to place your new fork and clone it:
 
 ```shell
 git clone https://github.com/USERNAME/qadence.git

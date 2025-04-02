@@ -14,5 +14,5 @@ This will build the root documentation site into the `site/` directory.
 
 Each module has its own test configuration. For example:
 
-    cd test-qadence-protocols
+    cd qadence-protocols
     hatch run test

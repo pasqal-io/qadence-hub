@@ -13,10 +13,10 @@ from qadence.operations import I
 from qadence.types import Endianness
 from torch import Tensor
 
-from test_qadence_protocols.measurements.utils_shadow.data_acquisition import (
+from qadence_protocols.measurements.utils_shadow.data_acquisition import (
     extract_operators,
 )
-from test_qadence_protocols.utils_trace import partial_trace
+from qadence_protocols.utils_trace import partial_trace
 
 
 def _noiseless_probabilites(

@@ -6,15 +6,15 @@ from qadence import QuantumModel
 from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor
 
-from test_qadence_protocols.measurements.abstract import MeasurementManager
-from test_qadence_protocols.protocols import Protocol
-from test_qadence_protocols.types import MeasurementData
+from qadence_protocols.measurements.abstract import MeasurementManager
+from qadence_protocols.protocols import Protocol
+from qadence_protocols.types import MeasurementData
 
 PROTOCOL_TO_MODULE = {
-    "tomography": ("test_qadence_protocols.measurements.tomography", "Tomography"),
-    "shadow": ("test_qadence_protocols.measurements.shadow", "ShadowManager"),
+    "tomography": ("qadence_protocols.measurements.tomography", "Tomography"),
+    "shadow": ("qadence_protocols.measurements.shadow", "ShadowManager"),
     "robust_shadow": (
-        "test_qadence_protocols.measurements.robust_shadow",
+        "qadence_protocols.measurements.robust_shadow",
         "RobustShadowManager",
     ),
 }

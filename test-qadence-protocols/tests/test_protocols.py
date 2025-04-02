@@ -1,4 +1,4 @@
-from test_qadence_protocols.protocols import Protocol
+from qadence_protocols.protocols import Protocol
 
 
 def test_protocol_to_dict() -> None:

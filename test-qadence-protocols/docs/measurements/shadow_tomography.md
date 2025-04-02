@@ -60,7 +60,7 @@ model = QuantumModel(
 For calculating purities, we can use the utility functions `partial_trace` and `purity`:
 
 ```python exec="on" source="material-block" session="shadow_tomo" result="json"
-from test_qadence_protocols.utils_trace import partial_trace, purity
+from qadence_protocols.utils_trace import partial_trace, purity
 
 def partial_purities(density_mat):
     purities = []
@@ -100,7 +100,7 @@ We will first run vanilla shadows to reconstruct the density matrix representati
 
 
 ```python exec="on" source="material-block" session="shadow_tomo" result="json"
-from test_qadence_protocols import Measurements, MeasurementProtocol
+from qadence_protocols import Measurements, MeasurementProtocol
 
 shadow_options = {"shadow_size": 10200, "shadow_medians": 6, "n_shots":1000}
 shadow_measurements = Measurements(protocol=MeasurementProtocol.SHADOW, options=shadow_options)
@@ -118,7 +118,7 @@ We now use an efficient calibration method based on the experimental demonstrati
 Indeed, we witness below the estimated purities being closer to the analytical ones.
 
 ```python exec="on" source="material-block" session="shadow_tomo" result="json"
-from test_qadence_protocols.measurements.calibration import zero_state_calibration
+from qadence_protocols.measurements.calibration import zero_state_calibration
 
 calibration = zero_state_calibration(n_unitaries=2000, n_qubits=circuit.n_qubits, n_shots=10000, noise=noise)
 robust_options = {"shadow_size": 10200, "shadow_medians": 6, "n_shots":1000, "calibration": calibration}

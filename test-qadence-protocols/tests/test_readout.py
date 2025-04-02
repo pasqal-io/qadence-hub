@@ -27,15 +27,15 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import gmres
 from scipy.stats import wasserstein_distance
 
-from test_qadence_protocols import Mitigations
-from test_qadence_protocols.mitigations.readout import (
+from qadence_protocols import Mitigations
+from qadence_protocols.mitigations.readout import (
     majority_vote,
     matrix_inv,
     mle_solve,
     normalized_subspace_kron,
     tensor_rank_mult,
 )
-from test_qadence_protocols.types import ReadOutOptimization
+from qadence_protocols.types import ReadOutOptimization
 
 
 @pytest.mark.flaky(max_runs=5)

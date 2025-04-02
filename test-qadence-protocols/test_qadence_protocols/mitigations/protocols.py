@@ -7,12 +7,12 @@ from dataclasses import dataclass
 from qadence import NoiseHandler, QuantumModel
 from torch import Tensor
 
-from test_qadence_protocols.protocols import Protocol
+from qadence_protocols.protocols import Protocol
 
 PROTOCOL_TO_MODULE = {
-    "twirl": "test_qadence_protocols.mitigations.twirl",
-    "readout": "test_qadence_protocols.mitigations.readout",
-    "zne": "test_qadence_protocols.mitigations.analog_zne",
+    "twirl": "qadence_protocols.mitigations.twirl",
+    "readout": "qadence_protocols.mitigations.readout",
+    "zne": "qadence_protocols.mitigations.analog_zne",
 }
 
 

@@ -15,7 +15,7 @@ from qadence.measurements import Measurements
 from qadence.operations import CNOT, RX, Z
 from qadence.types import BackendName, NoiseProtocol
 
-from test_qadence_protocols import Mitigations
+from qadence_protocols import Mitigations
 
 
 @pytest.mark.parametrize(

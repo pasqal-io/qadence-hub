@@ -12,20 +12,20 @@ from qadence.blocks.utils import unroll_block_with_scaling
 from qadence.operations import I
 from torch import Tensor
 
-from test_qadence_protocols.measurements.utils_shadow.data_acquisition import (
+from qadence_protocols.measurements.utils_shadow.data_acquisition import (
     batch_kron,
     rotations_unitary_map,
 )
-from test_qadence_protocols.measurements.utils_shadow.unitaries import (
+from qadence_protocols.measurements.utils_shadow.unitaries import (
     UNITARY_TENSOR_ADJOINT,
     hamming_one_qubit,
     idmat,
     pauli_gates,
 )
-from test_qadence_protocols.measurements.utils_tomography import (
+from qadence_protocols.measurements.utils_tomography import (
     get_qubit_indices_for_op,
 )
-from test_qadence_protocols.utils_trace import expectation_trace
+from qadence_protocols.utils_trace import expectation_trace
 
 from .unitaries import P0_MATRIX, P1_MATRIX
 

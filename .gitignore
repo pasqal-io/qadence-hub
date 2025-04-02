@@ -16,7 +16,7 @@ __pycache__/
 htmlcov/
 .tox/
 .coverage
-.coverage.*
+# .coverage.*
 .cache
 nosetests.xml
 coverage.xml

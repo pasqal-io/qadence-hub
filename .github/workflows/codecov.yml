@@ -13,5 +13,5 @@ jobs:
       - name: Upload coverage.xml to Codecov
         uses: codecov/codecov-action@v5
         with:
-          files: test-qadence-libs/coverage.xml
+          files: ./test-qadence-libs/coverage.xml
         #   token: ${{ secrets.CODECOV_TOKEN }}

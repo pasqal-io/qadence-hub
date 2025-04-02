@@ -126,8 +126,7 @@ jobs:
 
   deploy_docs_protocols:
     name: Deploy Qadence Protocols docs (ubuntu)
-    if: ${{ false }}
-    # if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: test_protocols_ubuntu
     runs-on: ubuntu-latest
     defaults:

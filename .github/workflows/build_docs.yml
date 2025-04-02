@@ -52,6 +52,7 @@ jobs:
 
 
   docs_protocols:
+    if: ${{ false }}
     name: docs (test-qadence-protocols)
     runs-on: ubuntu-latest
     defaults:

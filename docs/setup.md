@@ -9,12 +9,12 @@
 
 - **For protocols development**:
     ```
-    cd test-qadence-protocols
+    cd qadence-protocols
     ```
 
 - **For libs development**:
     ```
-    cd test-qadence-libs
+    cd qadence-libs
     ```
 
 ## 3. Enter the Hatch environment

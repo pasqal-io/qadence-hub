@@ -4,7 +4,7 @@ We're grateful for your interest in participating in qadence-hub. Please follow 
 
 ## Reporting an issue or proposing a feature
 
-Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence**, feel free to create an issue on [qadence-hubs's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
+Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence**, feel free to create an issue on [qadence-hub's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
 
 1. Quickly search the existing issues using relevant keywords to ensure your issue hasn't been addressed already.
 2. If your issue is not listed, create a new one. Try to be as detailed and clear as possible in your description.
@@ -40,7 +40,22 @@ pip install hatch
 hatch -v shell
 ```
 
-### Useful thing for your workflow: linting
+To run qadence tests, use:
+
+```shell
+hatch -e tests run test
+```
+
+If you don't want to use `hatch`, you can use the environment manager of your
+choice (e.g. Conda) and execute the following:
+
+```shell
+pip install pytest
+pip install -e .
+pytest
+```
+
+### Useful things for your workflow: linting and testing
 
 Use `pre-commit` to lint your code and run the unit tests before pushing a new commit.
 
@@ -48,6 +63,7 @@ Using `hatch`, it's simply:
 
 ```shell
 hatch -e tests run pre-commit run --all-files
+hatch -e tests run test
 ```
 
 Our CI/CD pipeline will also test if the documentation can be built correctly. To test it locally, please run:

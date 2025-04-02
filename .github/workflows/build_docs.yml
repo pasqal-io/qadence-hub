@@ -52,11 +52,11 @@ jobs:
 
 
   docs_protocols:
-    name: docs (test-qadence-protocols)
+    name: docs (qadence-protocols)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: test-qadence-protocols
+        working-directory: qadence-protocols
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -87,11 +87,11 @@ jobs:
           hatch -v run docs:build
 
   docs_libs:
-    name: docs (test-qadence-libs)
+    name: docs (qadence-libs)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: test-qadence-libs
+        working-directory: qadence-libs
     steps:
       - name: Checkout
         uses: actions/checkout@v4

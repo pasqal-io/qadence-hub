@@ -1,17 +1,22 @@
-site_name: Qadence Hub
-site_url: "https://pasqal-io.github.io/qadence-hub/latest"
+site_name: Qadence Protocols
+site_url: "https://pasqal-io.github.io/qadence-hub/qadence-protocols/latest"
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
-
 nav:
 
-  - Qadence Hub: index.md
+  - Qadence Extras: index.md
 
-  - Development Resources:
-      - Setup: setup.md
-      - Test: test.md
+  - Contents: contents/index.md
 
+  - Error Mitigation:
+    - error_mitigation/index.md
+    - error_mitigation/readout_mitigation.md
+    - error_mitigation/incoherent_error_mitigation.md
+
+  - Measurements Protocols:
+    - measurements/index.md
+    - measurements/shadow_tomography.md
 
 theme:
   name: material
@@ -95,5 +100,4 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - qadence-protocols
-  - qadence-libs
+  - qadence_protocols

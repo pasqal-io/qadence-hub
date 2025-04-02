@@ -17,16 +17,16 @@ concurrency:
 
 jobs:
 
-  test_protocols_ubuntu:
+  protocols_ubuntu:
     name: Qadence Protocols (ubuntu)
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-protocols/')
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-protocols/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
     defaults:
       run:
-        working-directory: test-qadence-protocols
+        working-directory: qadence-protocols
     steps:
       - name: Checkout Qadence protocols
         uses: actions/checkout@v4
@@ -38,27 +38,18 @@ jobs:
         run: pip install hatch
       - name: Run fast tests
         run: hatch -v run test
-      - name: Upload coverage data
-        uses: actions/upload-artifact@v4
-        with:
-          name: "coverage-data"
-          path: .coverage.*
-          if-no-files-found: ignore
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
 
-  test_libs_ubuntu:
+
+  libs_ubuntu:
     name: Qadence Libs (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-libs/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
     defaults:
       run:
-        working-directory: test-qadence-libs
+        working-directory: qadence-libs
     steps:
       - name: Checkout Qadence libs
         uses: actions/checkout@v4
@@ -70,16 +61,9 @@ jobs:
         run: pip install hatch
       - name: Run fast tests
         run: hatch -v run test
-      - name: Upload coverage data
-        uses: actions/upload-artifact@v4
-        with:
-          name: "coverage-data"
-          path: .coverage.*
-          if-no-files-found: ignore
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+
+
+
 
   deploy_docs_hub:
     name: Deploy Hub docs (ubuntu)
@@ -117,11 +101,11 @@ jobs:
   deploy_docs_protocols:
     name: Deploy Qadence Protocols docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: test_protocols_ubuntu
+    needs: protocols_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: test-qadence-protocols
+        working-directory: qadence-protocols
     steps:
       - name: Checkout Qadence Protocols
         uses: actions/checkout@v4
@@ -146,16 +130,16 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix test-qadence-protocols
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-protocols
 
   deploy_docs_libs:
     name: Deploy Qadence Libs docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: test_libs_ubuntu
+    needs: libs_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: test-qadence-libs
+        working-directory: qadence-libs
     steps:
       - name: Checkout Qadence Libs
         uses: actions/checkout@v4
@@ -180,4 +164,4 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix test-qadence-libs
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-libs

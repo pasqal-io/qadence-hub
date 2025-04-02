@@ -1,13 +1,13 @@
 name: Documentation
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-#   workflow_dispatch: {}
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
 
 concurrency:
   group: docs-${{ github.head_ref || github.run_id }}
@@ -52,7 +52,6 @@ jobs:
 
 
   docs_protocols:
-    if: ${{ false }}
     name: docs (test-qadence-protocols)
     runs-on: ubuntu-latest
     defaults:

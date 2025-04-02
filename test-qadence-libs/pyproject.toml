@@ -62,7 +62,7 @@ dependencies = [
 features = ["visualization"]
 
 [tool.hatch.envs.default.scripts]
-test = "pytest -n auto --cov-report lcov --cov-config=pyproject.toml --cov=test_qadence_libs --cov=tests --ignore=./tests/test_examples.py {args}"
+test = "pytest -n auto --cov-report=lcov:coverage-libs.lcov --cov-config=pyproject.toml --cov=test_qadence_libs --cov=tests --ignore=./tests/test_examples.py {args}"
 test-examples = "pytest ./tests/test_examples.py {args}"
 no-cov = "cov --no-cov {args}"
 test-docs = "mkdocs build --clean --strict"

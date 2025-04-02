@@ -1,4 +1,4 @@
-# Template Python project -- need to change this
+# Qadence Libs
 
 This is a template Python project which can be used to bootstrap a new library in the Pasqal quantum software codebase.
 

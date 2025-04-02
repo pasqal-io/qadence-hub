@@ -148,3 +148,7 @@ def get_quantum_fisher_spsa(
     qfi_mat_positive_sd = qfi_mat_positive_sd / (1 + beta)  # regularization
 
     return qfi_mat_estimator, qfi_mat_positive_sd
+
+
+def dummy_for_test() -> None:
+    print("dummy")

@@ -51,7 +51,7 @@ jobs:
 
   test_libs_ubuntu:
     name: Qadence Libs (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'test-qadence-libs/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -70,16 +70,22 @@ jobs:
         run: pip install hatch
       - name: Run fast tests
         run: hatch -v run test
-      - name: Upload coverage data
-        uses: actions/upload-artifact@v4
-        with:
-          name: "coverage-data"
-          path: .coverage.*
-          if-no-files-found: ignore
-      - name: Upload coverage reports to Codecov
+      # - name: Upload coverage data
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: "coverage-data"
+      #     path: coverage-libs.lcov
+      #     if-no-files-found: ignore
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
 
   deploy_docs_hub:
     name: Deploy Hub docs (ubuntu)

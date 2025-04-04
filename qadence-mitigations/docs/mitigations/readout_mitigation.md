@@ -61,8 +61,8 @@ subjected to physicality constraints $0 \leq p_{corr}(x) \leq 1$ and $\lVert p_{
 
 ```python exec="on" source="material-block" session="mitigation" result="json"
 
-from qadence_protocols.mitigations.protocols import Mitigations
-from qadence_protocols.types import ReadOutOptimization
+from qadence_mitigations.protocols import Mitigations
+from qadence_shared import ReadOutOptimization
 
 
 # Define the mitigation method solving the minimization problem:
@@ -133,7 +133,7 @@ We have constructed a probability distribution over a small subspace of bitstrin
 
 ```python exec="on" source="material-block" session="m3" result="json"
 from scipy.stats import wasserstein_distance
-from qadence_protocols.mitigations.readout import (
+from qadence_mitigations.readout import (
     normalized_subspace_kron,
     mle_solve,
     matrix_inv,
@@ -175,7 +175,7 @@ Mitigation protocol to be used only when the circuit output has a single expecte
 ```python exec="on" source="material-block" session="mv" result="json"
 from qadence import QuantumModel, QuantumCircuit,kron, H, Z, I
 from qadence import NoiseHandler, NoiseProtocol
-from qadence_protocols.mitigations.readout import majority_vote
+from qadence_mitigations.readout import majority_vote
 import numpy as np
 
 # Simple circuit and observable construction.
@@ -221,8 +221,8 @@ You can perform the mitigation without a `quantum model` if you have sampled res
 ```python exec="on" source="material-block" session="mitigation" result="json"
 from qadence import QuantumModel, QuantumCircuit, hamiltonian_factory, kron, H, Z, I
 from qadence import NoiseProtocol, NoiseHandler
-from qadence_protocols.mitigations.protocols import Mitigations
-from qadence_protocols.types import ReadOutOptimization
+from qadence_mitigations.protocols import Mitigations
+from qadence_shared import ReadOutOptimization
 
 # Simple circuit and observable construction.
 block = kron(H(0), I(1))
@@ -257,7 +257,7 @@ This protocol makes use of all possible so-called twirl operations to average ou
 from qadence import NoiseHandler, NoiseProtocol
 from qadence.measurements import Measurements
 from qadence.operations import CNOT, RX, Z
-from qadence_protocols import Mitigations
+from qadence_mitigations.protocols import Mitigations
 
 import torch
 from qadence import (

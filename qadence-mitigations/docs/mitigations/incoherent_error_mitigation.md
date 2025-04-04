@@ -24,7 +24,7 @@ Each method requires a minimum number of data points: `poly` requires at least t
 ```python exec="on" source="material-block" session="zne" result="json"
 
 from qadence import NoiseProtocol, NoiseHandler
-from qadence_protocols import Mitigations
+from qadence_mitigations.protocols import Mitigations
 import torch
 
 noise = NoiseHandler(protocol=NoiseProtocol.ANALOG.DEPOLARIZING, options={"noise_probs": [0.2]})

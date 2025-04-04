@@ -14,7 +14,8 @@
 
 | Name | Description |
 |------|-------------|
-| `qadence-protocols` | Quantum measurement and mitigation APIs |
+| `qadence-measurements` | Quantum measurement APIs |
+| `qadence-mitigations` | Quantum mitigation APIs |
 | `qadence-libs` | Quantum utility libraries |
 
 
@@ -27,4 +28,4 @@ Before making a contribution, please review our [code of conduct](docs/CODE_OF_C
 
 
 ## License
-Qadence-Protocols is a free and open source software package, released under the Apache License, Version 2.0.
+Qadence-Hub is a free and open source software package, released under the Apache License, Version 2.0.

@@ -45,7 +45,7 @@ dependencies = [
   "isort",
   "ruff",
   "pydocstringformatter",
-  "qadence-shared @ file://../qadence-shared"
+  "qadence-shared @ ../qadence-shared"
 ]
 
 [tool.hatch.envs.default.scripts]

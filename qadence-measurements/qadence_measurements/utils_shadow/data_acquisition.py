@@ -210,9 +210,11 @@ def shadow_samples(
         ]
     else:
         all_rotations = [
-            QuantumCircuit(circuit.n_qubits, circuit.block, rots)
-            if rots
-            else QuantumCircuit(circuit.n_qubits, circuit.block)
+            (
+                QuantumCircuit(circuit.n_qubits, circuit.block, rots)
+                if rots
+                else QuantumCircuit(circuit.n_qubits, circuit.block)
+            )
             for rots in all_rotations
         ]
 

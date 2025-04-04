@@ -4,7 +4,7 @@ from collections import Counter
 from typing import Callable
 
 import pytest
-import strategies as st
+import strategies_measurements as st
 from hypothesis import given, settings
 from qadence import (
     AbstractBlock,

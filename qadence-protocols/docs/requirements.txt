@@ -1,7 +1,0 @@
-mkdocs-material
-mkdocstrings
-mkdocstrings-python
-mkdocs-section-index
-mkdocs-jupyter
-mkdocs-exclude
-markdown-exec

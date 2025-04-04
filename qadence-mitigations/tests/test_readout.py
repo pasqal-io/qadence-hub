@@ -6,7 +6,7 @@ from functools import reduce
 import numpy as np
 import numpy.typing as npt
 import pytest
-import strategies as st
+import strategies_mitigations as st
 from hypothesis import given, settings
 from metrics_mitigations import LOW_ACCEPTANCE
 from qadence import (

@@ -31,36 +31,22 @@ dependencies = [
 allow-direct-references = true
 allow-ambiguous-features = true
 
-# [tool.hatch.envs.default]
-# dependencies = [
-#   "flaky",
-#   "hypothesis",
-#   "pytest",
-#   "pytest-cov",
-#   "pytest-mypy",
-#   "pytest-xdist",
-#   "ipykernel",
-#   "pre-commit",
-#   "black",
-#   "isort",
-#   "ruff",
-#   "pydocstringformatter",
-# ]
-
-[tool.hatch.envs.default.dependencies]
-flaky = "*"
-hypothesis = "*"
-pytest = "*"
-pytest-cov = "*"
-pytest-mypy = "*"
-pytest-xdist = "*"
-ipykernel = "*"
-pre-commit = "*"
-black = "*"
-isort = "*"
-ruff = "*"
-pydocstringformatter = "*"
-qadence-shared = { path = "../qadence-shared", develop = true }
+[tool.hatch.envs.default]
+dependencies = [
+  "flaky",
+  "hypothesis",
+  "pytest",
+  "pytest-cov",
+  "pytest-mypy",
+  "pytest-xdist",
+  "ipykernel",
+  "pre-commit",
+  "black",
+  "isort",
+  "ruff",
+  "pydocstringformatter",
+  "qadence-shared @ file://../qadence-shared"
+]
 
 [tool.hatch.envs.default.scripts]
 test = "pytest -n auto --cov-report lcov --cov-config=pyproject.toml --cov=qadence_measurements --cov=tests --ignore=./tests/test_examples.py {args}"

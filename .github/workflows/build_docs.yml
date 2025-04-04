@@ -81,9 +81,6 @@ jobs:
       - name: Install Hatch
         run: |
           pip install hatch
-      
-      - name: Install qadence-shared (local package)
-        run: pip install -e ../qadence-shared
 
       - name: Build docs
         run: |
@@ -119,9 +116,6 @@ jobs:
       - name: Install Hatch
         run: |
           pip install hatch
-      
-      - name: Install qadence-shared (local package)
-        run: pip install -e ../qadence-shared
 
       - name: Build docs
         run: |

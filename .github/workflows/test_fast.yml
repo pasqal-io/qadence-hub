@@ -36,8 +36,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Hatch
         run: pip install hatch
-      - name: Install qadence-shared (local package)
-        run: pip install -e ../qadence-shared
       - name: Run fast tests
         run: hatch -v run test
 
@@ -60,8 +58,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Hatch
         run: pip install hatch
-      - name: Install qadence-shared (local package)
-        run: pip install -e ../qadence-shared
       - name: Run fast tests
         run: hatch -v run test
 

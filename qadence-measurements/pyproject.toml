@@ -82,6 +82,7 @@ dependencies = [
   "markdown-exec",
   "mkdocs-jupyter",
   "mike",
+  "qadence-shared @ file:../qadence-shared"
 ]
 
 [tool.hatch.envs.docs.scripts]

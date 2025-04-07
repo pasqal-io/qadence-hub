@@ -11,7 +11,7 @@ from qadence import block_to_tensor
 from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor, einsum
 
-ABC_ARRAY: NDArray = array(list(ABC))
+# ABC_ARRAY: NDArray = array(list(ABC))
 
 
 def permute_basis(operator: Tensor, qubit_support: tuple, inv: bool = False) -> Tensor:

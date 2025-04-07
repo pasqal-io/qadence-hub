@@ -2,8 +2,6 @@ from __future__ import annotations
 
 import importlib
 
-# from .types import qadence_available_protocols
-
 
 class Protocol:
     """Generic class for protocols."""

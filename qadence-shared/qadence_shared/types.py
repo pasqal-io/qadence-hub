@@ -28,16 +28,13 @@ class MeasurementData:
     """Random unitaries used in shadows."""
 
 
-class Protocols(StrEnum):
-    """The available protocols for running experiments."""
+# class Protocols(StrEnum):
+#     """The available protocols for running experiments."""
 
-    MITIGATIONS = "mitigations"
-    """The Mitigations protocol."""
-    MEASUREMENTS = "measurements"
-    """The Measurements protocol."""
-
-
-qadence_available_protocols = Protocols.list()
+#     MITIGATIONS = "mitigations"
+#     """The Mitigations protocol."""
+#     MEASUREMENTS = "measurements"
+#     """The Measurements protocol."""
 
 
 class ReadOutOptimization(StrEnum):

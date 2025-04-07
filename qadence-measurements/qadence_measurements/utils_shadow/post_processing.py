@@ -23,7 +23,7 @@ from qadence_measurements.utils_shadow.unitaries import (
     pauli_gates,
 )
 from qadence_measurements.utils_tomography import get_qubit_indices_for_op
-from qadence_shared import expectation_trace
+from qadence_measurements.utils_trace import expectation_trace
 
 from .unitaries import P0_MATRIX, P1_MATRIX
 

@@ -62,7 +62,7 @@ subjected to physicality constraints $0 \leq p_{corr}(x) \leq 1$ and $\lVert p_{
 ```python exec="on" source="material-block" session="mitigation" result="json"
 
 from qadence_mitigations.protocols import Mitigations
-from qadence_shared import ReadOutOptimization
+from qadence_mitigations.types import ReadOutOptimization
 
 
 # Define the mitigation method solving the minimization problem:
@@ -222,7 +222,7 @@ You can perform the mitigation without a `quantum model` if you have sampled res
 from qadence import QuantumModel, QuantumCircuit, hamiltonian_factory, kron, H, Z, I
 from qadence import NoiseProtocol, NoiseHandler
 from qadence_mitigations.protocols import Mitigations
-from qadence_shared import ReadOutOptimization
+from qadence_mitigations.types import ReadOutOptimization
 
 # Simple circuit and observable construction.
 block = kron(H(0), I(1))

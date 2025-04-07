@@ -18,7 +18,7 @@ from qadence_measurements.utils_shadow.post_processing import (
     global_shadow_hamming,
     local_shadow,
 )
-from qadence_shared import MeasurementData
+from qadence_measurements.types import MeasurementData
 
 
 class ShadowManager(MeasurementManager):

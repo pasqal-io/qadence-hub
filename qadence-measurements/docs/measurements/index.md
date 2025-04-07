@@ -30,7 +30,7 @@ from torch import tensor
 from qadence import hamiltonian_factory, BackendName, DiffMode, NoiseHandler
 from qadence import chain, kron, X, Z, QuantumCircuit, QuantumModel
 from qadence_measurements.protocols import Measurements
-from qadence_shared import MeasurementProtocol
+from qadence_measurements.types import MeasurementProtocol
 
 blocks = chain(
     kron(X(0), X(1)),
@@ -139,7 +139,7 @@ Such a measurement data can be used directly for computing different quantities 
 state = shadow_measurement.reconstruct_state()
 
 # calculate expectations
-from qadence_shared import expectation_trace
+from qadence_measurements.utils_trace import expectation_trace
 exp_reconstructed_state = expectation_trace(state, observable)
 print(exp_reconstructed_state) # markdown-exec: hide
 ```

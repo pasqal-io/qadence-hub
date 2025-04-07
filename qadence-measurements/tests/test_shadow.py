@@ -31,8 +31,8 @@ from qadence_measurements.utils_shadow.unitaries import (
     P1_MATRIX,
     UNITARY_TENSOR,
 )
-from qadence_shared import MeasurementProtocol
-from qadence_shared import expectation_trace
+from qadence_measurements.types import MeasurementProtocol
+from qadence_measurements.utils_trace import expectation_trace
 
 idmat = torch.eye(2, dtype=torch.complex128)
 

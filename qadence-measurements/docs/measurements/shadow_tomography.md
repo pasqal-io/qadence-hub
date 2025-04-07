@@ -60,7 +60,7 @@ model = QuantumModel(
 For calculating purities, we can use the utility functions `partial_trace` and `purity`:
 
 ```python exec="on" source="material-block" session="shadow_tomo" result="json"
-from qadence_shared import partial_trace, purity
+from qadence_measurements.utils_trace import partial_trace, purity
 
 def partial_purities(density_mat):
     purities = []
@@ -101,7 +101,7 @@ We will first run vanilla shadows to reconstruct the density matrix representati
 
 ```python exec="on" source="material-block" session="shadow_tomo" result="json"
 from qadence_measurements.protocols import Measurements
-from qadence_shared import MeasurementProtocol
+from qadence_measurements.types import MeasurementProtocol
 
 shadow_options = {"shadow_size": 10200, "shadow_medians": 6, "n_shots":1000}
 shadow_measurements = Measurements(protocol=MeasurementProtocol.SHADOW, options=shadow_options)

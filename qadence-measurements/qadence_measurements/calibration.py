@@ -14,7 +14,7 @@ from qadence.types import Endianness
 from torch import Tensor
 
 from qadence_measurements.utils_shadow.data_acquisition import extract_operators
-from qadence_shared import partial_trace
+from qadence_measurements.utils_trace import partial_trace
 
 
 def _noiseless_probabilites(

@@ -15,7 +15,7 @@ from qadence_measurements.utils_shadow.post_processing import (
     global_robust_shadow_hamming,
     robust_local_shadow,
 )
-from qadence_shared import MeasurementData
+from qadence_measurements.types import MeasurementData
 
 
 class RobustShadowManager(ShadowManager):

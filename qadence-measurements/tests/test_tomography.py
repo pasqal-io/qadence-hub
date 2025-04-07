@@ -29,7 +29,7 @@ from qadence_measurements.utils_tomography import (
     get_qubit_indices_for_op,
     rotate,
 )
-from qadence_shared import MeasurementProtocol
+from qadence_measurements.types import MeasurementProtocol
 
 
 @pytest.mark.parametrize(

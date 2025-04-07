@@ -35,7 +35,7 @@ from qadence_mitigations.readout import (
     normalized_subspace_kron,
     tensor_rank_mult,
 )
-from qadence_shared import ReadOutOptimization
+from qadence_mitigations.types import ReadOutOptimization
 
 
 @pytest.mark.flaky(max_runs=5)

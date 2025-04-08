@@ -1,16 +1,16 @@
-site_name: Qadence Hub
-site_url: "https://pasqal-io.github.io/qadence-hub/latest"
+site_name: Qadence Mitigations
+site_url: "https://pasqal-io.github.io/qadence-hub/qadence-mitigations/latest"
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
-
 nav:
 
-  - Qadence Hub: index.md
+  - Qadence Mitigations: index.md
 
-  - Development Resources:
-      - Setup: setup.md
-      - Test: test.md
+  - Mitigation Methods:
+    - mitigations/index.md
+    - mitigations/readout_mitigation.md
+    - mitigations/incoherent_error_mitigation.md
 
 
 theme:
@@ -95,6 +95,4 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - qadence-measurements
-  - qadence-mitigations
-  - qadence-libs
+  - qadence_mitigations

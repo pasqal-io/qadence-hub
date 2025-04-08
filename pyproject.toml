@@ -13,6 +13,8 @@ bypass-selection = true
 allow-direct-references = true
 allow-ambiguous-features = true
 
+
+
 [tool.hatch.envs.default]
 dependencies = [
   "pre-commit",

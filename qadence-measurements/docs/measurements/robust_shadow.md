@@ -1,3 +1,20 @@
+# Robust shadows
+
+Robust shadows [^2] were built upon the classical shadow scheme but have the particularity to be noise-resilient. It involves an experimental simple calibration procedure based on the preparation of a all-zero state with very high fidelity. We then perform noisy randomized measurements to learn about the averaged, as known as `twirled`, effect of the noise, obtaining calibration coefficients for shadows. One can eﬃciently characterize and mitigate noises in the shadow estimation scheme, given only minimal assumptions on the experimental conditions. Such a procedure has been used in [^4] to estimate the Quantum Fisher information out of a quantum system. Note that robust shadows are equivalent to classical shadows in non-noisy settings by setting the `calibration` coefficients to $\frac{1}{3}$ for each qubit, as shown below:
+
+```python exec="on" source="material-block" session="measurements" result="json"
+from qadence_measurements.calibration import zero_state_calibration
+# Calibration coefficients are by default 1/3
+calibration = zero_state_calibration(N, n_qubits=2, n_shots=100, backend=model.backend, noise=None)
+
+robust_shadow_options = {"shadow_size": N, "shadow_medians": K, "calibration": calibration}
+robust_shadow_measurement = Measurements(protocol=MeasurementProtocol.ROBUST_SHADOW, options=robust_shadow_options)
+estimated_values_robust_shadow = robust_shadow_measurement(model=model)
+
+print(f"Estimated expectation value shadow = {estimated_values_robust_shadow}") # markdown-exec: hide
+```
+
+
 # Robust shadow tomography
 
 In this tutorial, we will estimate a physical property out of a quantum system, namely the purity of the partial traces, in the presence of measurement noise. To do so, we will use the formalism of classical shadows[^1], and especially their robust version[^2]. This tutorial is inspired from a notebook example of robust shadow tomography from the randomized measurements toolbox[^5] in Julia[^3].
@@ -113,7 +130,7 @@ print(f"Purities with classical shadows = {vanilla_purities}") # markdown-exec: 
 
 As we can see, the estimated purities diverge from the expected ones due to the presence of noise. Next, we will use robust shadows to mitigate the noise effect.
 
-### Robust shadows
+### Calibration for Robust shadows
 
 We now use an efficient calibration method based on the experimental demonstration of classical shadows[^4]. A first set of measurements are used to determine calibration coefficients. The latter are used within robust shadows to mitigate measurement errors.
 Indeed, we witness below the estimated purities being closer to the analytical ones.

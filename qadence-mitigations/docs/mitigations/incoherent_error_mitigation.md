@@ -1,4 +1,4 @@
-## Zero-noise extrapolation for analog blocks
+# Zero-noise extrapolation for analog blocks
 
 Zero-noise extrapolation (ZNE) is an error mitigation technique in which the expectation value computed at different noise levels is extrapolated to the zero noise limit (ideal expectation) using a class of functions. In digital computing, this is typically implemented by "folding" the circuit at a local (involves inverting gates locally) or global level (involves inverting blocks of gates). This allows to artificially increase the noise levels by integer folds[^1]. In the analog ZNE variation, analog blocks are time stretched to again artificially increase in noise[^1]. Using ZNE on neutral atoms would require stretching the register to scale the interaction hamiltonian appropriately.
 

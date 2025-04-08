@@ -1,4 +1,4 @@
-## Readout error mitigation
+# Readout error mitigation
 
 Readout errors are introduced during measurements in the computation basis via probabilistic bitflip operators characterized by the readout matrix (also known as confusion matrix) defined over the system of qubits of dimension $2^n\times2^n$. The complete implementation of the mitigation technique involves using the characterized readout matrix for the system of qubits $(T)$ and classically applying an inversion  $(T^{−1})$ to the measured probability distributions. However there are several limitations of this approach:
 
@@ -49,7 +49,7 @@ Note that the noisy states have samples with the second qubit flipped. In the be
 !!! warning "Mitigation noise"
     Note it is necessary to pass the `noise` parameter for the `mitigation` function because the mitigation process sees `QuantumModel` as a black box.
 
-### Constrained optimization
+## Constrained optimization
 
 However, even for a reduced $n$ the forth limitation holds. This can be avoided by reformulating into a minimization problem[^1]:
 
@@ -77,7 +77,7 @@ print(f"Optimization based mitigation: {mitigated_samples_opt}") # markdown-exec
 
 
 
-### Maximum Likelihood estimation (MLE)
+## Maximum Likelihood estimation (MLE)
 This method replaces the constraints with additional post processing for correcting probability distributions with negative entries. The runtime of the method is linear in the size of the distribution and thus is very efficient. The optimality of the solution is however not always guaranteed. The method redistributes any negative probabilities on using the inverse operation equally and can be shown to maximize the likelihood with minimal effort[^2].
 
 
@@ -90,7 +90,7 @@ mitigated_samples_mle = mitigation(model=model, noise=noise)
 print(f"MLE based mitigation {mitigated_samples_mle}") # markdown-exec: hide
 ```
 
-### Matrix free measurement mitigation (MTHREE)
+## Matrix free measurement mitigation (MTHREE)
 
 This method relies on inverting the probability distribution within a restricted subspace of measured bitstrings[^3]. The method is better suited for computations that exceed 20 qubits where the corrected probability distribution would require a state in a unreasonably high dimensional Hilbert space. Thus, the idea here is to stick to the basis states that show up in the measurement alone. Additionally, one might want to include states that are $k$ hamming distance away from it.
 
@@ -168,7 +168,7 @@ print(f"Wasserstein distance between the two distributions: {wasserstein_dist}")
 In `MTHREE`, we assume quantum circuits that exceed 20 qubits, which results in a high sparsity in the probability distribution of the output bitstrings, leading to many 0 probability bitstrings. Therefore, we use `Wasserstein Distance` instead of `KL divergence` and its derivative, `JS divergence`, as they put true values (which is 0 here) in the denominator and may diverge in such cases, whereas `Wasserstein Distance` remains stable for comparisons.
 
 
-### Majority Voting
+## Majority Voting
 
 Mitigation protocol to be used only when the circuit output has a single expected bitstring as the solution [^4]. The method votes on the likeliness of each qubit to be a 0 or 1 assuming a tensor product structure for the output. The method is valid only when the readout errors are not correlated.
 
@@ -214,7 +214,7 @@ result_index = majority_vote(noise_matrices, observed_prob).argmax()
 print(f"mitigated solution index: {result_index}" ) # markdown-exec: hide
 ```
 
-### Model free mitigation
+## Model free mitigation
 
 You can perform the mitigation without a `quantum model` if you have sampled results from previous executions. This eliminates the need to reinitialize the circuit and sample again. Instead, you can directly apply the mitigation method to the existing data. To do this, you need to insert the `samples` at your `options` when initializing the `Mitigations` class.
 
@@ -249,7 +249,7 @@ print(f"Mitigates samples: {mitigated_samples_opt}") # markdown-exec: hide
 
 ```
 
-### Twirl mitigation
+## Twirl mitigation
 
 This protocol makes use of all possible so-called twirl operations to average out the effect of readout errors into an effective scaling. The twirl operation consists of using bit flip operators before and after the measurement [^5]. The number of twirl operations can be reduced through random sampling with the `twirl_samples` option. The method is exact in that it requires no calibration which might be prone to modelling errors.
 

@@ -9,7 +9,8 @@ nav:
 
   - Measurement Methods:
     - measurements/index.md
-    - measurements/shadow_tomography.md
+    - measurements/classical_shadow.md
+    - measurements/robust_shadow.md
 
 theme:
   name: material

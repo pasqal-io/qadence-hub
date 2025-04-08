@@ -5,13 +5,15 @@ This repository contains multiple modular Python packages developed for **Qadenc
 
 ## Included Packages
 
-- [**qadence-protocols**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-protocols): Quantum mitigation and measurement workflows
+- [**qadence-mitigations**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-mitigations): Quantum error mitigation techniques
+- [**qadence-measurements**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-measurements): Quantum output measurement methods
 - [**qadence-libs**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-libs): Foundational quantum utilities library
 - **qadence-models**: Quantum constructors for various blocks and ansätze.
 
 ## Module Docs
 
-- [qadence-protocols documentation](https://pasqal-io.github.io/qadence-hub/qadence-protocols/latest/)
+- [qadence-mitigations documentation](https://pasqal-io.github.io/qadence-hub/qadence-mitigations/latest/)
+- [qadence-measurements documentation](https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/)
 - [qadence-libs documentation](https://pasqal-io.github.io/qadence-hub/qadence-libs/latest/)
 - [qadence-models documentation]
 
@@ -26,13 +28,14 @@ This repository contains multiple modular Python packages developed for **Qadenc
 This repository follows a modular monorepo layout.
 
     qadence-hub/
-    ├── qadence-protocols/          # Qadence-protocols implementations
+    ├── qadence-measurements/       # Qadence-measurements implementations
+    ├── qadence-mitigations/        # Qadence-mitigations implementations
     ├── qadence-libs/               # Qadence-lib libraries
-    ├── docs/                            # Root documentation site
-    ├── pyproject.toml                   # Project configuration (Hatch-based)
-    └── .github/workflows/               # CI/CD pipelines (tests, docs, lint)
+    ├── docs/                       # Root documentation site
+    ├── pyproject.toml              # Project configuration (Hatch-based)
+    └── .github/workflows/          # CI/CD pipelines (tests, docs, lint)
 
-Each module (e.g., `qadence-libs`, `qadence-protocols`) is independently versioned and will be published to PyPI.
+Each module is independently versioned and will be published to PyPI.
 
 ## Directory Conventions
 

@@ -153,7 +153,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-protocols
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-measurements
 
   deploy_docs_mitigations:
     name: Deploy Qadence Mitigations docs (ubuntu)
@@ -187,7 +187,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-protocols
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-mitigations
 
   deploy_docs_libs:
     name: Deploy Qadence Libs docs (ubuntu)

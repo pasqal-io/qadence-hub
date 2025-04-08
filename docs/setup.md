@@ -7,9 +7,9 @@
 
 ## 2. Navigate to the directory for the project you want to work on:
 
-- **For protocols development**:
+- **For mitigations development**:
     ```
-    cd qadence-protocols
+    cd qadence-mitigations
     ```
 
 - **For libs development**:

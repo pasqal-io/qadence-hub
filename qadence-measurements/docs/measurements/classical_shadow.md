@@ -76,5 +76,3 @@ print(exp_reconstructed_state) # markdown-exec: hide
 [^2]: S. Aaronson. Shadow tomography of quantum states. In _Proceedings of the 50th Annual A ACM SIGACT Symposium on Theory of Computing_, STOC 2018, pages 325–338, New York, NY, USA, 2018. ACM
 
 [^3]: Aniket Rath. Probing entanglement on quantum platforms using randomized measurements. Physics \[physics\]. Université Grenoble Alpes \[2020-..\], 2023. English. ffNNT : 2023GRALY072ff. fftel-04523142
-
-

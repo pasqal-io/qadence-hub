@@ -30,7 +30,7 @@ from torch import tensor
 from qadence import hamiltonian_factory, BackendName, DiffMode, NoiseHandler
 from qadence import chain, kron, X, Z, QuantumCircuit, QuantumModel
 from qadence_measurements.protocols import Measurements
-from qadence_measurements.types import MeasurementProtocol
+from qadence_measurements.utils.types import MeasurementProtocol
 
 blocks = chain(
     kron(X(0), X(1)),
@@ -97,7 +97,7 @@ Along the same lines as the example before, estimating the expectation value usi
 
 ```python exec="on" source="material-block" session="measurements" result="json"
 # Classical shadows are defined up to some accuracy and confidence.
-from qadence_measurements.utils_shadow.data_acquisition import number_of_samples
+from qadence_measurements.utils.data_acquisition import number_of_samples
 
 shadow_options = {"accuracy": 0.1, "confidence": 0.1}
 N, K = number_of_samples(observable, shadow_options["accuracy"], shadow_options["confidence"])
@@ -139,7 +139,7 @@ Such a measurement data can be used directly for computing different quantities 
 state = shadow_measurement.reconstruct_state()
 
 # calculate expectations
-from qadence_measurements.utils_trace import expectation_trace
+from qadence_measurements.utils.utils_trace import expectation_trace
 exp_reconstructed_state = expectation_trace(state, observable)
 print(exp_reconstructed_state) # markdown-exec: hide
 ```

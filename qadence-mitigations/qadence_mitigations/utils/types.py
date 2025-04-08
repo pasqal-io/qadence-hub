@@ -1,7 +1,6 @@
 from __future__ import annotations
 from qadence_shared import StrEnum
 
-
 class ReadOutOptimization(StrEnum):
     # Basic inversion and maximum likelihood estimate
     MLE = "mle"

@@ -7,7 +7,7 @@ from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor
 
 from qadence_measurements.abstract import MeasurementManager
-from qadence_measurements.types import MeasurementData
+from qadence_measurements.utils.types import MeasurementData
 from qadence_shared import Protocol
 
 PROTOCOL_TO_MODULE = {

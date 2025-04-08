@@ -10,7 +10,7 @@ from torch import Tensor
 
 from qadence_measurements.abstract import MeasurementManager
 from qadence_measurements.protocols import MeasurementData
-from qadence_measurements.utils_tomography import (
+from qadence_measurements.utils.utils_tomography import (
     convert_samples_to_pauli_expectation,
     iterate_pauli_decomposition,
 )

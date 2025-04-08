@@ -8,14 +8,14 @@ from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor
 
 from qadence_measurements.shadow import ShadowManager
-from qadence_measurements.utils_shadow.data_acquisition import shadow_samples
-from qadence_measurements.utils_shadow.post_processing import (
+from qadence_measurements.utils.data_acquisition import shadow_samples
+from qadence_measurements.utils.post_processing import (
     compute_snapshots,
     expectation_estimations,
     global_robust_shadow_hamming,
     robust_local_shadow,
 )
-from qadence_measurements.types import MeasurementData
+from qadence_measurements.utils.types import MeasurementData
 
 
 class RobustShadowManager(ShadowManager):

@@ -16,23 +16,23 @@ from qadence.types import BackendName, DiffMode
 from torch import Tensor
 
 from qadence_measurements.protocols import Measurements
-from qadence_measurements.utils_shadow.data_acquisition import (
+from qadence_measurements.utils.data_acquisition import (
     _max_observable_weight,
     number_of_samples,
     shadow_samples,
 )
-from qadence_measurements.utils_shadow.post_processing import (
+from qadence_measurements.utils.post_processing import (
     expectation_estimations,
     local_shadow,
     robust_local_shadow,
 )
-from qadence_measurements.utils_shadow.unitaries import (
+from qadence_measurements.utils.unitaries import (
     P0_MATRIX,
     P1_MATRIX,
     UNITARY_TENSOR,
 )
-from qadence_measurements.types import MeasurementProtocol
-from qadence_measurements.utils_trace import expectation_trace
+from qadence_measurements.utils.types import MeasurementProtocol
+from qadence_measurements.utils.utils_trace import expectation_trace
 
 idmat = torch.eye(2, dtype=torch.complex128)
 

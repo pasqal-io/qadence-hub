@@ -18,8 +18,8 @@ from qadence.transpile.noise import set_noise
 from qadence.types import BackendName, Endianness, NoiseProtocol
 from torch import Tensor
 
-from qadence_measurements.utils_shadow.unitaries import UNITARY_TENSOR, pauli_rotations
-from qadence_measurements.types import MeasurementData
+from qadence_measurements.utils.unitaries import UNITARY_TENSOR, pauli_rotations
+from qadence_measurements.utils.types import MeasurementData
 
 
 batch_kron = torch.func.vmap(lambda x: reduce(torch.kron, x))

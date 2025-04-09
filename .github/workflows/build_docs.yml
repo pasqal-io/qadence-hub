@@ -16,7 +16,6 @@ concurrency:
 jobs:
 
   docs_hub:
-    if: false
     name: docs (qadence-hub)
     runs-on: ubuntu-latest
     defaults:
@@ -53,7 +52,6 @@ jobs:
 
 
   docs_measurements:
-    if: false
     name: docs (qadence-measurements)
     runs-on: ubuntu-latest
     defaults:
@@ -89,7 +87,6 @@ jobs:
           hatch -v run docs:build
 
   docs_mitigations:
-    if: false
     name: docs (qadence-mitigations)
     runs-on: ubuntu-latest
     defaults:
@@ -125,7 +122,6 @@ jobs:
           hatch -v run docs:build
 
   docs_libs:
-    if: false
     name: docs (qadence-libs)
     runs-on: ubuntu-latest
     defaults:

@@ -138,7 +138,7 @@ jobs:
 
   deploy_docs_hub:
     name: Deploy Qadence Hub docs (ubuntu)
-    if: startsWith(github.ref, 'refs/tags/v')
+    # if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     defaults:
       run:

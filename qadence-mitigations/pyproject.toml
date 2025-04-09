@@ -7,10 +7,15 @@ name = "qadence-mitigations"
 readme = "README.md"
 requires-python = ">=3.9,<3.14"
 license = {text = "Apache 2.0"}
-version = "0.0.1"
+version = "0.2.1"
 keywords = ["quantum"]
 authors = [
-  { name = "Sungwoo Ahn", email = "sungwoo.ahn@pasqal.com" },
+    { name = "Mario Dagrada", email = "mario.dagrada@pasqal.com" },
+    { name = "Roland Guichard", email = "roland.guichard@pasqal.com" },
+    { name = "Raja Selvarajan", email = "raja.selvarajan@pasqal.com" },
+    { name = "Gergana Velikova", email = "gergana.velikova@pasqal.com" },
+    { name = "Charles Moussa", email = "charles.moussa@pasqal.com" },
+    { name = "Sungwoo Ahn", email = "sungwoo.ahn@pasqal.com" }
 ]
 classifiers = [
   "License :: OSI Approved :: Apache Software License",

@@ -87,14 +87,21 @@ jobs:
 
 
 
-
-  deploy_docs_hub:
+  deploy_docs_all:
     name: Deploy Qadence Hub docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
+    # defaults:
+    #   run:
+    #     working-directory: .
+    strategy:
+      matrix:
+        project:
+          - .
+          - qadence-measurements
+          - qadence-mitigations
+      max-parallel: 1
+    
     steps:
       - name: Checkout Qadence hub
         uses: actions/checkout@v4
@@ -114,80 +121,135 @@ jobs:
           python-version: '3.10'
       - name: Install Hatch
         run: pip install hatch
-      - name: Deploy docs
+      # - name: Deploy docs hub
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git fetch origin gh-pages
+      #     hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+      # - name: Deploy docs measurements
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git fetch origin gh-pages
+      #     hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+      #   working-directory: qadence-measurements
+      # - name: Deploy docs mitigations
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git fetch origin gh-pages
+      #     hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+      #   working-directory: qadence-mitigations
+      - name: Deploy docs ${{ matrix.project }}
+        working-directory: ${{ matrix.project }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
 
-  deploy_docs_measurements:
-    name: Deploy Qadence Measurements docs (ubuntu)
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: measurements_ubuntu
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: qadence-measurements
-    steps:
-      - name: Checkout Qadence Measurements
-        uses: actions/checkout@v4
-      - name: Install JetBrains Mono font
-        run: |
-          sudo apt install -y wget unzip fontconfig
-          wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
-          unzip JetBrainsMono-2.304.zip -d JetBrainsMono
-          mkdir -p /usr/share/fonts/truetype/jetbrains
-          cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
-          fc-cache -f -v
-      - name: Install graphviz
-        run: sudo apt-get install -y graphviz
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-      - name: Install Hatch
-        run: pip install hatch
-      - name: Deploy docs
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-measurements
 
-  deploy_docs_mitigations:
-    name: Deploy Qadence Mitigations docs (ubuntu)
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: mitigations_ubuntu
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: qadence-mitigations
-    steps:
-      - name: Checkout Qadence Mitigations
-        uses: actions/checkout@v4
-      - name: Install JetBrains Mono font
-        run: |
-          sudo apt install -y wget unzip fontconfig
-          wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
-          unzip JetBrainsMono-2.304.zip -d JetBrainsMono
-          mkdir -p /usr/share/fonts/truetype/jetbrains
-          cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
-          fc-cache -f -v
-      - name: Install graphviz
-        run: sudo apt-get install -y graphviz
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-      - name: Install Hatch
-        run: pip install hatch
-      - name: Deploy docs
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-mitigations
+  # deploy_docs_hub:
+  #   name: Deploy Qadence Hub docs (ubuntu)
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: .
+  #   steps:
+  #     - name: Checkout Qadence hub
+  #       uses: actions/checkout@v4
+  #     - name: Install JetBrains Mono font
+  #       run: |
+  #         sudo apt install -y wget unzip fontconfig
+  #         wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+  #         unzip JetBrainsMono-2.304.zip -d JetBrainsMono
+  #         mkdir -p /usr/share/fonts/truetype/jetbrains
+  #         cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
+  #         fc-cache -f -v
+  #     - name: Install graphviz
+  #       run: sudo apt-get install -y graphviz
+  #     - name: Set up Python 3.10
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.10'
+  #     - name: Install Hatch
+  #       run: pip install hatch
+  #     - name: Deploy docs
+  #       run: |
+  #         git config user.name "GitHub Actions"
+  #         git config user.email "actions@github.com"
+  #         git fetch origin gh-pages
+  #         hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+
+  # deploy_docs_measurements:
+  #   name: Deploy Qadence Measurements docs (ubuntu)
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   needs: measurements_ubuntu
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: qadence-measurements
+  #   steps:
+  #     - name: Checkout Qadence Measurements
+  #       uses: actions/checkout@v4
+  #     - name: Install JetBrains Mono font
+  #       run: |
+  #         sudo apt install -y wget unzip fontconfig
+  #         wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+  #         unzip JetBrainsMono-2.304.zip -d JetBrainsMono
+  #         mkdir -p /usr/share/fonts/truetype/jetbrains
+  #         cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
+  #         fc-cache -f -v
+  #     - name: Install graphviz
+  #       run: sudo apt-get install -y graphviz
+  #     - name: Set up Python 3.10
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.10'
+  #     - name: Install Hatch
+  #       run: pip install hatch
+  #     - name: Deploy docs
+  #       run: |
+  #         git config user.name "GitHub Actions"
+  #         git config user.email "actions@github.com"
+  #         git fetch origin gh-pages
+  #         hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-measurements
+
+  # deploy_docs_mitigations:
+  #   name: Deploy Qadence Mitigations docs (ubuntu)
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   needs: mitigations_ubuntu
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: qadence-mitigations
+  #   steps:
+  #     - name: Checkout Qadence Mitigations
+  #       uses: actions/checkout@v4
+  #     - name: Install JetBrains Mono font
+  #       run: |
+  #         sudo apt install -y wget unzip fontconfig
+  #         wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+  #         unzip JetBrainsMono-2.304.zip -d JetBrainsMono
+  #         mkdir -p /usr/share/fonts/truetype/jetbrains
+  #         cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
+  #         fc-cache -f -v
+  #     - name: Install graphviz
+  #       run: sudo apt-get install -y graphviz
+  #     - name: Set up Python 3.10
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.10'
+  #     - name: Install Hatch
+  #       run: pip install hatch
+  #     - name: Deploy docs
+  #       run: |
+  #         git config user.name "GitHub Actions"
+  #         git config user.email "actions@github.com"
+  #         git fetch origin gh-pages
+  #         hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-mitigations
 
   deploy_docs_libs:
     name: Deploy Qadence Libs docs (ubuntu)

@@ -61,18 +61,18 @@ jobs:
       - name: Run fast tests
         run: hatch -v run test
 
-  libs_ubuntu:
-    name: Qadence Libs (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-libs/')
+  gradient_ubuntu:
+    name: Qadence Gradient (ubuntu)
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-gradient/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     defaults:
       run:
-        working-directory: qadence-libs
+        working-directory: qadence-gradient
     steps:
-      - name: Checkout Qadence libs
+      - name: Checkout Qadence gradient
         uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -189,16 +189,16 @@ jobs:
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-measurements
 
 
-  deploy_docs_libs:
-    name: Deploy Qadence Libs docs (ubuntu)
+  deploy_docs_gradient:
+    name: Deploy Qadence Gradient docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: libs_ubuntu
+    needs: gradient_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-libs
+        working-directory: qadence-gradient
     steps:
-      - name: Checkout Qadence Libs
+      - name: Checkout Qadence Gradient
         uses: actions/checkout@v4
       - name: Install JetBrains Mono font
         run: |
@@ -221,4 +221,4 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-libs
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-gradient

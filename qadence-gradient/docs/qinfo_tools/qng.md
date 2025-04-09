@@ -1,6 +1,6 @@
 # The Quantum Natural Gradient optimizer
 
-Qadence-libs provides a set of optimizers based on quantum information tools, in particular based on the Quantum Fisher Information[^1] (QFI). The Quantum Natural Gradient [^2] (QNG) is a gradient-based optimizer which uses the QFI matrix to better navigate the optimizer's descent to the minimum. The parameter update rule for the QNG optimizer is written as:
+Qadence-gradient provides a set of optimizers based on quantum information tools, in particular based on the Quantum Fisher Information[^1] (QFI). The Quantum Natural Gradient [^2] (QNG) is a gradient-based optimizer which uses the QFI matrix to better navigate the optimizer's descent to the minimum. The parameter update rule for the QNG optimizer is written as:
 
 $$
 \theta_{t+1} = \theta_t - \eta g^{-1}(\theta_t)\nabla \mathcal{L}(\theta_t)
@@ -12,7 +12,7 @@ $$
   F_{i j}(\theta)=-\left.2 \frac{\partial}{\partial \theta_i} \frac{\partial}{\partial \theta_j}\left|\left\langle\psi\left(\theta^{\prime}\right) \mid \psi(\theta)\right\rangle\right|^2\right|_{{\theta}^{\prime}=\theta}
 $$
 
-However, computing the above expression is a costly operation scaling quadratically with the number of parameters in the variational quantum circuit. It is thus usual to use approximate methods when dealing with the QFI matrix. Qadence-Libs provides a SPSA-based implementation of the Quantum Natural Gradient[^3]. The [SPSA](https://www.jhuapl.edu/spsa/) (Simultaneous Perturbation Stochastic Approximation) algorithm is a well known finite differences-based algorithm. QNG-SPSA constructs an iterative approximation to the QFI matrix with a constant number of circuit evaluations that does not scale with the number of parameters. Although the SPSA algorithm outputs a rough approximation of the QFI matrix, the QNG-SPSA has been proven to work well while being a very efficient method due to the constant overhead in circuit evaluations (only 6 extra evaluations per iteration).
+However, computing the above expression is a costly operation scaling quadratically with the number of parameters in the variational quantum circuit. It is thus usual to use approximate methods when dealing with the QFI matrix. Qadence-gradient provides a SPSA-based implementation of the Quantum Natural Gradient[^3]. The [SPSA](https://www.jhuapl.edu/spsa/) (Simultaneous Perturbation Stochastic Approximation) algorithm is a well known finite differences-based algorithm. QNG-SPSA constructs an iterative approximation to the QFI matrix with a constant number of circuit evaluations that does not scale with the number of parameters. Although the SPSA algorithm outputs a rough approximation of the QFI matrix, the QNG-SPSA has been proven to work well while being a very efficient method due to the constant overhead in circuit evaluations (only 6 extra evaluations per iteration).
 
 In this tutorial, we use the QNG and QNG-SPSA optimizers with the Quantum Circuit Learning algorithm, a variational quantum algorithm which uses Quantum Neural Networks as universal function approximators.
 
@@ -26,8 +26,8 @@ import matplotlib.pyplot as plt
 from qadence import QuantumCircuit, QNN, FeatureParameter
 from qadence import kron, tag, hea, RX, Z, hamiltonian_factory
 
-from qadence_libs.qinfo_tools import QuantumNaturalGradient
-from qadence_libs.types import FisherApproximation
+from qadence_gradient.qinfo_tools import QuantumNaturalGradient
+from qadence_gradient.types import FisherApproximation
 ```
 
 First, we prepare the Quantum Circuit Learning data. In this case we will fit a simple one-dimensional sin($x$) function:
@@ -113,7 +113,7 @@ for i in range(n_epochs_adam):
 ```
 
 ### QNG
-The way to initialize the `QuantumNaturalGradient` optimizer in `qadence-libs` is slightly different from other usual Torch optimizers. Normally, one needs to pass a `params` argument to the optimizer to specify which parameters of the model should be optimized. In the `QuantumNaturalGradient`, it is assumed that all *circuit* parameters are to be optimized, whereas the *non-circuit* parameters will not be optimized. By circuit parameters, we mean parameters that somehow affect the quantum gates of the circuit and therefore influence the final quantum state. Any parameters affecting the observable (such as ouput scaling or shifting) are not considered circuit parameters, as those parameters will not be included in the QFI matrix as they don't affect the final state of the circuit.
+The way to initialize the `QuantumNaturalGradient` optimizer in `qadence-gradient` is slightly different from other usual Torch optimizers. Normally, one needs to pass a `params` argument to the optimizer to specify which parameters of the model should be optimized. In the `QuantumNaturalGradient`, it is assumed that all *circuit* parameters are to be optimized, whereas the *non-circuit* parameters will not be optimized. By circuit parameters, we mean parameters that somehow affect the quantum gates of the circuit and therefore influence the final quantum state. Any parameters affecting the observable (such as ouput scaling or shifting) are not considered circuit parameters, as those parameters will not be included in the QFI matrix as they don't affect the final state of the circuit.
 
 The `QuantumNaturalGradient` constructor takes a qadence's `QuantumModel` as the 'model', and it will automatically identify its circuit and non-circuit parameters. The `approximation` argument defaults to the SPSA method, however the exact version of the QNG is also implemented and can be used for small circuits (beware of using the exact version for large circuits, as it scales badly). $\beta$ is a small constant added to the QFI matrix before inversion to ensure numerical stability,
 

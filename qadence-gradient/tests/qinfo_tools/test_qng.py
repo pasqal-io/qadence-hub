@@ -8,8 +8,8 @@ import torch
 from qadence import QuantumCircuit
 from torch import Tensor
 
-from qadence_libs.qinfo_tools import QuantumNaturalGradient
-from qadence_libs.types import FisherApproximation
+from qadence_gradient.qinfo_tools import QuantumNaturalGradient
+from qadence_gradient.types import FisherApproximation
 
 SEED = 42
 torch.manual_seed(SEED)

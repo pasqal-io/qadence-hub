@@ -1,4 +1,4 @@
-# Qadence Libs
+# Qadence Gradient
 
 This is a template Python project which can be used to bootstrap a new library in the Pasqal quantum software codebase.
 

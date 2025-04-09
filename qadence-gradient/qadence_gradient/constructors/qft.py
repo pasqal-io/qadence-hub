@@ -39,7 +39,7 @@ def qft(
 
     Examples:
         ```python exec="on" source="material-block" result="json"
-        from qadence_libs import qft
+        from qadence_gradient import qft
 
         n_qubits = 3
 

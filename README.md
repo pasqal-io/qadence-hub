@@ -16,7 +16,7 @@
 |------|-------------|
 | `qadence-measurements` | Quantum measurement APIs |
 | `qadence-mitigations` | Quantum mitigation APIs |
-| `qadence-libs` | Quantum utility libraries |
+| `qadence-gradient` | Quantum gradient utility libraries |
 
 
 ## Contributing

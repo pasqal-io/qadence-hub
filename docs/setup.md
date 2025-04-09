@@ -12,9 +12,9 @@
     cd qadence-mitigations
     ```
 
-- **For libs development**:
+- **For gradient development**:
     ```
-    cd qadence-libs
+    cd qadence-gradient
     ```
 
 ## 3. Enter the Hatch environment

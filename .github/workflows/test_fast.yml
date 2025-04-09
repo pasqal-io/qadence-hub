@@ -101,7 +101,7 @@ jobs:
           - qadence-measurements
           - qadence-mitigations
       max-parallel: 1
-    
+
     steps:
       - name: Checkout Qadence hub
         uses: actions/checkout@v4

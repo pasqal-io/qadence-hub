@@ -147,6 +147,8 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
+          git pull --rebase origin gh-pages || true
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
 
 

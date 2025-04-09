@@ -94,9 +94,22 @@ jobs:
     name: Deploy Qadence Hub docs (ubuntu)
     # if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project:
+          - .
+          - qadence-measurements
+          - qadence-mitigations
+      max-parallel: 1
+
     defaults:
       run:
-        working-directory: .
+        working-directory: ${{ matrix.project }}
+
+    # defaults:
+    #   run:
+    #     working-directory: .
     # strategy:
     #   matrix:
     #     project:
@@ -124,32 +137,14 @@ jobs:
           python-version: '3.10'
       - name: Install Hatch
         run: pip install hatch
-      - name: Deploy docs hub
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
-      - name: Deploy docs measurements
-        working-directory: qadence-measurements
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git fetch origin gh-pages
-          git checkout gh-pages || git checkout --orphan gh-pages
-          git pull --rebase origin gh-pages || true
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
-      - name: Deploy docs mitigations
-        working-directory: qadence-mitigations
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git fetch origin gh-pages
-          git checkout gh-pages || git checkout --orphan gh-pages
-          git pull --rebase origin gh-pages || true
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
-      # - name: Deploy docs ${{ matrix.project }}
-      #   working-directory: ${{ matrix.project }}
+      # - name: Deploy docs hub
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git fetch origin gh-pages
+      #     hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+      # - name: Deploy docs measurements
+      #   working-directory: qadence-measurements
       #   run: |
       #     git config user.name "GitHub Actions"
       #     git config user.email "actions@github.com"
@@ -157,6 +152,23 @@ jobs:
       #     git checkout gh-pages || git checkout --orphan gh-pages
       #     git pull --rebase origin gh-pages || true
       #     hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+      # - name: Deploy docs mitigations
+      #   working-directory: qadence-mitigations
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git fetch origin gh-pages
+      #     git checkout gh-pages || git checkout --orphan gh-pages
+      #     git pull --rebase origin gh-pages || true
+      #     hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
+      - name: Deploy docs ${{ matrix.project }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git fetch origin gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
+          git pull --rebase origin gh-pages || true
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
 
 
   # deploy_docs_hub:

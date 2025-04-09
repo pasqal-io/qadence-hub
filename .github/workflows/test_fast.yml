@@ -19,7 +19,7 @@ jobs:
 
   measurements_ubuntu:
     name: Qadence Measurements (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurements/')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurements/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -41,7 +41,7 @@ jobs:
 
   mitigations_ubuntu:
     name: Qadence Mitigations (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigations/')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigations/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -63,7 +63,7 @@ jobs:
 
   gradient_ubuntu:
     name: Qadence Gradient (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-gradient/')
+    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-gradient/')
     runs-on: ubuntu-latest
     strategy:
       matrix:

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/main/</loc>
+         <lastmod>2025-04-09</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/main/CODE_OF_CONDUCT/</loc>
+         <lastmod>2025-04-09</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/main/CONTRIBUTING/</loc>
+         <lastmod>2025-04-09</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/main/measurements/</loc>
+         <lastmod>2025-04-09</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/main/measurements/classical_shadow/</loc>
+         <lastmod>2025-04-09</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/main/measurements/robust_shadow/</loc>
+         <lastmod>2025-04-09</lastmod>
+    </url>
+</urlset>

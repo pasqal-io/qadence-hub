@@ -10,7 +10,7 @@ from qadence.parameters import FeatureParameter, Parameter, VariationalParameter
 from qadence.types import PI, BasisSet, ReuploadScaling, TParameter
 from sympy import Basic
 
-from qadence_libs.constructors.feature_maps import (
+from qadence_gradient.constructors.feature_maps import (
     fm_parameter_func,
     fm_parameter_scaling,
 )

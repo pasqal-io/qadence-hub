@@ -7,14 +7,14 @@ This repository contains multiple modular Python packages developed for **Qadenc
 
 - [**qadence-mitigations**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-mitigations): Quantum error mitigation techniques
 - [**qadence-measurements**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-measurements): Quantum output measurement methods
-- [**qadence-libs**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-libs): Foundational quantum utilities library
+- [**qadence-gradient**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-gradient): Foundational quantum gradient utilities library
 - **qadence-models**: Quantum constructors for various blocks and ansätze.
 
 ## Module Docs
 
 - [qadence-mitigations documentation](https://pasqal-io.github.io/qadence-hub/qadence-mitigations/latest/)
 - [qadence-measurements documentation](https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/)
-- [qadence-libs documentation](https://pasqal-io.github.io/qadence-hub/qadence-libs/latest/)
+- [qadence-gradient documentation](https://pasqal-io.github.io/qadence-hub/qadence-gradient/latest/)
 - [qadence-models documentation]
 
 ## Development Resources
@@ -30,7 +30,7 @@ This repository follows a modular monorepo layout.
     qadence-hub/
     ├── qadence-measurements/       # Qadence-measurements implementations
     ├── qadence-mitigations/        # Qadence-mitigations implementations
-    ├── qadence-libs/               # Qadence-lib libraries
+    ├── qadence-gradient/           # Qadence-gradient libraries
     ├── docs/                       # Root documentation site
     ├── pyproject.toml              # Project configuration (Hatch-based)
     └── .github/workflows/          # CI/CD pipelines (tests, docs, lint)

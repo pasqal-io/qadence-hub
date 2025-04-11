@@ -121,12 +121,12 @@ jobs:
         run: |
           hatch -v run docs:build
 
-  docs_libs:
-    name: docs (qadence-libs)
+  docs_gradient:
+    name: docs (qadence-gradient)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-libs
+        working-directory: qadence-gradient
     steps:
       - name: Checkout
         uses: actions/checkout@v4

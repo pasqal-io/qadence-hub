@@ -1,11 +1,11 @@
-site_name: Qadence Libs
+site_name: Qadence Gradient
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
 nav:
   - Overview: index.md
-  - Quantum Information Tools:
-    - Quantum Natural Gradient: qinfo_tools/qng.md
+  - Quantum Natural Gradient:
+    - QNG and SPSA: qinfo_tools/qng.md
 
 theme:
   name: material
@@ -64,7 +64,7 @@ plugins:
           docstring_section_style: spacy
 
 watch:
-  - qadence_libs
+  - qadence_gradient
 
 extra:
  version:

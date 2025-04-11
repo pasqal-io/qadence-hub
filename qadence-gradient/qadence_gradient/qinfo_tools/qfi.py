@@ -6,8 +6,8 @@ from qadence.blocks import parameters, primitive_blocks
 from qadence.types import BackendName, DiffMode, OverlapMethod
 from torch import Tensor
 
-from qadence_libs.qinfo_tools.spsa import spsa_2gradient_step
-from qadence_libs.qinfo_tools.utils import hessian
+from qadence_gradient.qinfo_tools.spsa import spsa_2gradient_step
+from qadence_gradient.qinfo_tools.utils import hessian
 
 
 def _positive_semidefinite_sqrt(A: Tensor) -> Tensor:

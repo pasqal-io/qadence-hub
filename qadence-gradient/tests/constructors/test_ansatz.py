@@ -22,7 +22,7 @@ from qadence.blocks import AbstractBlock, has_duplicate_vparams
 from qadence.types import Strategy
 from torch import Size, allclose
 
-from qadence_libs.constructors import hea, identity_initialized_ansatz
+from qadence_gradient.constructors import hea, identity_initialized_ansatz
 
 
 @pytest.mark.parametrize("n_qubits", [2, 3])

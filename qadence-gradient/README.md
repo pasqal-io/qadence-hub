@@ -1,6 +1,6 @@
 # Qadence-Gradient
 
-**Qadence-Gradient** is a Python package that provides extra functionality for Qadence.
+**Qadence-Gradient** is a Python package of quantum optimizers and information geometry utilities
 
 [![Linting](https://github.com/pasqal-io/qadence-gradient/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-gradient/actions/workflows/lint.yml)
 [![Tests](https://github.com/pasqal-io/qadence-gradient/actions/workflows/test_fast.yml/badge.svg)](https://github.com/pasqal-io/qadence-gradient/actions/workflows/test.yml)

@@ -47,7 +47,6 @@ dependencies = [
   "isort",
   "ruff",
   "pydocstringformatter",
-  "perceptrain @ file:../../perceptrain"
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -84,7 +83,6 @@ dependencies = [
   "markdown-exec",
   "mkdocs-jupyter",
   "mike",
-  "perceptrain @ file:../../perceptrain"
 ]
 
 [tool.hatch.envs.docs.scripts]

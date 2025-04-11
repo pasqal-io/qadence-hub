@@ -5,13 +5,14 @@ from typing import Callable
 import pytest
 import sympy
 import torch
-from metrics_gradient import ATOL_64
+from tests.metrics_gradient import ATOL_64
 from qadence.execution import expectation, run
 from qadence.operations import PHASE, RX, X, Z
 from qadence.parameters import FeatureParameter
 from qadence.types import PI, BasisSet, ReuploadScaling
 
 from qadence_gradient.constructors import exp_fourier_feature_map, feature_map
+from tests.conftest_gradient import *
 
 PARAM_DICT_0 = {
     "support": None,

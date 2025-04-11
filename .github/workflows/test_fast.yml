@@ -19,7 +19,7 @@ jobs:
 
   measurements_ubuntu:
     name: Qadence Measurements (ubuntu)
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurements/')
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurements/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -41,7 +41,7 @@ jobs:
 
   mitigations_ubuntu:
     name: Qadence Mitigations (ubuntu)
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigations/')
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigations/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -63,7 +63,7 @@ jobs:
 
   gradient_ubuntu:
     name: Qadence Gradient (ubuntu)
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-gradient/')
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-gradient/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -82,6 +82,30 @@ jobs:
         run: pip install hatch
       - name: Run fast tests
         run: hatch -v run test
+
+  models_ubuntu:
+    name: Qadence Models (ubuntu)
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-models/')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    defaults:
+      run:
+        working-directory: qadence-models
+    steps:
+      - name: Checkout Qadence gradient
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Hatch
+        run: pip install hatch
+      - name: Run fast tests
+        run: hatch -v run test
+
+
 
   deploy_docs_hub:
     name: Deploy Qadence Hub docs (ubuntu)
@@ -222,3 +246,37 @@ jobs:
           git config user.email "actions@github.com"
           git fetch origin gh-pages
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-gradient
+
+  deploy_models_gradient:
+    name: Deploy Qadence Models docs (ubuntu)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: models_ubuntu
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: qadence-models
+    steps:
+      - name: Checkout Qadence Models
+        uses: actions/checkout@v4
+      - name: Install JetBrains Mono font
+        run: |
+          sudo apt install -y wget unzip fontconfig
+          wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+          unzip JetBrainsMono-2.304.zip -d JetBrainsMono
+          mkdir -p /usr/share/fonts/truetype/jetbrains
+          cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
+          fc-cache -f -v
+      - name: Install graphviz
+        run: sudo apt-get install -y graphviz
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install Hatch
+        run: pip install hatch
+      - name: Deploy docs
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git fetch origin gh-pages
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-models

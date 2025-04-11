@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pytest
-from metrics_gradient import ATOL_64
+from tests.metrics_gradient import ATOL_64
 from qadence import (
     BackendName,
     Interaction,
@@ -15,6 +15,7 @@ from qadence.types import PI, Strategy
 from torch import Tensor, allclose, cdouble, exp, matmul, tensor, zeros
 
 from qadence_gradient.constructors import qft
+from tests.conftest_gradient import *
 
 
 def test_qft() -> None:

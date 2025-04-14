@@ -51,12 +51,12 @@ jobs:
           hatch -v run docs:build
 
 
-  docs_measurements:
-    name: docs (qadence-measurements)
+  docs_measurement:
+    name: docs (qadence-measurement)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-measurements
+        working-directory: qadence-measurement
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -86,12 +86,12 @@ jobs:
         run: |
           hatch -v run docs:build
 
-  docs_mitigations:
-    name: docs (qadence-mitigations)
+  docs_mitigation:
+    name: docs (qadence-mitigation)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-mitigations
+        working-directory: qadence-mitigation
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -156,12 +156,12 @@ jobs:
         run: |
           hatch -v run docs:build
 
-  docs_models:
-    name: docs (qadence-models)
+  docs_model:
+    name: docs (qadence-model)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-models
+        working-directory: qadence-model
     steps:
       - name: Checkout
         uses: actions/checkout@v4

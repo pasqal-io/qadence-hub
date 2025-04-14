@@ -17,18 +17,18 @@ concurrency:
 
 jobs:
 
-  measurements_ubuntu:
-    name: Qadence Measurements (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurements/')
+  measurement_ubuntu:
+    name: Qadence Measurement (ubuntu)
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurement/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     defaults:
       run:
-        working-directory: qadence-measurements
+        working-directory: qadence-measurement
     steps:
-      - name: Checkout Qadence Measurements
+      - name: Checkout Qadence Measurement
         uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -39,18 +39,18 @@ jobs:
       - name: Run fast tests
         run: hatch -v run test
 
-  mitigations_ubuntu:
-    name: Qadence Mitigations (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigations/')
+  mitigation_ubuntu:
+    name: Qadence Mitigation (ubuntu)
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigation/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     defaults:
       run:
-        working-directory: qadence-mitigations
+        working-directory: qadence-mitigation
     steps:
-      - name: Checkout Qadence Mitigations
+      - name: Checkout Qadence Mitigation
         uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -83,16 +83,16 @@ jobs:
       - name: Run fast tests
         run: hatch -v run test
 
-  models_ubuntu:
-    name: Qadence Models (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-models/')
+  model_ubuntu:
+    name: Qadence Model (ubuntu)
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-model/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     defaults:
       run:
-        working-directory: qadence-models
+        working-directory: qadence-model
     steps:
       - name: Checkout Qadence gradient
         uses: actions/checkout@v4
@@ -140,18 +140,18 @@ jobs:
           git fetch origin gh-pages
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases
 
-  deploy_docs_mitigations:
-    name: Deploy Qadence Mitigations docs (ubuntu)
+  deploy_docs_mitigation:
+    name: Deploy Qadence Mitigation docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
       - deploy_docs_hub
-      - mitigations_ubuntu
+      - mitigation_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-mitigations
+        working-directory: qadence-mitigation
     steps:
-      - name: Checkout Qadence Mitigations
+      - name: Checkout Qadence Mitigation
         uses: actions/checkout@v4
       - name: Install JetBrains Mono font
         run: |
@@ -174,20 +174,20 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-mitigations
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-mitigation
 
-  deploy_docs_measurements:
-    name: Deploy Qadence Measurements docs (ubuntu)
+  deploy_docs_measurement:
+    name: Deploy Qadence Measurement docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
-      - deploy_docs_mitigations
-      - measurements_ubuntu
+      - deploy_docs_mitigation
+      - measurement_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-measurements
+        working-directory: qadence-measurement
     steps:
-      - name: Checkout Qadence Measurements
+      - name: Checkout Qadence Measurement
         uses: actions/checkout@v4
       - name: Install JetBrains Mono font
         run: |
@@ -210,13 +210,15 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-measurements
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-measurement
 
 
   deploy_docs_gradient:
     name: Deploy Qadence Gradient docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: gradient_ubuntu
+    needs:
+      - deploy_docs_measurement
+      - gradient_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -247,16 +249,18 @@ jobs:
           git fetch origin gh-pages
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-gradient
 
-  deploy_models_gradient:
-    name: Deploy Qadence Models docs (ubuntu)
+  deploy_docs_model:
+    name: Deploy Qadence Model docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: models_ubuntu
+    needs:
+      - deploy_docs_gradient
+      - model_ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-models
+        working-directory: qadence-model
     steps:
-      - name: Checkout Qadence Models
+      - name: Checkout Qadence Model
         uses: actions/checkout@v4
       - name: Install JetBrains Mono font
         run: |
@@ -279,4 +283,4 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin gh-pages
-          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-models
+          hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-model

@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from dataclasses import dataclass
 from dataclasses import field as dataclass_field
-from qadence_shared import StrEnum
+from qadence_common import StrEnum
 
 import torch
 from torch import Tensor

@@ -18,7 +18,7 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import gmres
 from torch import Tensor
 
-from qadence_mitigations.utils.types import ReadOutOptimization
+from qadence_mitigations.types import ReadOutOptimization
 
 logger = get_logger(__name__)
 

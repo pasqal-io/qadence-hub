@@ -1,4 +1,4 @@
-from qadence_shared import Protocol
+from qadence_common import Protocol
 
 
 def test_protocol_to_dict() -> None:

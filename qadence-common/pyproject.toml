@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "qadence-shared"
+name = "qadence-common"
 requires-python = ">=3.9,<3.14"
 license = {text = "Apache 2.0"}
 version = "0.0.1"
@@ -48,14 +48,14 @@ dependencies = [
 ]
 
 [tool.hatch.envs.default.scripts]
-test = "pytest -n auto --cov-report lcov --cov-config=pyproject.toml --cov=qadence_shared --cov=tests --ignore=./tests/test_examples.py {args}"
+test = "pytest -n auto --cov-report lcov --cov-config=pyproject.toml --cov=qadence_common --cov=tests --ignore=./tests/test_examples.py {args}"
 test-examples = "pytest ./tests/test_examples.py {args}"
 no-cov = "cov --no-cov {args}"
 test-docs = "mkdocs build --clean --strict"
 test-all = "pytest -n auto {args}  && mkdocs build --clean --strict"
 
 [tool.pytest.ini_options]
-pythonpath = ["qadence_shared"]
+pythonpath = ["qadence_common"]
 testpaths = ["tests"]
 addopts = """-vvv"""
 xfail_strict = true
@@ -99,7 +99,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["qadence_shared"]
+packages = ["qadence_common"]
 
 [tool.coverage.run]
 branch = true

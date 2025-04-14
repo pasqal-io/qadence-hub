@@ -51,7 +51,7 @@ dependencies = [
   "isort",
   "ruff",
   "pydocstringformatter",
-  "qadence-shared @ file:../qadence-shared"
+  "qadence-common @ file:../qadence-common"
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -88,7 +88,7 @@ dependencies = [
   "markdown-exec",
   "mkdocs-jupyter",
   "mike",
-  "qadence-shared @ file:../qadence-shared"
+  "qadence-common @ file:../qadence-common"
 ]
 
 [tool.hatch.envs.docs.scripts]

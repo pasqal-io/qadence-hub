@@ -14,14 +14,10 @@
 
 | Name | Description |
 |------|-------------|
-| `qadence-measurements` | Interfaces for executing and analyzing quantum measurements
- |
-| `qadence-mitigations` | Tools for error mitigation in quantum circuit execution
- |
-| `qadence-gradient` | Quantum optimizers and information geometry utilities
- |
-| `qadence-models` | Quantum ML models built on variational quantum circuits
- |
+| `qadence-measurements` | Interfaces for executing and analyzing quantum measurements|
+| `qadence-mitigations` | Tools for error mitigation in quantum circuit execution|
+| `qadence-gradient` | Quantum optimizers and information geometry utilities|
+| `qadence-models` | Quantum ML models built on variational quantum circuits|
 
 ## Contributing
 

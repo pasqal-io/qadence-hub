@@ -144,7 +144,7 @@ jobs:
     name: Deploy Qadence Mitigation docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
-      - deploy_docs_hub
+      - deploy_docs_gradient
       - mitigation_ubuntu
     runs-on: ubuntu-latest
     defaults:
@@ -217,7 +217,7 @@ jobs:
     name: Deploy Qadence Gradient docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
-      - deploy_docs_measurement
+      - deploy_docs_model
       - gradient_ubuntu
     runs-on: ubuntu-latest
     defaults:
@@ -253,7 +253,7 @@ jobs:
     name: Deploy Qadence Model docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
-      - deploy_docs_gradient
+      - deploy_docs_hub
       - model_ubuntu
     runs-on: ubuntu-latest
     defaults:

@@ -9,7 +9,7 @@
 
 - **For mitigations development**:
     ```
-    cd qadence-mitigations
+    cd qadence-mitigation
     ```
 
 - **For gradient development**:

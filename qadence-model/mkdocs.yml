@@ -1,17 +1,11 @@
-site_name: Qadence Hub
-site_url: "https://pasqal-io.github.io/qadence-hub/latest"
+site_name: Qadence Model
+site_url: "https://pasqal-io.github.io/qadence-hub/qadence-model/latest"
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
-
 nav:
 
-  - Qadence Hub: index.md
-
-  - Development Resources:
-      - Setup: setup.md
-      - Test: test.md
-
+  - Qadence model: index.md
 
 theme:
   name: material
@@ -95,7 +89,4 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - qadence-measurement
-  - qadence-mitigation
-  - qadence-gradient
-  - qadence-model
+  - qadence_model

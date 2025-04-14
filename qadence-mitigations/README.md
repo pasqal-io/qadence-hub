@@ -1,6 +1,6 @@
 # Qadence-Mitigations
 
-**Qadence-Mitigations** is a Python package that provides error mitigation features for Qadence.
+**Qadence-Mitigations** is a Python package that provides error mitigation features for Qadence. **Mitigations** documentations is [here] (https://pasqal-io.github.io/qadence-hub/qadence-mitigations/latest/)
 
 [![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
 [![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test_fast.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)

@@ -1,6 +1,6 @@
 # Qadence-Measurements
 
-**Qadence-Measurements** is a Python package that provides measurement post-processing for Qadence.
+**Qadence-Measurements** is a Python package that provides measurement post-processing for Qadence. **Measurements** documentations is [here] (https://pasqal-io.github.io/qadence-hub/qadence-measurements/latest/)
 
 [![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
 [![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test_fast.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)

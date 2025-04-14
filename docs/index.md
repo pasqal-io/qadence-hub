@@ -8,7 +8,7 @@ This repository contains multiple modular Python packages developed for **Qadenc
 - [**qadence-mitigations**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-mitigations): Quantum error mitigation techniques
 - [**qadence-measurements**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-measurements): Quantum output measurement methods
 - [**qadence-gradient**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-gradient): Foundational quantum gradient utilities library
-- **qadence-models**(https://github.com/pasqal-io/qadence-hub/tree/main/qadence-models): Quantum constructors for various blocks and ansätze.
+- [**qadence-models**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-models): Quantum constructors for various blocks and ansätze.
 
 ## Module Docs
 

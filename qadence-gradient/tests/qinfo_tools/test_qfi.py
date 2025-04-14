@@ -9,6 +9,8 @@ from torch import Size, allclose
 
 from qadence_gradient.qinfo_tools import get_quantum_fisher, get_quantum_fisher_spsa
 from qadence_gradient.qinfo_tools.qfi import _positive_semidefinite_sqrt
+from tests.conftest_gradient import *
+
 
 SEED = 42
 torch.manual_seed(SEED)

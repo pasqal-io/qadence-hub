@@ -18,7 +18,7 @@ jobs:
             id-token: write
         defaults:
             run:
-                working-directory: qadence-gradient
+                working-directory: test-qgra
         steps:
         - name: Check out Gradient
           uses: actions/checkout@v4
@@ -41,7 +41,7 @@ jobs:
           timeout-minutes: 5
           run: |
             VERSION=${GITHUB_REF#refs/tags/v}
-            until pip download qadence-mitigation==$VERSION
+            until pip download test-qgra==$VERSION
             do
                 echo "Failed to download from PyPI, will wait for upload and retry."
                 sleep 1

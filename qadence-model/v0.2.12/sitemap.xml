@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/v0.2.12/</loc>
+         <lastmod>2025-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/v0.2.12/CODE_OF_CONDUCT/</loc>
+         <lastmod>2025-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/v0.2.12/CONTRIBUTING/</loc>
+         <lastmod>2025-04-16</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/v0.2.12/model/</loc>
+         <lastmod>2025-04-16</lastmod>
+    </url>
+</urlset>

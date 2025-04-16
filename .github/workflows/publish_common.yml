@@ -1,4 +1,4 @@
-name: Publish
+name: Publish qadence-common
 
 on:
   release:
@@ -10,16 +10,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  publish_pypi_gradient:
-    if: startsWith(github.ref_name, 'gradient-')
-    name: Publish test-qgra package to PyPI
+  publish_pypi_common:
+    if: startsWith(github.ref_name, 'common-')
+    name: Publish qadence-common package to PyPI
     runs-on: ubuntu-latest
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
     defaults:
       run:
-        working-directory: test-qgra
+        working-directory: qadence-common
     steps:
     - name: Check out Gradient
       uses: actions/checkout@v4
@@ -39,12 +39,12 @@ jobs:
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        packages-dir: test-qgra/dist
+        packages-dir: qadence-common/dist
     - name: Confirm deployment
       timeout-minutes: 5
       run: |
-        VERSION=${GITHUB_REF#refs/tags/v}
-        until pip download test-qgra==$VERSION
+        VERSION=$(echo "${GITHUB_REF}" | sed -E 's#refs/tags/.+-v##')
+        until pip download qadence-common==$VERSION
         do
             echo "Failed to download from PyPI, will wait for upload and retry."
             sleep 1

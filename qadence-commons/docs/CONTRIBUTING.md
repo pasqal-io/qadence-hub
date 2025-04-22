@@ -1,10 +1,10 @@
 # How to contribute
 
-We're grateful for your interest in participating in qadence-common. Please follow our guidelines to ensure a smooth contribution process.
+We're grateful for your interest in participating in qadence-commons. Please follow our guidelines to ensure a smooth contribution process.
 
 ## Reporting an issue or proposing a feature
 
-Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence-common**, feel free to create an issue on [qadence-hub's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
+Your course of action will depend on your objective, but generally, you should start by creating an issue. If you've discovered a bug or have a feature you'd like to see added to **qadence-commons**, feel free to create an issue on [qadence-hub's GitHub issue tracker](https://github.com/pasqal-io/qadence-hub/issues). Here are some steps to take:
 
 1. Quickly search the existing issues using relevant keywords to ensure your issue hasn't been addressed already.
 2. If your issue is not listed, create a new one. Try to be as detailed and clear as possible in your description.
@@ -14,7 +14,7 @@ Your course of action will depend on your objective, but generally, you should s
 
 ## Submitting a pull request
 
-We're excited that you're eager to contribute to qadence-common. To contribute, fork the `main` branch of qadence repository and once you are satisfied with your feature and all the tests pass create a [Pull Request](https://github.com/pasqal-io/qadence-hub/pulls).
+We're excited that you're eager to contribute to qadence-commons. To contribute, fork the `main` branch of qadence repository and once you are satisfied with your feature and all the tests pass create a [Pull Request](https://github.com/pasqal-io/qadence-hub/pulls).
 
 Here's the process for making a contribution:
 

@@ -32,6 +32,7 @@ This repository follows a modular monorepo layout.
     ├── qadence-mitigation/        # Tools for error mitigation in quantum circuit execution
     ├── qadence-gradient/           # Quantum optimizers and information geometry utilities
     ├── qadence-model/             # Quantum ML models built on variational quantum circuits
+    ├── qadence-commons/            # Qadence hub common library for subprojects
     ├── docs/                       # Root documentation site
     ├── pyproject.toml              # Project configuration (Hatch-based)
     └── .github/workflows/          # CI/CD pipelines (tests, docs, lint)

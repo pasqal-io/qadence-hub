@@ -1,11 +1,11 @@
-site_name: Qadence Common
-site_url: "https://pasqal-io.github.io/qadence-hub/qadence-common/latest"
+site_name: Qadence Commons
+site_url: "https://pasqal-io.github.io/qadence-hub/qadence-commons/latest"
 repo_url: "https://github.com/pasqal-io/qadence-hub.git"
 repo_name: "qadence-hub"
 
 nav:
 
-  - Qadence common: index.md
+  - Qadence commons: index.md
 
 theme:
   name: material
@@ -89,4 +89,4 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - qadence_common
+  - qadence_commons

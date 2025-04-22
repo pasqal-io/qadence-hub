@@ -1,6 +1,6 @@
-# Qadence Common
+# Qadence Commons
 
-Qadence Common is a Python package that provides shared libraries for qadence-hub.
+Qadence Commons is a Python package that provides shared libraries for qadence-hub.
 
 ## Pre-requisites
 
@@ -28,10 +28,10 @@ pyenv local 3.10
 
 ## Install from PyPi
 
-`qadence-common` is available on PyPi through `pip`.
+`qadence-commons` is available on PyPi through `pip`.
 
 ```bash
-pip install qadence-common
+pip install qadence-commons
 ```
 
 ## Install from source

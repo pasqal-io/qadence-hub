@@ -12,8 +12,8 @@
 
 ## 📦 Projects
 
-| Name | Description |
-|------|-------------|
+|  Name  | Description |
+|--------|-------------|
 | `qadence-measurement` | Interfaces for executing and analyzing quantum measurement|
 | `qadence-mitigation` | Tools for error mitigation in quantum circuit execution|
 | `qadence-gradient` | Quantum optimizers and information geometry utilities|

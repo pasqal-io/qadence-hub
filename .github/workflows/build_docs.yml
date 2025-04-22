@@ -191,12 +191,12 @@ jobs:
         run: |
           hatch -v run docs:build
 
-  docs_common:
-    name: docs (qadence-common)
+  docs_commons:
+    name: docs (qadence-commons)
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: qadence-common
+        working-directory: qadence-commons
     steps:
       - name: Checkout
         uses: actions/checkout@v4

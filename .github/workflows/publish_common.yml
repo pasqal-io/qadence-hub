@@ -10,16 +10,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  publish_pypi_common:
-    if: startsWith(github.ref_name, 'common-')
-    name: Publish qadence-common package to PyPI
+  publish_pypi_commons:
+    if: startsWith(github.ref_name, 'commons-')
+    name: Publish qadence-commons package to PyPI
     runs-on: ubuntu-latest
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
     defaults:
       run:
-        working-directory: qadence-common
+        working-directory: qadence-commons
     steps:
     - name: Check out Gradient
       uses: actions/checkout@v4
@@ -39,12 +39,12 @@ jobs:
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        packages-dir: qadence-common/dist
+        packages-dir: qadence-commons/dist
     - name: Confirm deployment
       timeout-minutes: 5
       run: |
         VERSION=$(echo "${GITHUB_REF}" | sed -E 's#refs/tags/.+-v##')
-        until pip download qadence-common==$VERSION
+        until pip download qadence-commons==$VERSION
         do
             echo "Failed to download from PyPI, will wait for upload and retry."
             sleep 1

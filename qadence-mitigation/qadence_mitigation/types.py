@@ -1,5 +1,5 @@
 from __future__ import annotations
-from qadence_common import StrEnum
+from qadence_commons import StrEnum
 
 
 class ReadOutOptimization(StrEnum):

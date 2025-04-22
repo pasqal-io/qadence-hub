@@ -8,7 +8,7 @@ from torch import Tensor
 
 from qadence_measurement.abstract import MeasurementManager
 from qadence_measurement.utils.types import MeasurementData
-from qadence_common import Protocol
+from qadence_commons import Protocol
 
 PROTOCOL_TO_MODULE = {
     "tomography": ("qadence_measurement.tomography", "Tomography"),

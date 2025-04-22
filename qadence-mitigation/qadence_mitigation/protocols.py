@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from qadence import NoiseHandler, QuantumModel
 from torch import Tensor
 
-from qadence_common import Protocol
+from qadence_commons import Protocol
 
 PROTOCOL_TO_MODULE = {
     "twirl": "qadence_mitigation.twirl",

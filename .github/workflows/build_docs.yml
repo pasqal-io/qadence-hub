@@ -1,13 +1,13 @@
 name: Documentation
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch: {}
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+#   workflow_dispatch: {}
 
 concurrency:
   group: docs-${{ github.head_ref || github.run_id }}

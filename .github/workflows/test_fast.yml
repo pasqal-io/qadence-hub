@@ -252,6 +252,7 @@ jobs:
     name: Deploy Qadence Commons docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
+      - commons_ubuntu
       - deploy_docs_hub
     runs-on: ubuntu-latest
     defaults:

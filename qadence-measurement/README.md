@@ -1,10 +1,10 @@
 # Qadence-Measurement
 
-**Qadence-Measurement** is a Python package that provides measurement post-processing for Qadence. **Measurement** documentations is [here](https://pasqal-io.github.io/qadence-measurement/qadence-measurement/latest/)
+**Qadence-Measurement** is a Python package that provides measurement post-processing for Qadence. **Measurement** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-measurement/qadence-measurement/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-measurement/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-measurement/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-measurement/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-measurement/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-measurement/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-measurement/latest)
+[![Linting](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/qadence-measurement/latest)
 [![Pypi](https://badge.fury.io/py/qadence-measurement.svg)](https://pypi.org/project/qadence-measurement/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -21,7 +21,7 @@ pip install qadence-measurement
 
 Before making a contribution, please review our [code of conduct](docs/CODE_OF_CONDUCT.md).
 
-- **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-measurement/issues).
+- **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-hub/issues).
 - **Developing in qadence:** To learn more about how to develop within `qadence-measurement`, please refer to [contributing guidelines](docs/CONTRIBUTING.md).
 
 ### Setting up qadence in development mode
@@ -47,17 +47,6 @@ install it from source using `pip`:
 python -m pip install -e .
 ```
 
-## Citation
-
-If you use Qadence-Measurement for a publication, we kindly ask you to cite our work using the following BibTex entry:
-
-<!-- ```latex
-@misc{qadence-protocols2024pasqal,
-  url = {https://github.com/pasqal-io/qadence-protocols},
-  title = {Qadence Protocols: {A}n {E}xperiment runner for Qadence.},
-  year = {2023}
-}
-``` -->
 
 ## License
 Qadence-Measurement is a free and open source software package, released under the Apache License, Version 2.0.

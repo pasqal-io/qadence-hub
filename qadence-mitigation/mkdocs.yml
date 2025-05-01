@@ -1,7 +1,7 @@
 site_name: Qadence Mitigation
-site_url: "https://pasqal-io.github.io/qadence-mitigation/latest"
-repo_url: "https://github.com/pasqal-io/qadence-mitigation.git"
-repo_name: "qadence-mitigation"
+site_url: "https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest"
+repo_url: "https://github.com/pasqal-io/qadence-hub.git"
+repo_name: "qadence-hub"
 
 nav:
 

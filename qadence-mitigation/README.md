@@ -1,10 +1,10 @@
 # Qadence-Mitigation
 
-**Qadence-Mitigation** is a Python package that provides error mitigation features for Qadence. **Mitigation** documentations is [here](https://pasqal-io.github.io/qadence-mitigation/latest/)
+**Qadence-Mitigation** is a Python package that provides error mitigation features for Qadence. **Mitigation** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-mitigation/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-mitigation/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-mitigation/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-mitigation/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-mitigation/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-mitigation/latest)
+[![Linting](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest)
 [![Pypi](https://badge.fury.io/py/qadence-mitigation.svg)](https://pypi.org/project/qadence-mitigation/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -21,7 +21,7 @@ pip install qadence-mitigation
 
 Before making a contribution, please review our [code of conduct](docs/CODE_OF_CONDUCT.md).
 
-- **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-mitigation/issues).
+- **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-hub/issues).
 - **Developing in qadence:** To learn more about how to develop within `qadence-mitigation`, please refer to [contributing guidelines](docs/CONTRIBUTING.md).
 
 ### Setting up qadence in development mode
@@ -47,17 +47,6 @@ install it from source using `pip`:
 python -m pip install -e .
 ```
 
-## Citation
-
-If you use Qadence-Mitigation for a publication, we kindly ask you to cite our work using the following BibTex entry:
-
-<!-- ```latex
-@misc{qadence-protocols2024pasqal,
-  url = {https://github.com/pasqal-io/qadence-protocols},
-  title = {Qadence Protocols: {A}n {E}xperiment runner for Qadence.},
-  year = {2023}
-}
-``` -->
 
 ## License
 Qadence-Mitigation is a free and open source software package, released under the Apache License, Version 2.0.

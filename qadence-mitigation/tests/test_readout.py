@@ -27,7 +27,7 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import gmres
 from scipy.stats import wasserstein_distance
 
-from qadence_mitigation.protocols import Mitigations
+from qadence_mitigation.protocol import Mitigations
 from qadence_mitigation.readout import (
     majority_vote,
     matrix_inv,

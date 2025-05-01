@@ -1,10 +1,10 @@
 # Qadence-Model
 
-**Qadence-Model** is a Python package that provides quantum models for quantum machine learning features in Qadence. **Model** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/)
+**Qadence-Model** is a Python package that provides quantum models for quantum machine learning features in Qadence. **Model** documentations is [here](https://pasqal-io.github.io/qadence-model/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test_fast.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-hub/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/latest)
+[![Linting](https://github.com/pasqal-io/qadence-model/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-model/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-model/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-model/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-model/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-model/latest)
 [![Pypi](https://badge.fury.io/py/qadence-model.svg)](https://pypi.org/project/qadence-model/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -21,12 +21,12 @@ pip install qadence-model
 
 Before making a contribution, please review our [code of conduct](docs/CODE_OF_CONDUCT.md).
 
-- **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-hub/issues).
+- **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-model/issues).
 - **Developing in qadence:** To learn more about how to develop within `qadence-model`, please refer to [contributing guidelines](docs/CONTRIBUTING.md).
 
 ### Setting up qadence in development mode
 
-We recommend to use the [`hatch`](https://hatch.pypa.io/latest/) environment manager to install `qadence_mitigations` from source:
+We recommend to use the [`hatch`](https://hatch.pypa.io/latest/) environment manager to install `qadence_model` from source:
 
 ```bash
 python -m pip install hatch

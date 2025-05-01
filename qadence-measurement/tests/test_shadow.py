@@ -15,7 +15,7 @@ from qadence.parameters import Parameter
 from qadence.types import BackendName, DiffMode
 from torch import Tensor
 
-from qadence_measurement.protocols import Measurements
+from qadence_measurement.protocol import Measurements
 from qadence_measurement.utils.data_acquisition import (
     _max_observable_weight,
     number_of_samples,

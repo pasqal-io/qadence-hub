@@ -4,10 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "qadence-mitigation"
+description = "Python package that provides error mitigation features for Qadence."
 readme = "README.md"
 requires-python = ">=3.9,<3.14"
 license = {text = "Apache 2.0"}
-version = "0.2.1"
+version = "0.0.1"
 keywords = ["quantum"]
 authors = [
     { name = "Mario Dagrada", email = "mario.dagrada@pasqal.com" },
@@ -31,6 +32,7 @@ classifiers = [
 dependencies = [
   "torch",
   "qadence[pulser, horqrux]",
+  "qadence-commons",
 ]
 
 [tool.hatch.metadata]
@@ -51,7 +53,6 @@ dependencies = [
   "isort",
   "ruff",
   "pydocstringformatter",
-  "qadence-common @ file:../qadence-common"
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -88,7 +89,6 @@ dependencies = [
   "markdown-exec",
   "mkdocs-jupyter",
   "mike",
-  "qadence-common @ file:../qadence-common"
 ]
 
 [tool.hatch.envs.docs.scripts]

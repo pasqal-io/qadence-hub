@@ -7,14 +7,14 @@ This repository contains multiple modular Python packages developed for **Qadenc
 
 - [**qadence-mitigation**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-mitigation): Quantum error mitigation techniques
 - [**qadence-measurement**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-measurement): Quantum output measurement methods
-- [**qadence-gradient**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-gradient): Foundational quantum gradient utilities library
+- [**qadence-commons**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-commons): Shared quantum utilities library in Qadence
 - [**qadence-model**](https://github.com/pasqal-io/qadence-hub/tree/main/qadence-model): Quantum constructors for various blocks and ansätze.
 
 ## Module Docs
 
 - [qadence-mitigation documentation](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest/)
 - [qadence-measurement documentation](https://pasqal-io.github.io/qadence-hub/qadence-measurement/latest/)
-- [qadence-gradient documentation](https://pasqal-io.github.io/qadence-hub/qadence-gradient/latest/)
+- [qadence-commons documentation](https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/)
 - [qadence-model documentation](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/)
 
 ## Development Resources
@@ -30,7 +30,7 @@ This repository follows a modular monorepo layout.
     qadence-hub/
     ├── qadence-measurement/       # Interfaces for executing and analyzing quantum measurement
     ├── qadence-mitigation/        # Tools for error mitigation in quantum circuit execution
-    ├── qadence-gradient/           # Quantum optimizers and information geometry utilities
+    ├── qadence-commons/           # Shared utility libraries for Qadence
     ├── qadence-model/             # Quantum ML models built on variational quantum circuits
     ├── docs/                       # Root documentation site
     ├── pyproject.toml              # Project configuration (Hatch-based)

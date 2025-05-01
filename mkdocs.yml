@@ -97,5 +97,5 @@ extra_javascript:
 watch:
   - qadence-measurement
   - qadence-mitigation
-  - qadence-gradient
+  - qadence-commons
   - qadence-model

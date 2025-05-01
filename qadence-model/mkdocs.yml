@@ -1,7 +1,7 @@
 site_name: Qadence Model
-site_url: "https://pasqal-io.github.io/qadence-hub/qadence-model/latest"
-repo_url: "https://github.com/pasqal-io/qadence-hub.git"
-repo_name: "qadence-hub"
+site_url: "https://pasqal-io.github.io/qadence-model/latest"
+repo_url: "https://github.com/pasqal-io/qadence-model.git"
+repo_name: "qadence-model"
 
 nav:
 

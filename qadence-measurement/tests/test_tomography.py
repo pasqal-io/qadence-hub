@@ -22,7 +22,7 @@ from qadence.parameters import Parameter
 from qadence.types import BackendName, DiffMode
 from torch import allclose, tensor
 
-from qadence_measurement.protocols import Measurements
+from qadence_measurement.protocol import Measurements
 from qadence_measurement.utils.utils_tomography import (
     empirical_average,
     get_counts,

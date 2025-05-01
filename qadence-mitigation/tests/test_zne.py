@@ -17,7 +17,7 @@ from qadence.operations import RY, Z, entangle
 from qadence.types import PI, BackendName, DiffMode, NoiseProtocol
 from torch import Tensor
 
-from qadence_mitigation.protocols import Mitigations
+from qadence_mitigation.protocol import Mitigations
 
 
 @pytest.mark.parametrize(

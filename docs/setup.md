@@ -12,9 +12,9 @@
     cd qadence-mitigation
     ```
 
-- **For gradient development**:
+- **For commons development**:
     ```
-    cd qadence-gradient
+    cd qadence-commons
     ```
 
 ## 3. Enter the Hatch environment

@@ -1,6 +1,6 @@
 # Qadence Measurement
 
-Qadence Measurement is a collection of measurement handling protocols when computing expectation values.
+Qadence Measurement is a Python package that provides shared libraries for qadence.
 
 ## Pre-requisites
 

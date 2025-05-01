@@ -7,7 +7,7 @@ from qadence import QuantumModel
 from qadence.blocks.abstract import AbstractBlock
 from torch import Tensor
 
-from qadence_measurement.abstract import MeasurementManager
+from qadence_measurement.manager import MeasurementManager
 from qadence_measurement.utils.data_acquisition import (
     number_of_samples,
     shadow_samples,

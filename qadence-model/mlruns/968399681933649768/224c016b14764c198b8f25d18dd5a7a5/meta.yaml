@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/sungwoo.ahn/Desktop/pasqal/codes/qadence-model/mlruns/968399681933649768/224c016b14764c198b8f25d18dd5a7a5/artifacts
+end_time: 1745930578587
+entry_point_name: ''
+experiment_id: '968399681933649768'
+lifecycle_stage: active
+run_id: 224c016b14764c198b8f25d18dd5a7a5
+run_name: b386efbb-d266-4760-8f3f-1b47cb1225b1
+run_uuid: 224c016b14764c198b8f25d18dd5a7a5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745930570730
+status: 3
+tags: []
+user_id: sungwoo.ahn

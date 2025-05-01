@@ -29,7 +29,7 @@ In Qadence, running a tomographical experiment is made simple by defining a `Mea
 from torch import tensor
 from qadence import hamiltonian_factory, BackendName, DiffMode, NoiseHandler
 from qadence import chain, kron, X, Z, QuantumCircuit, QuantumModel
-from qadence_measurement.protocols import Measurements
+from qadence_measurement.protocol import Measurements
 from qadence_measurement.utils.types import MeasurementProtocol
 
 blocks = chain(

@@ -117,7 +117,7 @@ We will first run vanilla shadows to reconstruct the density matrix representati
 
 
 ```python exec="on" source="material-block" session="shadow_tomo" result="json"
-from qadence_measurement.protocols import Measurements
+from qadence_measurement.protocol import Measurements
 from qadence_measurement.utils.types import MeasurementProtocol
 
 shadow_options = {"shadow_size": 10200, "shadow_medians": 6, "n_shots":1000}

@@ -8,8 +8,8 @@ from qadence.blocks.abstract import AbstractBlock
 from qadence.blocks.utils import unroll_block_with_scaling
 from torch import Tensor
 
-from qadence_measurement.abstract import MeasurementManager
-from qadence_measurement.protocols import MeasurementData
+from qadence_measurement.manager import MeasurementManager
+from qadence_measurement.protocol import MeasurementData
 from qadence_measurement.utils.utils_tomography import (
     convert_samples_to_pauli_expectation,
     iterate_pauli_decomposition,

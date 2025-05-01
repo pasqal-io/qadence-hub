@@ -4,13 +4,24 @@ build-backend = "hatchling.build"
 
 [project]
 name = "qadence-model"
+description = "Python package that provides quantum models for quantum machine learning features in Qadence."
 readme = "README.md"
 requires-python = ">=3.9,<3.14"
 license = {text = "Apache 2.0"}
-version = "0.2.1"
+version = "0.0.2"
 keywords = ["quantum"]
 authors = [
+    { name = "Mario Dagrada", email = "mario.dagrada@pasqal.com" },
+    { name = "Roland Guichard", email = "roland.guichard@pasqal.com" },
+    { name = "João Moutinho", email = "joao.moutinho@pasqal.com" },
+    { name = "Vincent Elfving", email = "vincent.elfving@pasqal.com" },
+    { name = "Dominik Seitz", email = "dominik.seitz@pasqal.com" },
+    { name = "Niklas Heim", email = "niklas.heim@pasqal.com" },
+    { name = "Ignacio Fernández Graña", email = "ignacio.fernandez-grana@pasqal.com" },
+    { name = "Manu Lahariya", email = "manu.lahariya@pasqal.com" },
+    { name = "Daniele Cucurachi", email = "daniele.cucurachi@pasqal.com" },
     { name = "Sungwoo Ahn", email = "sungwoo.ahn@pasqal.com" }
+
 ]
 classifiers = [
   "License :: OSI Approved :: Apache Software License",
@@ -26,7 +37,7 @@ classifiers = [
 dependencies = [
   "torch",
   "qadence[pulser, horqrux]",
-  # "perceptrain",
+  "perceptrain[mlflow]",
 ]
 
 [tool.hatch.metadata]

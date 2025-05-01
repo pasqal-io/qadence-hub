@@ -87,7 +87,7 @@ jobs:
         run: |
           hatch -v run docs:build
 
-  
+
 
   docs_mitigation:
     name: docs (qadence-mitigation)
@@ -199,5 +199,3 @@ jobs:
       - name: Build docs
         run: |
           hatch -v run docs:build
-
-  

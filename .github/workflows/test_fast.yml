@@ -290,5 +290,3 @@ jobs:
           git config user.email "actions@github.com"
           git fetch origin gh-pages
           hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-model
-
-  

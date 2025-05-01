@@ -12,4 +12,4 @@ on:
 jobs:
 
   temp_init:
-    uses: ./qadence-commons/.github/workflows/temp.yml
+    uses: ./qadence-commons/.github/workflows/temp_commons.yml

@@ -1,0 +1,8 @@
+name: Simple Action
+description: Just prints hello without parameters
+
+runs:
+  using: "composite"
+  steps:
+    - name: Say Hello
+      run: echo "Hello from composite action!"

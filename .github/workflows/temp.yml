@@ -12,4 +12,7 @@ on:
 jobs:
 
   temp_init:
-    uses: ./qadence-commons/.github/workflows/temp_commons.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./qadence-commons/.github/workflows/
+    # uses: ./qadence-commons/.github/workflows/temp_commons.yml@main

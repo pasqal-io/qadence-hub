@@ -30,3 +30,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Build documentation composite action
         uses: ./qadence-commons/actions/build_docs
+
+  docs_mitigation:
+    name: docs (qadence-mitigation)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build documentation composite action
+        uses: ./qadence-mitigation/actions/build_docs

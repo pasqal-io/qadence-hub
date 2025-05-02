@@ -17,17 +17,13 @@ concurrency:
 
 jobs:
 
-  commons_ubuntu:
+  test_commons_ubuntu:
     name: Qadence Commons (ubuntu)
     # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-commons/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
-        python-version: ["3.9", "3.10"]
-    # defaults:
-    #   run:
-    #     working-directory: qadence-commons
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,17 +31,22 @@ jobs:
         uses: ./qadence-commons/actions/test
         with:
           python-version: ${{ matrix.python-version }}
-    # steps:
-    #   - name: Checkout Qadence Commons
-    #     uses: actions/checkout@v4
-    #   - name: Set up Python ${{ matrix.python-version }}
-    #     uses: actions/setup-python@v5
-    #     with:
-    #       python-version: ${{ matrix.python-version }}
-    #   - name: Install Hatch
-    #     run: pip install hatch
-    #   - name: Run fast tests
-    #     run: hatch -v run test
+
+  test_mitigation_ubuntu:
+    name: Qadence Mitigation (ubuntu)
+    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigation/')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run test composite action
+        uses: ./qadence-mitigation/actions/test
+        with:
+          python-version: ${{ matrix.python-version }}
+
 
   # mitigation_ubuntu:
   #   name: Qadence Mitigation (ubuntu)

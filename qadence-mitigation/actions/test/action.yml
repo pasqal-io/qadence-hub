@@ -1,0 +1,23 @@
+name: Qadence Mitigation Test
+
+inputs:
+  python-version:
+    required: true
+    description: Python version for the test
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install Hatch
+      run: pip install hatch
+      shell: bash
+
+    - name: Run fast tests
+      run: hatch -v run test
+      shell: bash
+      working-directory: qadence-mitigation

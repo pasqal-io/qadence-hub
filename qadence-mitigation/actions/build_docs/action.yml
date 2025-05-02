@@ -27,3 +27,4 @@ runs:
       shell: bash
       run: |
         hatch -v run docs:build
+      working-directory: qadence-mitigation

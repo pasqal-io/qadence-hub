@@ -1,4 +1,4 @@
-name: Documentation
+name: Build Documentation
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch: {}
 
 concurrency:
-  group: docs-${{ github.head_ref || github.run_id }}
+  group: build-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:

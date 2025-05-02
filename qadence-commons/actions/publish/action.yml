@@ -21,7 +21,6 @@ runs:
       with:
         packages-dir: qadence-commons/dist
     - name: Confirm deployment
-      timeout-minutes: 5
       shell: bash
       run: |
         VERSION=$(echo "${GITHUB_REF}" | sed -E 's#refs/tags/.+-v##')

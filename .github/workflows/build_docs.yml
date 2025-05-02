@@ -28,5 +28,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run build docs commons
+      - name: Build documentation composite action
         uses: ./qadence-commons/actions/build_docs

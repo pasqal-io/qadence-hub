@@ -2,8 +2,6 @@ name: build_common_docs
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v4
     - name: Install JetBrains Mono font
       shell: bash
       run: |

@@ -1,0 +1,18 @@
+name: Tests
+
+jobs:
+
+  commons_ubuntu:
+    name: Qadence Commons (ubuntu)
+
+    steps:
+      - name: Checkout Qadence Commons
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Hatch
+        run: pip install hatch
+      - name: Run fast tests
+        run: hatch -v run test

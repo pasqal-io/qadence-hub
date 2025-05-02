@@ -17,6 +17,7 @@ runs:
       run: pip install hatch
       shell: bash
 
-    # - name: Run fast tests
-    #   run: hatch -v run test
-    #   shell: bash
+    - name: Run fast tests
+      run: hatch -v run test
+      shell: bash
+      working-directory: qadence-commons

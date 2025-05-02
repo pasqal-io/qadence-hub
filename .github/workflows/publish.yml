@@ -25,6 +25,8 @@ jobs:
         ref: ${{ github.ref }}
     - name: Run publish composite action
       uses: ./qadence-commons/actions/publish
+      with:
+        ref: ${{ github.ref }}
 
     # - name: Set up Python
     #   uses: actions/setup-python@v5

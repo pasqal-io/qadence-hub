@@ -11,6 +11,16 @@ concurrency:
 
 jobs:
 
+  deploy_docs_hub:
+    name: Deploy Qadence Hub docs (ubuntu)
+    if: startsWith(github.ref, 'refs/tags/hub-v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Qadence Hub
+        uses: actions/checkout@v4
+      - name: Run deploy composite action
+        uses: ./qadence-hub/actions/deploy_docs
+
   deploy_docs_commons:
     name: Deploy Qadence Commons docs (ubuntu)
     if: startsWith(github.ref, 'refs/tags/commons-v')
@@ -18,15 +28,35 @@ jobs:
     steps:
       - name: Checkout Qadence Commons
         uses: actions/checkout@v4
-      - name: Run test composite action
-        uses: ./qadence-commons/actions/tests
+      - name: Run deploy composite action
+        uses: ./qadence-commons/actions/deploy_docs
 
-  # deploy_docs_mitigation:
-  #   name: Deploy Qadence Mitigation docs (ubuntu)
-  #   if: startsWith(github.ref, 'refs/tags/v')
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Qadence Mitigation
-  #       uses: actions/checkout@v4
-  #     - name: Run test composite action
-  #       uses: ./qadence-mitigation/actions/test
+  deploy_docs_mitigation:
+    name: Deploy Qadence Mitigation docs (ubuntu)
+    if: startsWith(github.ref, 'refs/tags/mitigation-v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Qadence Mitigation
+        uses: actions/checkout@v4
+      - name: Run deploy composite action
+        uses: ./qadence-mitigation/actions/deploy_docs
+
+  deploy_docs_measurement:
+    name: Deploy Qadence Measurement docs (ubuntu)
+    if: startsWith(github.ref, 'refs/tags/measurement-v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Qadence Measurement
+        uses: actions/checkout@v4
+      - name: Run deploy composite action
+        uses: ./qadence-measurement/actions/deploy_docs
+
+  deploy_docs_model:
+    name: Deploy Qadence Model docs (ubuntu)
+    if: startsWith(github.ref, 'refs/tags/model-v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Qadence Model
+        uses: actions/checkout@v4
+      - name: Run deploy composite action
+        uses: ./qadence-model/actions/deploy_docs

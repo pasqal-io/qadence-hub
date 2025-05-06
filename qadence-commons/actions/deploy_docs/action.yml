@@ -1,4 +1,4 @@
-name: deploy_commons_docs
+name: Deploy Commons Documentation
 runs:
   using: "composite"
   steps:

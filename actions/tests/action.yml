@@ -1,4 +1,4 @@
-name: Test Qadence Commons
+name: Test Qadence Hub
 
 inputs:
   python-version:
@@ -20,4 +20,4 @@ runs:
     - name: Run tests
       run: hatch -v run test
       shell: bash
-      working-directory: qadence-commons
+      working-directory: .

@@ -1,19 +1,17 @@
-name: Build Mitigation Documentation
+name: Deploy Mitigation Documentation
 runs:
   using: "composite"
   steps:
     - name: Install JetBrains Mono font
       shell: bash
       run: |
-        sudo apt update
         sudo apt install -y wget unzip fontconfig
         wget https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
         unzip JetBrainsMono-2.304.zip -d JetBrainsMono
-        sudo mkdir -p /usr/share/fonts/truetype/jetbrains
-        sudo cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
+        mkdir -p /usr/share/fonts/truetype/jetbrains
+        cp JetBrainsMono/fonts/ttf/*.ttf /usr/share/fonts/truetype/jetbrains/
         fc-cache -f -v
     - name: Install graphviz
-      shell: bash
       run: sudo apt-get install -y graphviz
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
@@ -21,10 +19,12 @@ runs:
         python-version: '3.10'
     - name: Install Hatch
       shell: bash
-      run: |
-        pip install hatch
-    - name: Build docs
+      run: pip install hatch
+    - name: Deploy docs
       shell: bash
-      run: |
-        hatch -v run docs:build
       working-directory: qadence-mitigation
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git fetch origin gh-pages
+        hatch -v run docs:mike deploy ${{ github.ref_name }} latest --push --update-aliases --deploy-prefix qadence-mitigation

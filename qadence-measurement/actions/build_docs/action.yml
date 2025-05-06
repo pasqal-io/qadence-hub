@@ -1,4 +1,4 @@
-name: Build Mitigation Documentation
+name: Build Measurement Documentation
 runs:
   using: "composite"
   steps:
@@ -27,4 +27,4 @@ runs:
       shell: bash
       run: |
         hatch -v run docs:build
-      working-directory: qadence-mitigation
+      working-directory: qadence-measurement

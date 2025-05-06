@@ -1,4 +1,4 @@
-name: build_commons_docs
+name: Build Commons Documentation
 runs:
   using: "composite"
   steps:

@@ -1,4 +1,4 @@
-name: Qadence Mitigation Test
+name: Test Qadence Mitigation
 
 inputs:
   python-version:
@@ -17,7 +17,7 @@ runs:
       run: pip install hatch
       shell: bash
 
-    - name: Run fast tests
+    - name: Run tests
       run: hatch -v run test
       shell: bash
       working-directory: qadence-mitigation

@@ -15,12 +15,12 @@ concurrency:
 
 jobs:
 
-  # docs_hub:
-  #   name: docs (qadence-hub)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./qadence-hub/actions/build_docs
+  docs_hub:
+    name: docs (qadence-hub)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./qadence-hub/actions/build_docs
 
   docs_commons:
     name: docs (qadence-commons)
@@ -31,11 +31,29 @@ jobs:
       - name: Build documentation composite action
         uses: ./qadence-commons/actions/build_docs
 
-  # docs_mitigation:
-  #   name: docs (qadence-mitigation)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Build documentation composite action
-  #       uses: ./qadence-mitigation/actions/build_docs
+  docs_mitigation:
+    name: docs (qadence-mitigation)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build documentation composite action
+        uses: ./qadence-mitigation/actions/build_docs
+
+  docs_measurement:
+    name: docs (qadence-measurement)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build documentation composite action
+        uses: ./qadence-measurement/actions/build_docs
+
+  docs_model:
+    name: docs (qadence-model)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build documentation composite action
+        uses: ./qadence-model/actions/build_docs

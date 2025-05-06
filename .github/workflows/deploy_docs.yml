@@ -19,7 +19,7 @@ jobs:
       - name: Checkout Qadence Hub
         uses: actions/checkout@v4
       - name: Run deploy composite action
-        uses: ./qadence-hub/actions/deploy_docs
+        uses: ./actions/deploy_docs
 
   deploy_docs_commons:
     name: Deploy Qadence Commons docs (ubuntu)

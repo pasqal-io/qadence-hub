@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./qadence-hub/actions/build_docs
+      - uses: ./actions/build_docs
 
   docs_commons:
     name: docs (qadence-commons)

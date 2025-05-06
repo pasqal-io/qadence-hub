@@ -1,4 +1,4 @@
-name: build_common_docs
+name: build_commons_docs
 runs:
   using: "composite"
   steps:

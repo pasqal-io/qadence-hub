@@ -1,9 +1,9 @@
 name: Publish
 
-# on:
-#   release:
-#     types:
-#       [published]
+on:
+  release:
+    types:
+      [published]
 
 concurrency:
   group: publish-${{ github.head_ref || github.run_id }}

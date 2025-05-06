@@ -1,13 +1,13 @@
 name: Build Documentation
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-#   workflow_dispatch: {}
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
 
 concurrency:
   group: build-${{ github.head_ref || github.run_id }}
@@ -31,11 +31,11 @@ jobs:
       - name: Build documentation composite action
         uses: ./qadence-commons/actions/build_docs
 
-  docs_mitigation:
-    name: docs (qadence-mitigation)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build documentation composite action
-        uses: ./qadence-mitigation/actions/build_docs
+  # docs_mitigation:
+  #   name: docs (qadence-mitigation)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - name: Build documentation composite action
+  #       uses: ./qadence-mitigation/actions/build_docs

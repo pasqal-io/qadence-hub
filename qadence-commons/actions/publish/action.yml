@@ -13,7 +13,7 @@ runs:
         pip install hatch
     - name: Build and publish package
       shell: bash
-      working-directory: qadence-commons
+      # working-directory: qadence-commons
       run: |
         hatch build
     - name: Publish to PyPI

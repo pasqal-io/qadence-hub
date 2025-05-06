@@ -1,9 +1,9 @@
 name: Deploy documentation
 
-on:
-  release:
-    types:
-      [published]
+# on:
+#   release:
+#     types:
+#       [published]
 
 concurrency:
   group: deploy-${{ github.head_ref || github.run_id }}

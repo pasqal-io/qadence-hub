@@ -19,7 +19,7 @@ runs:
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        packages-dir: qadence-commons/dist
+        packages-dir: ./qadence-commons/dist
     - name: Confirm deployment
       shell: bash
       run: |

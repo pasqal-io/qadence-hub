@@ -5,7 +5,12 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Quantum natural gradient: qng.md
+  - Qadence Model: model/todo.md
+  # - Quantum Natural Gradient: model/qng.md
+  # - Quantum Neural Network: model/qnn.md
+  # - Quantum Convolutional Neural Network: model/qcnn.md
+  # - QNN Config: model/qnn_config.md
+
 
 theme:
   name: material

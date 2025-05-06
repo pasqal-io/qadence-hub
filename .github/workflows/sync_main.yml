@@ -23,13 +23,20 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-      - name: Fetch all branches
+      - name: Fetch target branch
         run: git fetch origin ${{ matrix.branch }}
 
-      - name: Checkout target branch
-        run: git checkout ${{ matrix.branch }}
-
-      - name: Merge main into target
+      - name: Create PR from main to ${{ matrix.branch }}
         run: |
-          git merge origin/main --no-edit || echo "Merge conflict on ${{ matrix.branch }}"
-          git push origin ${{ matrix.branch }}
+          existing_pr=$(gh pr list --base ${{ matrix.branch }} --head main --state open --json number --jq '.[0].number')
+          if [ -z "$existing_pr" ]; then
+            gh pr create \
+              --base ${{ matrix.branch }} \
+              --head main \
+              --title "Sync main → ${{ matrix.branch }}" \
+              --body "Auto-generated PR to sync updates from main."
+          else
+            echo "PR already exists: #$existing_pr"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

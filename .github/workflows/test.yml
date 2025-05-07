@@ -4,7 +4,13 @@ on:
   push:
     branches:
       - main
-  pull_request: {}
+  pull_request:
+    branches:
+      - main
+      - main-commons
+      - main-mitigation
+      - main-measurement
+      - main-model
   workflow_dispatch: {}
 
 concurrency:
@@ -35,7 +41,12 @@ jobs:
               - 'qadence-model/**'
 
   test_commons_ubuntu:
-    if: needs.changes.outputs.commons == 'true' || github.event_name == 'push'
+    if: ${{
+        needs.changes.outputs.commons == 'true' ||
+        github.event.pull_request.base.ref == 'main-commons' ||
+        github.event.pull_request.base.ref == 'main' ||
+        github.event_name == 'push'
+      }}
     needs: changes
     runs-on: ubuntu-latest
     strategy:
@@ -48,7 +59,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
   test_mitigation_ubuntu:
-    if: needs.changes.outputs.mitigation == 'true' || github.event_name == 'push'
+    if: ${{
+      needs.changes.outputs.mitigation == 'true' ||
+      github.event.pull_request.base.ref == 'main-mitigation' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
     needs: changes
     runs-on: ubuntu-latest
     strategy:
@@ -61,7 +77,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
   test_measurement_ubuntu:
-    if: needs.changes.outputs.measurement == 'true' || github.event_name == 'push'
+    if: ${{
+      needs.changes.outputs.measurement == 'true' ||
+      github.event.pull_request.base.ref == 'main-measurement' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
     needs: changes
     runs-on: ubuntu-latest
     strategy:
@@ -74,7 +95,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
   test_model_ubuntu:
-    if: needs.changes.outputs.model == 'true' || github.event_name == 'push'
+    if: ${{
+      needs.changes.outputs.model == 'true' ||
+      github.event.pull_request.base.ref == 'main-model' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
     needs: changes
     runs-on: ubuntu-latest
     strategy:

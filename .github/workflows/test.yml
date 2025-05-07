@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  pull_request: {}
   workflow_dispatch: {}
 
 concurrency:
@@ -14,63 +12,76 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      commons: ${{ steps.filter.outputs.commons }}
+      mitigation: ${{ steps.filter.outputs.mitigation }}
+      measurement: ${{ steps.filter.outputs.measurement }}
+      model: ${{ steps.filter.outputs.model }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            commons:
+              - 'qadence-commons/**'
+            mitigation:
+              - 'qadence-mitigation/**'
+            measurement:
+              - 'qadence-measurement/**'
+            model:
+              - 'qadence-model/**'
 
   test_commons_ubuntu:
-    name: Qadence Commons (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-commons/')
+    if: needs.changes.outputs.commons == 'true' || github.event_name == 'push'
+    needs: changes
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Run test composite action
-        uses: ./qadence-commons/actions/tests
+      - uses: actions/checkout@v4
+      - uses: ./qadence-commons/actions/tests
         with:
           python-version: ${{ matrix.python-version }}
 
   test_mitigation_ubuntu:
-    name: Qadence Mitigation (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-mitigation/')
+    if: needs.changes.outputs.mitigation == 'true' || github.event_name == 'push'
+    needs: changes
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Run test composite action
-        uses: ./qadence-mitigation/actions/tests
+      - uses: actions/checkout@v4
+      - uses: ./qadence-mitigation/actions/tests
         with:
           python-version: ${{ matrix.python-version }}
 
   test_measurement_ubuntu:
-    name: Qadence Measurement (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-measurement/')
+    if: needs.changes.outputs.measurement == 'true' || github.event_name == 'push'
+    needs: changes
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Run test composite action
-        uses: ./qadence-measurement/actions/tests
+      - uses: actions/checkout@v4
+      - uses: ./qadence-measurement/actions/tests
         with:
           python-version: ${{ matrix.python-version }}
 
   test_model_ubuntu:
-    name: Qadence Model (ubuntu)
-    # if: github.event_name == 'workflow_dispatch' || contains(join(github.event.commits.*.modified), 'qadence-model/')
+    if: needs.changes.outputs.model == 'true' || github.event_name == 'push'
+    needs: changes
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Run test composite action
-        uses: ./qadence-model/actions/tests
+      - uses: actions/checkout@v4
+      - uses: ./qadence-model/actions/tests
         with:
           python-version: ${{ matrix.python-version }}

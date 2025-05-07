@@ -4,9 +4,42 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
+  check-sub-mains:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [main-commons, main-mitigation, main-measurement, main-model]
+
+    steps:
+      - name: Checkout sub-main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Fetch target branch
+        run: git fetch origin ${{ matrix.target }}
+
+      - name: Test merge into ${{ matrix.target }}
+        id: test_merge
+        run: |
+          git checkout -b temp-merge origin/${{ matrix.target }}
+          git fetch origin ${{ github.head_ref }}
+          git merge origin/${{ github.head_ref }} --no-commit --no-ff || echo "::warning::Merge conflict with ${{ matrix.target }}"
+
+
   update-sub-branches:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     strategy:
       matrix:

@@ -7,6 +7,10 @@ on:
   pull_request:
     branches:
       - main
+      - main-commons
+      - main-mitigation
+      - main-measurement
+      - main-model
   workflow_dispatch: {}
 
 concurrency:
@@ -15,8 +19,40 @@ concurrency:
 
 jobs:
 
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      hub: ${{ steps.filter.outputs.hub }}
+      commons: ${{ steps.filter.outputs.commons }}
+      mitigation: ${{ steps.filter.outputs.mitigation }}
+      measurement: ${{ steps.filter.outputs.measurement }}
+      model: ${{ steps.filter.outputs.model }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            hub:
+              - 'docs/**'
+              - 'mkdocs.yml'
+            commons:
+              - 'qadence-commons/**'
+            mitigation:
+              - 'qadence-mitigation/**'
+            measurement:
+              - 'qadence-measurement/**'
+            model:
+              - 'qadence-model/**'
+
   docs_hub:
     name: docs (qadence-hub)
+    if: ${{
+      needs.changes.outputs.hub == 'true' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
+    needs: changes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,36 +60,56 @@ jobs:
 
   docs_commons:
     name: docs (qadence-commons)
+    if: ${{
+      needs.changes.outputs.commons == 'true' ||
+      github.event.pull_request.base.ref == 'main-commons' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
+    needs: changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build documentation composite action
-        uses: ./qadence-commons/actions/build_docs
+      - uses: actions/checkout@v4
+      - uses: ./qadence-commons/actions/build_docs
 
   docs_mitigation:
     name: docs (qadence-mitigation)
+    if: ${{
+      needs.changes.outputs.mitigation == 'true' ||
+      github.event.pull_request.base.ref == 'main-mitigation' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
+    needs: changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build documentation composite action
-        uses: ./qadence-mitigation/actions/build_docs
+      - uses: actions/checkout@v4
+      - uses: ./qadence-mitigation/actions/build_docs
 
   docs_measurement:
     name: docs (qadence-measurement)
+    if: ${{
+      needs.changes.outputs.measurement == 'true' ||
+      github.event.pull_request.base.ref == 'main-measurement' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
+    needs: changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build documentation composite action
-        uses: ./qadence-measurement/actions/build_docs
+      - uses: actions/checkout@v4
+      - uses: ./qadence-measurement/actions/build_docs
 
   docs_model:
     name: docs (qadence-model)
+    if: ${{
+      needs.changes.outputs.model == 'true' ||
+      github.event.pull_request.base.ref == 'main-model' ||
+      github.event.pull_request.base.ref == 'main' ||
+      github.event_name == 'push'
+      }}
+    needs: changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build documentation composite action
-        uses: ./qadence-model/actions/build_docs
+      - uses: actions/checkout@v4
+      - uses: ./qadence-model/actions/build_docs

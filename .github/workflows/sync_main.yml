@@ -1,0 +1,75 @@
+name: Update Sub-Main Branches
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-sub-mains:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [main-commons, main-mitigation, main-measurement, main-model]
+
+    steps:
+      - name: Checkout sub-main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Fetch target branch
+        run: git fetch origin ${{ matrix.target }}
+
+      - name: Test merge into ${{ matrix.target }}
+        id: test_merge
+        run: |
+          git checkout -b temp-merge origin/${{ matrix.target }}
+          git fetch origin ${{ github.head_ref }}
+          git merge origin/${{ github.head_ref }} --no-commit --no-ff || echo "::warning::Merge conflict with ${{ matrix.target }}"
+
+
+  update-sub-branches:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch: [main-commons, main-mitigation, main-measurement, main-model]
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Fetch target branch
+        run: git fetch origin ${{ matrix.branch }}
+
+      - name: Create PR from main to ${{ matrix.branch }}
+        run: |
+          existing_pr=$(gh pr list --base ${{ matrix.branch }} --head main --state open --json number --jq '.[0].number')
+          if [ -z "$existing_pr" ]; then
+            gh pr create \
+              --base ${{ matrix.branch }} \
+              --head main \
+              --title "Sync main → ${{ matrix.branch }}" \
+              --body "Auto-generated PR to sync updates from main."
+          else
+            echo "PR already exists: #$existing_pr"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

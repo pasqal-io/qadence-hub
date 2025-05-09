@@ -11,12 +11,10 @@
 
 ## Qadence hub structure
 
-insert figure of dependencies including qadence, pyqtorch and horqrux
+<!-- insert figure of dependencies including qadence, pyqtorch and horqrux -->
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./docs/extras/assets/qadence_arch.svg" width="75%">
-    <source media="(prefers-color-scheme: light)" srcset="./docs/extras/assets/qadence_arch.svg" width="75%">
     <img alt="Qadence Hub structure" src="./docs/assets/qadence_hub.svg" width="75%">
   </picture>
 <p align="center">

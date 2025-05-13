@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/model-v0.0.4/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/model-v0.0.4/CODE_OF_CONDUCT/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/model-v0.0.4/CONTRIBUTING/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/model-v0.0.4/model/qng/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-model/latest/model-v0.0.4/model/qnn_config/</loc>
+         <lastmod>2025-05-13</lastmod>
+    </url>
+</urlset>

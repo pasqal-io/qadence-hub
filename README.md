@@ -9,9 +9,7 @@
 [![Documentation](https://github.com/pasqal-io/qadence-hub/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/latest)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Qadence hub structure
-
-<!-- insert figure of dependencies including qadence, pyqtorch and horqrux -->
+## Qadence-Hub structure
 
 <p align="center">
   <picture>
@@ -27,6 +25,10 @@
 | `qadence-mitigation` | Tools for error mitigation in quantum circuit execution|
 | `qadence-measurement` | Interfaces for executing and analyzing quantum measurement|
 | `qadence-model` | Quantum ML models built on variational quantum circuits|
+
+## Developers Guide for Maintenance
+
+
 
 ## Publishing to PyPI
 

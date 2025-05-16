@@ -2,9 +2,9 @@
 
 **Qadence-Model** is a Python package that provides quantum models for quantum machine learning features in Qadence. **Model** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-hub/qadence-model/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-model/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-hub/qadence-model/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-model/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-hub/qadence-model/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/qadence-model/latest)
+[![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-hub/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/latest)
 [![Pypi](https://badge.fury.io/py/qadence-model.svg)](https://pypi.org/project/qadence-model/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 

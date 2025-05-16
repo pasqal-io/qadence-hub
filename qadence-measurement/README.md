@@ -2,9 +2,9 @@
 
 **Qadence-Measurement** is a Python package that provides measurement post-processing for Qadence. **Measurement** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-measurement/qadence-measurement/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-hub/qadence-measurement/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/qadence-measurement/latest)
+[![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-hub/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/latest)
 [![Pypi](https://badge.fury.io/py/qadence-measurement.svg)](https://pypi.org/project/qadence-measurement/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 

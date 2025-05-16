@@ -2,9 +2,9 @@
 
 **Qadence-Mitigation** is a Python package that provides error mitigation features for Qadence. **Mitigation** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-hub/qadence-mitigation/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest)
+[![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-hub/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/latest)
 [![Pypi](https://badge.fury.io/py/qadence-mitigation.svg)](https://pypi.org/project/qadence-mitigation/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 

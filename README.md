@@ -43,10 +43,10 @@ To work with qadence-hub, you should clone the entire GitHub repository and then
 
 ```shell
 git clone https://github.com/pasqal-io/qadence-hub.git
-cd qadence-model 
+cd qadence-model
 ```
 
-### Making Pull Request 
+### Making Pull Request
 
 If you’ve modified the code of a specific package, you should create a pull request targeting the `sub-main branch` of that package. Our branch structure manages each package through its corresponding `sub-main branch` before anything is merged into the `main branch`. Therefore, after cloning the repository, you should follow your previous workflow to create a local branch and push it—but your pull request target should be your `sub-main branch`, not `main`. We currently have four sub-main branches; `main-commons`, `main-mitigation`, `main-measurement`, and `main-model`.
 

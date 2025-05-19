@@ -33,7 +33,7 @@ Before making a contribution, please review our [code of conduct](docs/CODE_OF_C
 - **Submitting Issues:** To submit bug reports or feature requests, please use our [issue tracker](https://github.com/pasqal-io/qadence-hub/issues).
 - **Developing in qadence:** To learn more about how to develop within `qadence-hub`, please refer to [contributing guidelines](docs/contributing.md).
 
-We have structured `Qadence-Hub` as a monorepo that includes several internal packages. The `Qadence-Hub` repository serves as the manager that oversees the source code, documentation, and distribution of all these packages. However, the `Qadence-Hub` itself is not packaged as a standalone module. Each package that is intended to be used alongside `Qadence` is located within its own project folder under the hub repository.
+We have structured `qadence-hub` as a monorepo that includes several internal packages. The `qadence-hub` repository serves as the manager that oversees the source code, documentation, and distribution of all these packages. However, the `qadence-hub` itself is not packaged as a standalone module. Each package that is intended to be used alongside `qadence` is located within its own project folder under the hub repository.
 
 Therefore, to update an individual package rather than the Hub (root) level, please follow the steps below.
 

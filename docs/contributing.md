@@ -21,11 +21,11 @@ Therefore, to update an individual package rather than the Hub (root) level, ple
 
 ### Setup with downloading the whole git repository
 
-To work with qadence-hub, you should clone the entire GitHub repository and then access the individual projects. This approach is recommended for easier branch management, and cloning only a specific project is discouraged. After cloning the full repository, navigate to the desired project folder to run the Hatch environment or make code modifications. The example code snippet is like below:
+To work with `qadence-hub`, you should clone the entire GitHub repository and then access the individual projects. This approach is recommended for easier branch management, and cloning only a specific project is discouraged. After cloning the full repository, navigate to the desired project folder to run the Hatch environment or make code modifications. The example code snippet is like below:
 
 ```shell
 git clone https://github.com/pasqal-io/qadence-hub.git
-cd qadence-model
+cd qadence-model #(your package)
 ```
 
 ### Making Pull Request

@@ -26,7 +26,7 @@ Before making a contribution, please review our [code of conduct](docs/CODE_OF_C
 
 ### Setting up qadence in development mode
 
-We recommend to use the [`hatch`](https://hatch.pypa.io/latest/) environment manager to install `qadence_commons` from source:
+We recommend to use the [`hatch`](https://hatch.pypa.io/latest/) environment manager to install `qadence-commons` from source:
 
 ```bash
 python -m pip install hatch

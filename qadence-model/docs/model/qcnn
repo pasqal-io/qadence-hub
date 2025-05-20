@@ -91,6 +91,27 @@ model = qcnn_msg_passing(qcnn_circuit, dummy_target.shape[1])
 The training is performed as follows:
 
 ```python exec="on" source="material-block" session="qcnn"
+from qadence import RX, RZ, CZ, QCNN
+
+n_qubits = n_features
+hidden_depth = [1,1,1]
+operations = [RX, RZ, RX]
+entangler = CZ
+random_meas = True
+
+qcnn_circuit = QCNN(
+    n_inputs=n_qubits,
+    n_qubits=n_qubits,
+    depth=hidden_depth,
+    operations=operations,
+    entangler=entangler,
+    random_meas=random_meas,
+    is_corr=False,
+)
+
+model = qcnn_msg_passing(qcnn_circuit, dummy_target.shape[1])
+
+
 n_epochs = 100
 lr = 0.01
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)

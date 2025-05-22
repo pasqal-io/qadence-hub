@@ -2,9 +2,9 @@
 
 **Qadence-Commons** is a Python package that provides shared libraries for qadence. **Commons** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/)
 
-[![Linting](https://github.com/pasqal-io/qadence-hub/qadence-commons/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-commons/actions/workflows/lint.yml)
-[![Tests](https://github.com/pasqal-io/qadence-hub/qadence-commons/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/qadence-commons/actions/workflows/test.yml)
-[![Documentation](https://github.com/pasqal-io/qadence-hub/qadence-commons/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/qadence-commons/latest)
+[![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
+[![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)
+[![Documentation](https://github.com/pasqal-io/qadence-hub/actions/workflows/build_docs.yml/badge.svg)](https://pasqal-io.github.io/qadence-hub/latest)
 [![Pypi](https://badge.fury.io/py/qadence-commons.svg)](https://pypi.org/project/qadence-commons/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -26,7 +26,7 @@ Before making a contribution, please review our [code of conduct](docs/CODE_OF_C
 
 ### Setting up qadence in development mode
 
-We recommend to use the [`hatch`](https://hatch.pypa.io/latest/) environment manager to install `qadence_commons` from source:
+We recommend to use the [`hatch`](https://hatch.pypa.io/latest/) environment manager to install `qadence-commons` from source:
 
 ```bash
 python -m pip install hatch

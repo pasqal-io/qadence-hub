@@ -9,8 +9,8 @@ nav:
   - Qadence Hub: index.md
 
   - Development Resources:
-      - Setup: setup.md
-      - Test: test.md
+      - Setup: hub/setup.md
+      - Test: hub/test.md
 
 
 theme:
@@ -95,7 +95,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - qadence-measurement
-  - qadence-mitigation
   - qadence-commons
+  - qadence-mitigation
+  - qadence-measurement
   - qadence-model

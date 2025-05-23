@@ -43,7 +43,7 @@ To work with qadence-hub, you should clone the entire GitHub repository and then
 
 ```shell
 git clone https://github.com/pasqal-io/qadence-hub.git
-cd qadence-model
+cd qadence-hub/qadence-model
 ```
 
 ### Making Pull Request

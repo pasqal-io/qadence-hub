@@ -3,7 +3,7 @@ from __future__ import annotations
 import pytest
 import torch
 
-from qadence_model.constructors.qnn_model import QNN
+from qadence_model.models.qnn_model import QNN
 from perceptrain import DictDataLoader, TrainConfig, Trainer, to_dataloader
 from tests.conftest import *
 

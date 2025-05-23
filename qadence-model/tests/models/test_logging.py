@@ -19,9 +19,9 @@ from mlflow import MlflowClient
 from mlflow.entities import Run
 
 from qadence.types import ExperimentTrackingTool
-from qadence_model.constructors.qnn_model import QNN
 from qadence.model import QuantumModel
-from qadence_model.constructors.qnn_utils import rand_featureparameters
+from qadence_model.models.qnn_model import QNN
+from qadence_model.models.qnn_utils import rand_featureparameters
 
 from perceptrain import TrainConfig, Trainer
 from perceptrain.callbacks.writer_registry import BaseWriter

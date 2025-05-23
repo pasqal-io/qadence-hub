@@ -1,4 +1,4 @@
-In `qadence`, the `QNN` is a variational quantum model that can potentially take multi-dimensional input.
+In `qadence-model`, the `QNN` is a variational quantum model that can potentially take multi-dimensional input.
 
 The `QNN` class needs a circuit and a list of observables; the number of feature parameters in the input circuit determines the number of input features (i.e. the dimensionality of the classical data given as input) whereas the number of observables determines the number of outputs of the quantum neural network.
 
@@ -14,7 +14,8 @@ It can be used to create Hamiltonians with 2-qubit interactions and single-qubit
 For example, suppose we want to measure the Z operator:
 
 ```python exec="on" source="material-block" session="config" html="1"
-from qadence import create_observable, ObservableConfig, Z
+from qadence import ObservableConfig, Z
+from qadence_model.models import create_observable
 from qadence.draw import html_string # markdown-exec: hide
 
 observable_config = ObservableConfig(
@@ -34,7 +35,8 @@ print(html_string(observable)) # markdown-exec: hide
 Let us say we want to build a 4-qubit QNN that takes two inputs, namely, the $x$ and the $y$ coordinates of a point in the plane. We can use the `FeatureMapConfig` class to specify the feature map.
 
 ```python exec="on" source="material-block" session="config" html="1"
-from qadence import BasisSet, chain, create_fm_blocks, FeatureMapConfig, ReuploadScaling
+from qadence import BasisSet, chain, ReuploadScaling
+from qadence_model.models import create_fm_blocks, FeatureMapConfig
 from qadence.draw import html_string # markdown-exec: hide
 
 fm_config = FeatureMapConfig(
@@ -64,7 +66,8 @@ The next part of the QNN is the ansatz. We use `AnsatzConfig` class to specify t
 Let us say, we want to follow this feature map with 2 layers of hardware efficient ansatz.
 
 ```python exec="on" source="material-block" session="config" html="1"
-from qadence import AnsatzConfig, AnsatzType, create_ansatz, Strategy
+from qadence import AnsatzType, Strategy
+from qadence_model.models import AnsatzConfig, create_ansatz
 from qadence.draw import html_string # markdown-exec: hide
 
 ansatz_config = AnsatzConfig(
@@ -85,7 +88,8 @@ We have specified that the ansatz should have a depth of 2, and the ansatz type 
 To build the QNN, we can now use the `QNN` class as a `QuantumModel` subtype. In addition to the feature map, ansatz and the observable configs, we can also specify options such as the `backend`, `diff_mode`, etc.
 
 ```python exec="on" source="material-block" session="config" html="1"
-from qadence import BackendName, DiffMode, QNN, ObservableConfig, Z
+from qadence import BackendName, DiffMode, ObservableConfig, Z
+from qadence_model.models import QNN
 from qadence.draw import html_string # markdown-exec: hide
 
 observable_config = ObservableConfig(

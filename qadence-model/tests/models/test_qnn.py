@@ -16,8 +16,8 @@ from qadence.blocks import (
 from qadence.circuit import QuantumCircuit
 from qadence.constructors import hea, ising_hamiltonian, total_magnetization
 from qadence.constructors.hamiltonians import Interaction
-from qadence_model.constructors.qnn_config import AnsatzConfig, FeatureMapConfig
-from qadence_model.constructors.qnn_constructors import (
+from qadence_model.models.qnn_config import AnsatzConfig, FeatureMapConfig
+from qadence_model.models.qnn_constructors import (
     ObservableConfig,
     create_observable,
     create_ansatz,

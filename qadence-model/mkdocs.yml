@@ -5,9 +5,17 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Quantum Natural Gradient: model/qng.md
-  # - Quantum Convolutional Neural Network: model/qcnn.md
-  - QNN Config: model/qnn_config.md
+  - Variational quantum algorithms:
+    - model/index.md
+    - Configuring a QNN: model/qnn_config.md
+    - Quantum circuit learning: model/qcl.md
+    - Classification with QNN: model/classification.md
+    - Solving MaxCut with QAOA: model/qaoa.md
+    - Solving a 1D ODE: model/dqc_1d.md
+    # - QCNN model: model/qcnn.md (needs to be added after qadence QCNN release)
+
+  - Optimizers:
+    - Quantum Natural Gradient: model/qng.md
 
 
 theme:

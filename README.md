@@ -21,10 +21,10 @@
 
 | Name | Description |
 |------|-------------|
-| [`qadence-commons`](https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/) | Shared libraries for Qadence​|
-| [`qadence-mitigation`](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest/) | Tools for error mitigation in quantum circuit execution|
-| [`qadence-measurement`](https://pasqal-io.github.io/qadence-hub/qadence-measurement/latest/) | Interfaces for executing and analyzing quantum measurement|
-| [`qadence-model`](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/) | Quantum ML models built on variational quantum circuits|
+| `qadence-commons` | Shared libraries for Qadence [doc](https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/)​|
+| `qadence-mitigation` | Tools for error mitigation in quantum circuit execution [doc](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest/)|
+| `qadence-measurement` | Interfaces for executing and analyzing quantum measurement [doc](https://pasqal-io.github.io/qadence-hub/qadence-measurement/latest/)|
+| `qadence-model` | Quantum ML models built on variational quantum circuits [doc](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/)|
 
 ## Contribution Guide for Developers
 

@@ -1,7 +1,7 @@
 # Qadence-Hub
 
 
-**Qadence-Hub** is a Github monorepo that hosts multiple Python packages developed under the **Qadence** initiative. It is structured to support independent development, testing, and deployment of each quantum features while maintaining a unified development environment.
+**Qadence-Hub** is a Github monorepo that hosts multiple Python packages developed under the **Qadence** initiative. It is structured to support independent development, testing, and deployment of each quantum features while maintaining a unified development environment. **Qadence-Hub** documentations is [here](https://pasqal-io.github.io/qadence-hub/latest/)
 
 
 [![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
@@ -21,10 +21,10 @@
 
 | Name | Description |
 |------|-------------|
-| `qadence-commons` | Shared libraries for Qadence​|
-| `qadence-mitigation` | Tools for error mitigation in quantum circuit execution|
-| `qadence-measurement` | Interfaces for executing and analyzing quantum measurement|
-| `qadence-model` | Quantum ML models built on variational quantum circuits|
+| [`qadence-commons`](https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/) | Shared libraries for Qadence​|
+| [`qadence-mitigation`](https://pasqal-io.github.io/qadence-hub/qadence-mitigation/latest/) | Tools for error mitigation in quantum circuit execution|
+| [`qadence-measurement`](https://pasqal-io.github.io/qadence-hub/qadence-measurement/latest/) | Interfaces for executing and analyzing quantum measurement|
+| [`qadence-model`](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/) | Quantum ML models built on variational quantum circuits|
 
 ## Contribution Guide for Developers
 

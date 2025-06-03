@@ -10,7 +10,6 @@ from torch import Tensor
 
 from qadence_model.optimizers import QuantumNaturalGradient
 from qadence_model.types import FisherApproximation
-from tests.conftest import *
 
 SEED = 42
 torch.manual_seed(SEED)

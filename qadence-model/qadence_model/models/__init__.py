@@ -11,6 +11,8 @@ from .qnn_constructors import (
 from .qnn_model import QNN
 from .qcnn_model import QCNN
 
+from .parameters import get_parameters, set_parameters, num_parameters
+
 # Modules to be automatically added to the qadence namespace
 __all__ = [
     "FeatureMapConfig",
@@ -21,4 +23,7 @@ __all__ = [
     "build_qnn_from_configs",
     "QNN",
     "QCNN",
+    "get_parameters",
+    "set_parameters",
+    "num_parameters",
 ]

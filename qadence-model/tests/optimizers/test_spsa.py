@@ -9,6 +9,7 @@ from qadence import QNN, Overlap
 from torch import Size
 
 from qadence_model.optimizers.spsa import _shifted_overlap, spsa_2gradient_step
+from tests.conftest import *
 
 SEED = 42
 torch.manual_seed(SEED)

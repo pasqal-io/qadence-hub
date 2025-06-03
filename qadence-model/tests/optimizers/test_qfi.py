@@ -9,6 +9,7 @@ from torch import Size, allclose
 
 from qadence_model.optimizers import get_quantum_fisher, get_quantum_fisher_spsa
 from qadence_model.optimizers.qfi import _positive_semidefinite_sqrt
+from tests.conftest import *
 
 
 SEED = 42

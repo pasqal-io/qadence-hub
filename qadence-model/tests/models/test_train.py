@@ -5,7 +5,7 @@ import torch
 
 from qadence_model.models.qnn_model import QNN
 from perceptrain import DictDataLoader, TrainConfig, Trainer, to_dataloader
-
+from tests.conftest import *
 
 @pytest.mark.flaky(max_runs=10)
 def test_fit_sin_adjoint(BasicAdjointQNN: torch.nn.Module) -> None:

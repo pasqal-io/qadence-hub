@@ -12,7 +12,7 @@ nav:
     - Classification with QNN: model/classification.md
     - Solving MaxCut with QAOA: model/qaoa.md
     - Solving a 1D ODE: model/dqc_1d.md
-    # - QCNN model: model/qcnn.md (needs to be added after qadence QCNN release)
+    - QCNN model: model/qcnn.md
 
   - Optimizers:
     - Quantum Natural Gradient: model/qng.md

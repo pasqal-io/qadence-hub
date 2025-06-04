@@ -17,6 +17,12 @@ nav:
   - Optimizers:
     - Quantum Natural Gradient: model/qng.md
 
+  - API:
+    - QNN Config: api/qnn_config.md
+    - QNN Model: api/qnn_model.md
+    - QCNN Model: api/qcnn_model.md
+    - Parameters: api/parameter.md
+    - Constructors: api/constructor.md
 
 theme:
   name: material

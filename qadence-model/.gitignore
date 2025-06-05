@@ -52,3 +52,6 @@ site/
 
 # MlFlow
 mlruns/
+
+# log
+qml_logs/

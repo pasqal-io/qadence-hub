@@ -1,6 +1,6 @@
 # Qadence-Model
 
-**Qadence-Model** is a Python package that provides quantum models for quantum machine learning features in Qadence. **Model** documentations is [here](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/)
+**Qadence-Model** is a Python package that provides quantum models for quantum machine learning features in Qadence. **Model** documentation about QNN and optimizer is [here](https://pasqal-io.github.io/qadence-hub/qadence-model/latest/)
 
 [![Linting](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/lint.yml)
 [![Tests](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml/badge.svg)](https://github.com/pasqal-io/qadence-hub/actions/workflows/test.yml)

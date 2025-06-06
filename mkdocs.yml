@@ -6,15 +6,14 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Qadence Hub: index.md
+  - Hub Home: index.md
 
-  - Model: hub/model.md
-
-  - Mitigation: hub/mitigation.md
-
-  - Measurement: hub/measurement.md
-
-  - Commons: hub/commons.md
+  - Qadence Hub Packages:
+    - Qadence Hub Code Tree: hub/tree.md
+    - Qadence Commons: hub/commons.md
+    - Qadence Mitigation: hub/mitigation.md
+    - Qadence Measurement: hub/measurement.md
+    - Qadence Model: hub/model.md
 
   - Development Resources:
       - Setup: hub/setup.md

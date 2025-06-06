@@ -8,6 +8,14 @@ nav:
 
   - Qadence Hub: index.md
 
+  - Model: hub/model.md
+
+  - Mitigation: hub/mitigation.md
+
+  - Measurement: hub/measurement.md
+
+  - Commons: hub/commons.md
+
   - Development Resources:
       - Setup: hub/setup.md
       - Test: hub/test.md

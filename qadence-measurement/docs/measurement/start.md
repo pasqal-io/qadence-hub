@@ -1,7 +1,3 @@
-# Qadence Measurement
-
-Qadence Measurement is a Python package that provides shared libraries for qadence.
-
 ## Pre-requisites
 
 The library uses the following tools:

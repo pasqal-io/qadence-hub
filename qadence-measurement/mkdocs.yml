@@ -5,7 +5,7 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Qadence Measurement: home.md
+  - Qadence Measurement: measurement/home.md
 
   - Getting Started: measurement/start.md
 

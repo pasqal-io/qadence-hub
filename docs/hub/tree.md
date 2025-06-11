@@ -9,4 +9,4 @@ This repository follows a modular monorepo layout.
     ├── pyproject.toml              # Project configuration (Hatch-based)
     └── .github/workflows/          # CI/CD pipelines (tests, docs, lint)
 
-Each module is independently versioned and will be published to PyPI.
+Each module is independently versioned and published to PyPI.

@@ -15,7 +15,6 @@ nav:
     - QCNN model: model/contents/qcnn.md
 
   - Tutorials:
-    - Classification with QNN: model/tutorials/classification.md
     - Solving MaxCut with QAOA: model/tutorials/qaoa.md
     - Solving a 1D ODE: model/tutorials/dqc_1d.md
     - Quantum Circuit Learning: model/tutorials/qcl.md

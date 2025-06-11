@@ -4,6 +4,13 @@ Robust shadows [^2] were built upon the classical shadow scheme but have the par
 
 ```python exec="on" source="material-block" session="measurements" result="json"
 from qadence_measurement.calibration import zero_state_calibration
+
+# Classical shadows are defined up to some accuracy and confidence.
+from qadence_measurement.utils.data_acquisition import number_of_samples
+
+shadow_options = {"accuracy": 0.1, "confidence": 0.1}
+N, K = number_of_samples(observable, shadow_options["accuracy"], shadow_options["confidence"])
+
 # Calibration coefficients are by default 1/3
 calibration = zero_state_calibration(N, n_qubits=2, n_shots=100, backend=model.backend, noise=None)
 

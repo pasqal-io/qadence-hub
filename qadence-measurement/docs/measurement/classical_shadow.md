@@ -16,6 +16,32 @@ $$
 S(\rho, N) = \{ \hat{\rho}_1=\mathcal{M}^{-1}(U_1^\dagger |\hat{b}_1\rangle\langle \hat{b}_1|U_1),\cdots,\hat{\rho}_N=\mathcal{M}^{-1}(U_N^\dagger |\hat{b}_N\rangle\langle \hat{b}_N|U_N)\}
 $$
 
+
+```python exec="on" source="material-block" session="measurements" result="json"
+from torch import tensor
+from qadence import hamiltonian_factory, BackendName, DiffMode, NoiseHandler
+from qadence import chain, kron, X, Z, QuantumCircuit, QuantumModel
+from qadence_measurement.protocol import Measurements
+from qadence_measurement.utils.types import MeasurementProtocol
+
+blocks = chain(
+    kron(X(0), X(1)),
+    kron(Z(0), Z(1)),
+)
+
+# Create a circuit and an observable.
+circuit = QuantumCircuit(2, blocks)
+observable = hamiltonian_factory(2, detuning=Z)
+
+# Create a model.
+model = QuantumModel(
+    circuit=circuit,
+    observable=observable,
+    backend=BackendName.PYQTORCH,
+    diff_mode=DiffMode.GPSR,
+)
+```
+
 ## Running classical shadows
 
 Along the same lines as the example before, estimating the expectation value using classical shadows in Qadence only requires to pass the right set of parameters to the `Measurements` object:

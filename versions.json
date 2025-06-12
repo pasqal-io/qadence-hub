@@ -5,11 +5,16 @@
     "aliases": []
   },
   {
-    "version": "hub-v0.2.23",
-    "title": "hub-v0.2.23",
+    "version": "hub-v1.0.0",
+    "title": "hub-v1.0.0",
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "hub-v0.2.23",
+    "title": "hub-v0.2.23",
+    "aliases": []
   },
   {
     "version": "v0.2.12",

@@ -1,10 +1,15 @@
 [
   {
-    "version": "mitigation-v1.0.0",
-    "title": "mitigation-v1.0.0",
+    "version": "mitigation-v1.0.1",
+    "title": "mitigation-v1.0.1",
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "mitigation-v1.0.0",
+    "title": "mitigation-v1.0.0",
+    "aliases": []
   },
   {
     "version": "mitigation-v0.0.2",

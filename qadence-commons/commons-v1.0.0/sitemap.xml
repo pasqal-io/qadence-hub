@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/commons-v1.0.0/CODE_OF_CONDUCT/</loc>
+         <lastmod>2025-06-12</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/commons-v1.0.0/CONTRIBUTING/</loc>
+         <lastmod>2025-06-12</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/commons-v1.0.0/commons/content/</loc>
+         <lastmod>2025-06-12</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/commons-v1.0.0/commons/home/</loc>
+         <lastmod>2025-06-12</lastmod>
+    </url>
+    <url>
+         <loc>https://pasqal-io.github.io/qadence-hub/qadence-commons/latest/commons-v1.0.0/commons/start/</loc>
+         <lastmod>2025-06-12</lastmod>
+    </url>
+</urlset>

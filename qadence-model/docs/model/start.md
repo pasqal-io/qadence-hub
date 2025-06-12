@@ -1,7 +1,3 @@
-# Qadence Commons
-
-Qadence Commons is a Python package that provides shared libraries for qadence.
-
 ## Pre-requisites
 
 The library uses the following tools:
@@ -28,10 +24,10 @@ pyenv local 3.10
 
 ## Install from PyPi
 
-`qadence-commons` is available on PyPi through `pip`.
+`qadence-model` is available on PyPi through `pip`.
 
 ```bash
-pip install qadence-commons
+pip install qadence-model
 ```
 
 ## Install from source

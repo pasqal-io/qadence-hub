@@ -1,7 +1,3 @@
-# Qadence Measurement
-
-Qadence Measurement is a Python package that provides shared libraries for qadence.
-
 ## Pre-requisites
 
 The library uses the following tools:
@@ -28,10 +24,10 @@ pyenv local 3.10
 
 ## Install from PyPi
 
-`qadence-measurement` is available on PyPi through `pip`.
+`qadence-commons` is available on PyPi through `pip`.
 
 ```bash
-pip install qadence-measurement
+pip install qadence-commons
 ```
 
 ## Install from source

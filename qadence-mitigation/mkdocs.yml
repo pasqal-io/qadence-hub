@@ -5,10 +5,12 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Qadence Mitigation: index.md
+  - Qadence Mitigation: mitigation/home.md
 
-  - Mitigation Methods:
-    - mitigation/index.md
+  - Getting Started: mitigation/start.md
+
+  - Contents:
+    - mitigation/content.md
     - mitigation/readout_mitigation.md
     - mitigation/incoherent_error_mitigation.md
 

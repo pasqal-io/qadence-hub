@@ -1,6 +1,6 @@
-# Measurement protocols
+# Measurement methods
 
-Sample-based measurement protocols are fundamental tools for the prediction and estimation of a quantum state as the result of NISQ programs executions. Their resource efficient implementation is a current and active research field. Currently, quantum state tomography is implemented in qadence-measurement.
+Sample-based measurements techniques are fundamental tools for the prediction and estimation of a quantum state as the result of NISQ programs executions. Their resource efficient implementation is a current and active research field. Currently, quantum state tomography is implemented in qadence-measurement.
 
 ## Quantum state tomography
 

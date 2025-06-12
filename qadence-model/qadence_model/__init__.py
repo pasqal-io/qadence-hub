@@ -19,6 +19,9 @@ from .models import (
     build_qnn_from_configs,
     QNN,
     QCNN,
+    get_parameters,
+    set_parameters,
+    num_parameters,
 )
 
 from .optimizers import (
@@ -36,6 +39,9 @@ __all__ = [
     "build_qnn_from_configs",
     "QNN",
     "QCNN",
+    "get_parameters",
+    "set_parameters",
+    "num_parameters",
     "QuantumNaturalGradient",
     "get_quantum_fisher",
     "get_quantum_fisher_spsa",

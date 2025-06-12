@@ -5,18 +5,28 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Variational quantum algorithms:
-    - model/index.md
-    - Configuring a QNN: model/qnn_config.md
-    - Quantum circuit learning: model/qcl.md
-    - Classification with QNN: model/classification.md
-    - Solving MaxCut with QAOA: model/qaoa.md
-    - Solving a 1D ODE: model/dqc_1d.md
-    # - QCNN model: model/qcnn.md (needs to be added after qadence QCNN release)
+  - Qadence Model: model/home.md
 
-  - Optimizers:
-    - Quantum Natural Gradient: model/qng.md
+  - Getting Started: model/start.md
 
+  - Contents:
+    - Variational quantum algorithms: model/contents/content.md
+    - Configuring a QNN: model/contents/qnn_config.md
+    - QCNN model: model/contents/qcnn.md
+
+  - Tutorials:
+    - Solving MaxCut with QAOA: model/tutorials/qaoa.md
+    - Solving a 1D ODE: model/tutorials/dqc_1d.md
+    - Quantum Circuit Learning: model/tutorials/qcl.md
+    - Quantum Natural Gradient: model/tutorials/qng.md
+    - Introduction to Perceptrain: model/tutorials/perceptrain.md
+
+  - API:
+    - QNN Config: api/qnn_config.md
+    - QNN Model: api/qnn_model.md
+    - QCNN Model: api/qcnn_model.md
+    - Parameters: api/parameter.md
+    - Constructors: api/constructor.md
 
 theme:
   name: material

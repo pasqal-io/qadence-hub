@@ -5,7 +5,7 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Qadence Mitigation: mitigation/home.md
+  - Qadence Mitigation: index.md
 
   - Getting Started: mitigation/start.md
 

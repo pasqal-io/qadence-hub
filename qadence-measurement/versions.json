@@ -1,10 +1,15 @@
 [
   {
-    "version": "measurement-v0.0.4",
-    "title": "measurement-v0.0.4",
+    "version": "measurement-v1.0.1",
+    "title": "measurement-v1.0.1",
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "measurement-v0.0.4",
+    "title": "measurement-v0.0.4",
+    "aliases": []
   },
   {
     "version": "v0.2.12",

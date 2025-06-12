@@ -1,9 +1,14 @@
 [
   {
-    "version": "commons-v1.0.0",
-    "title": "commons-v1.0.0",
+    "version": "commons-v1.0.1",
+    "title": "commons-v1.0.1",
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "commons-v1.0.0",
+    "title": "commons-v1.0.0",
+    "aliases": []
   }
 ]

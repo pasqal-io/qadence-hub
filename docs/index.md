@@ -1,7 +1,7 @@
 # Qadence Hub Overview
 
 Welcome to the documentation for the **Qadence Hub**.
-This repository contains multiple modular Python packages developed for **Qadence** features.
+This repository contains multiple modular Python packages developed on top of **Qadence** features.
 
 ## Qadence Hub Structure
 

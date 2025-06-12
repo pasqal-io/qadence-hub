@@ -5,7 +5,7 @@ repo_name: "qadence-hub"
 
 nav:
 
-  - Qadence Commons: commons/home.md
+  - Qadence Commons: index.md
 
   - Getting Started: commons/start.md
 

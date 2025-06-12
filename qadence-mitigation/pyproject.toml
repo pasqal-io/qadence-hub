@@ -8,7 +8,7 @@ description = "Python package that provides error mitigation features for Qadenc
 readme = "README.md"
 requires-python = ">=3.9,<3.14"
 license = {text = "Apache 2.0"}
-version = "1.0.0"
+version = "1.0.1"
 keywords = ["quantum"]
 authors = [
     { name = "Mario Dagrada", email = "mario.dagrada@pasqal.com" },

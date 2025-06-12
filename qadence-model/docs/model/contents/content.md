@@ -88,6 +88,6 @@ print(f"First-order derivative w.r.t. the feature parameter: \n{dout}")
 
 ## References
 
-[^1] Schuld, Petruccione, Machine learning on Quantum Computers, Springer Nature (2021)
+[^1]: Schuld, Petruccione, Machine learning on Quantum Computers, Springer Nature (2021)
 
 [^2]: [Kyriienko et al., General quantum circuit differentiation rules](https://arxiv.org/abs/2108.01218)

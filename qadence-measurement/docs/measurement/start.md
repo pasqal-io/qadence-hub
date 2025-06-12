@@ -1,7 +1,3 @@
-# Qadence Model
-
-Qadence Model is a collection of features to enhance Qadence quantum machine learning features
-
 ## Pre-requisites
 
 The library uses the following tools:
@@ -28,10 +24,10 @@ pyenv local 3.10
 
 ## Install from PyPi
 
-`qadence-model` is available on PyPi through `pip`.
+`qadence-measurement` is available on PyPi through `pip`.
 
 ```bash
-pip install qadence-model
+pip install qadence-measurement
 ```
 
 ## Install from source
